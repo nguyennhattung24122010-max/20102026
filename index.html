@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Secret Envelope · 20.10 Special</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #0b0711;
+      --bg-glow: #291224;
+      --gold: #f3d29c;
+      --rose: #ff8fa3;
+      --rose-dark: #c9184a;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(243, 210, 156, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: radial-gradient(circle at 50% 20%, var(--bg-glow) 0%, var(--bg-deep) 80%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    /* Canvas hiệu ứng cánh hoa & bụi sao */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Nút bật/tắt nhạc góc trên */
+    .music-btn {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      z-index: 10;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: var(--gold);
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .music-btn.playing {
+      animation: spinSlow 6s linear infinite;
+      border-color: var(--rose);
+      box-shadow: 0 0 15px rgba(255, 143, 163, 0.4);
+    }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Khung Thiệp Chính */
+    .envelope-card {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 430px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 28px;
+      padding: 42px 28px 34px;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 2.8px;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(243, 210, 156, 0.1);
+      border: 1px solid rgba(243, 210, 156, 0.3);
+      padding: 6px 16px;
+      border-radius: 99px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    h1 i {
+      color: var(--rose);
+      font-weight: 600;
+      display: block;
+      margin-top: 4px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.68);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Ô nhập tên */
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.35);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 18px rgba(243, 210, 156, 0.2);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    /* Nút bấm chính */
+    .btn-primary {
+      width: 100%;
+      padding: 16px 24px;
+      border-radius: 16px;
+      border: none;
+      background: linear-gradient(135deg, #ff758f 0%, #c9184a 55%, #800f2f 100%);
+      color: #fff;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary:hover, .btn-primary:active {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(201, 24, 74, 0.6);
+    }
+
+    .btn-ghost {
+      margin-top: 12px;
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.75);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+    }
+
+    /* Màn hình hiển thị lời chúc */
+    #letterScreen {
+      display: none;
+    }
+
+    .letter-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .wish-container {
+      min-height: 135px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 143, 163, 0.04) 100%);
+      border: 1px solid rgba(243, 210, 156, 0.22);
+      border-radius: 20px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+      text-align: left;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .wish-text {
+      font-size: 15.5px;
+      line-height: 1.75;
+      color: #fdf2f4;
+      white-space: pre-line;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 16px;
+      background-color: var(--gold);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .wish-footer {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gold);
+      opacity: 0.85;
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(15px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Nút bật/tắt nhạc -->
+  <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
+    ♪
+  </button>
+
+  <div class="envelope-card">
+    <div class="tag-pill">✦ BỘ SƯU TẬP LỜI CHÚC · 20.10 ✦</div>
+
+    <!-- MÀN HÌNH 1: NHẬP TÊN -->
+    <div id="welcomeScreen">
+      <h1>Hộp thư bí mật<br><i>gửi người đặc biệt</i></h1>
+      <p class="subtitle">Hãy nhập tên của bạn để mở khóa bức thư và giai điệu được cất giữ riêng cho hôm nay.</p>
+
+      <div class="input-wrapper">
+        <input type="text" id="userName" placeholder="Nhập tên của bạn tại đây..." autocomplete="off" />
+      </div>
+
+      <button class="btn-primary" onclick="unsealLetter()">Mở niêm phong bức thư 💌</button>
+    </div>
+
+    <!-- MÀN HÌNH 2: HIỂN THỊ LỜI CHÚC -->
+    <div id="letterScreen">
+      <div class="letter-header">Thân gửi <span id="receiverName"></span>,</div>
+
+      <div class="wish-container">
+        <div>
+          <span class="wish-text" id="typewriterText"></span><span class="cursor" id="cursor"></span>
+        </div>
+        <div class="wish-footer">
+          <span id="wishBadge">✨ Phiên bản giới hạn</span>
+          <span>20 · 10</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="drawAnotherWish()">Rút thêm thông điệp khác ✨</button>
+      <button class="btn-ghost" onclick="goBack()">← Nhập một cái tên khác</button>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. KHO LỜI CHÚC ĐA DẠNG & CÁ NHÂN HÓA
+    // ==========================================
+    const wishesData = [
+      {
+        tag: "🌸 Rạng rỡ & Hạnh phúc",
+        text: "Chúc {name} một ngày 20/10 thật dịu dàng và trọn vẹn. Mong bạn luôn giữ được ánh mắt lấp lánh niềm vui, nụ cười rạng rỡ như nắng sớm và luôn được bao bọc bởi những điều tử tế nhất!"
+      },
+      {
+        tag: "💎 Bản lĩnh & Tỏa sáng",
+        text: "Gửi đến {name} lời chúc 20/10 rực rỡ nhất! Chúc bạn luôn tự tin bước đi trên hành trình của riêng mình, vừa đủ mềm mại để yêu thương, vừa đủ kiên cường để chạm tới mọi ước mơ."
+      },
+      {
+        tag: "🍀 May mắn & Bình yên",
+        text: "Nhân ngày 20/10, chúc {name} mọi dự định đang ấp ủ đều sớm nở hoa. Mong mỗi ngày trôi qua của bạn đều nhẹ nhàng, bình yên và tràn ngập tiếng cười bên những người thân yêu."
+      },
+      {
+        tag: "✨ Năng lượng tích cực",
+        text: "Cảm ơn {name} vì đã luôn là một sắc màu thật đẹp trong thế giới này. Chúc bạn ngày Phụ nữ Việt Nam ngập tràn hoa tươi, quà xinh và 365 ngày sắp tới lúc nào cũng rạng ngời!"
+      },
+      {
+        tag: "🌷 Ngọt ngào & Yêu thương",
+        text: "Chúc {name} ngày 20/10 thật đặc biệt! Hãy luôn nhớ yêu chiều bản thân mình nhiều hơn một chút, mỉm cười nhiều hơn và đón nhận thật nhiều điều ngọt ngào đang chờ phía trước nhé."
+      },
+      {
+        tag: "🌟 Thành công & Độc lập",
+        text: "Gửi {name} ngàn lời chúc tốt đẹp nhất! Mong bạn luôn giữ vững ngọn lửa nhiệt huyết, học tập hay công việc đều thuận buồm xuôi gió và luôn là phiên bản tự hào nhất của chính mình."
+      },
+      {
+        tag: "🥂 Trọn vẹn từng khoảnh khắc",
+        text: "20/10 này, chúc {name} gác lại mọi âu lo để tận hưởng một ngày thật ý nghĩa. Chúc bạn luôn trẻ trung, xinh đẹp, tâm hồn an nhiên và túi tiền lúc nào cũng rủng rỉnh!"
+      },
+      {
+        tag: "💌 Lời chúc từ trái tim",
+        text: "Không chỉ riêng ngày 20/10, chúc {name} ở bất kỳ cột mốc nào của thanh xuân cũng luôn tỏa sáng, gặp đúng người, đi đúng hướng và hạnh phúc với mọi lựa chọn của mình."
+      }
+    ];
+
+    // Lời chúc dành riêng nếu người dùng nhập đúng tên đặc biệt (không phân biệt hoa thường)
+    const vipWishes = {
+      "mẹ": {
+        tag: "❤️ Dành riêng cho Mẹ yêu",
+        text: "Nhân ngày 20/10, con chúc Mẹ luôn thật nhiều sức khỏe, mỗi ngày đều tràn ngập niềm vui và tiếng cười. Cảm ơn Mẹ vì đã luôn là điểm tựa ấm áp và tuyệt vời nhất của con!"
+      },
+      "má": {
+        tag: "❤️ Dành riêng cho Má",
+        text: "Chúc Má ngày 20/10 thật vui tươi, mạnh khỏe và trẻ mãi không già. Thương Má thật nhiều!"
+      }
+    };
+
+    let currentRecipient = "";
+    let lastIndex = -1;
+    let typingTimer = null;
+
+    function pickWish(name) {
+      const cleanKey = name.trim().toLowerCase();
+      if (vipWishes[cleanKey]) {
+        return vipWishes[cleanKey];
+      }
+
+      let idx;
+      do {
+        idx = Math.floor(Math.random() * wishesData.length);
+      } while (idx === lastIndex && wishesData.length > 1);
+
+      lastIndex = idx;
+      const chosen = wishesData[idx];
+      return {
+        tag: chosen.tag,
+        text: chosen.text.replace(/{name}/g, name)
+      };
+    }
+
+    // Hiệu ứng gõ chữ từng ký tự
+    function typeWriterEffect(text) {
+      clearInterval(typingTimer);
+      const textEl = document.getElementById("typewriterText");
+      const cursorEl = document.getElementById("cursor");
+      textEl.textContent = "";
+      cursorEl.style.display = "inline-block";
+
+      let i = 0;
+      typingTimer = setInterval(() => {
+        if (i < text.length) {
+          textEl.textContent += text.charAt(i);
+          i++;
+        } else {
+          clearInterval(typingTimer);
+        }
+      }, 24);
+    }
+
+    function unsealLetter() {
+      const input = document.getElementById("userName");
+      const nameVal = input.value.trim();
+
+      if (!nameVal) {
+        input.style.borderColor = "#ff4d6d";
+        input.focus();
+        return;
+      }
+
+      currentRecipient = nameVal;
+      document.getElementById("receiverName").textContent = currentRecipient;
+
+      const wishObj = pickWish(currentRecipient);
+      document.getElementById("wishBadge").textContent = wishObj.tag;
+
+      document.getElementById("welcomeScreen").style.display = "none";
+      const letterScreen = document.getElementById("letterScreen");
+      letterScreen.style.display = "block";
+      letterScreen.classList.remove("fade-in");
+      void letterScreen.offsetWidth;
+      letterScreen.classList.add("fade-in");
+
+      typeWriterEffect(wishObj.text);
+      burstSparkles();
+
+      // Tự động bật nhạc nhẹ nếu chưa bật
+      if (!isMusicPlaying) {
+        startMusicBox();
+      }
+    }
+
+    function drawAnotherWish() {
+      const wishObj = pickWish(currentRecipient);
+      document.getElementById("wishBadge").textContent = wishObj.tag;
+      typeWriterEffect(wishObj.text);
+      burstSparkles();
+    }
+
+    function goBack() {
+      clearInterval(typingTimer);
+      document.getElementById("userName").value = "";
+      document.getElementById("letterScreen").style.display = "none";
+      document.getElementById("welcomeScreen").style.display = "block";
+    }
+
+    document.getElementById("userName").addEventListener("keypress", (e) => {
+      if (e.key === "Enter") unsealLetter();
+    });
+
+    // ==========================================
+    // 2. HỘP NHẠC PIANO TỰ ĐỘNG (KHÔNG CẦN FILE MP3)
+    // ==========================================
+    let audioCtx = null;
+    let isMusicPlaying = false;
+    let melodyInterval = null;
+
+    // Giai điệu nhẹ nhàng (Tần số nốt nhạc)
+    const melodyNotes = [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99];
+    let noteCursor = 0;
+
+    function playSingleNote(freq) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+      gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start();
+      osc.stop(audioCtx.currentTime + 1.4);
+    }
+
+    function startMusicBox() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === "suspended") {
+        audioCtx.resume();
+      }
+      isMusicPlaying = true;
+      document.getElementById("musicBtn").classList.add("playing");
+
+      playSingleNote(melodyNotes[noteCursor]);
+      melodyInterval = setInterval(() => {
+        noteCursor = (noteCursor + 1) % melodyNotes.length;
+        playSingleNote(melodyNotes[noteCursor]);
+      }, 650);
+    }
+
+    function stopMusicBox() {
+      isMusicPlaying = false;
+      clearInterval(melodyInterval);
+      document.getElementById("musicBtn").classList.remove("playing");
+    }
+
+    function toggleMusic() {
+      if (isMusicPlaying) {
+        stopMusicBox();
+      } else {
+        startMusicBox();
+      }
+    }
+
+    // ==========================================
+    // 3. HIỆU ỨNG CÁNH HOA & PHÁO SÁNG TRÊN CANVAS
+    // ==========================================
+    const canvas = document.getElementById("bgCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    const petals = Array.from({ length: 38 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 4 + 2,
+      speedY: Math.random() * 0.6 + 0.25,
+      speedX: (Math.random() - 0.5) * 0.5,
+      angle: Math.random() * Math.PI * 2,
+      spin: (Math.random() - 0.5) * 0.02,
+      color: Math.random() > 0.4 ? "rgba(255, 143, 163, 0.55)" : "rgba(243, 210, 156, 0.5)"
+    }));
+
+    let sparkles = [];
+
+    function burstSparkles() {
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      for (let i = 0; i < 30; i++) {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 4 + 1.5;
+        sparkles.push({
+          x: centerX,
+          y: centerY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          r: Math.random() * 2.5 + 1,
+          alpha: 1,
+          color: i % 2 === 0 ? "#f3d29c" : "#ff8fa3"
+        });
+      }
+    }
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Vẽ các cánh hoa / bụi vàng rơi nhẹ
+      petals.forEach(p => {
+        p.y += p.speedY;
+        p.x += p.speedX + Math.sin(p.angle) * 0.3;
+        p.angle += p.spin;
+
+        if (p.y > canvas.height + 10) {
+          p.y = -10;
+          p.x = Math.random() * canvas.width;
+        }
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.angle);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      // Vẽ hạt pháo sáng khi bấm nút
+      for (let i = sparkles.length - 1; i >= 0; i--) {
+        const s = sparkles[i];
+        s.x += s.vx;
+        s.y += s.vy;
+        s.alpha -= 0.02;
+
+        if (s.alpha <= 0) {
+          sparkles.splice(i, 1);
+          continue;
+        }
+
+        ctx.save();
+        ctx.globalAlpha = s.alpha;
+        ctx.fillStyle = s.color;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+  </script>
+</body>
+</html>
 
