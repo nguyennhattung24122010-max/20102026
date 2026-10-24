@@ -6,7 +6,6 @@
   <title>Món Quà Nhỏ · Dành Tặng Nữ 11B7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Bộ font hỗ trợ tiếng Việt 100% không lỗi dấu và thẳng hàng chữ số -->
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -47,7 +46,6 @@
       z-index: 1;
     }
 
-    /* Nút bật/tắt nhạc đã căn giữa chuẩn */
     .music-btn {
       position: fixed;
       top: 16px; right: 16px;
@@ -84,7 +82,6 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Khung Thiệp Chính */
     .book-card {
       position: relative;
       z-index: 2;
@@ -116,9 +113,6 @@
       margin-bottom: 10px;
     }
 
-    /* ==========================================
-       LINH VẬT: BÉ CÁO TUYẾT ÁNH SAO
-       ========================================== */
     .mascot-stage {
       position: relative;
       width: 118px;
@@ -276,7 +270,6 @@
       transform: scale(0.98);
     }
 
-    /* MÀN HÌNH LẬT TRANG */
     #storyScreen {
       display: none;
     }
@@ -307,7 +300,6 @@
       border-radius: 99px;
     }
 
-    /* Khung Trang Sách */
     .page-box {
       min-height: 215px;
       background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 143, 163, 0.04) 100%);
@@ -440,7 +432,6 @@
 
   <canvas id="bgCanvas"></canvas>
 
-  <!-- Nút nhạc dùng icon SVG sắc nét không bị lệch -->
   <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
     <svg viewBox="0 0 24 24">
       <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
@@ -450,46 +441,35 @@
   <div class="book-card">
     <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
-    <!-- LINH VẬT BÉ CÁO TUYẾT ÁNH SAO -->
     <div class="mascot-stage" onclick="petMascot()" title="Chạm vào Linh Vật 11B7 nhé!">
       <div class="mascot-glow"></div>
       <svg class="mascot-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Đuôi cáo bông xù -->
         <path d="M85 88 C108 85, 114 62, 95 56 C86 53, 82 68, 78 78 Z" fill="#ffb3c6"/>
         <path d="M95 56 C105 59, 108 69, 98 73 C93 67, 92 61, 95 56 Z" fill="#fff5f7"/>
 
-        <!-- Tai trái -->
         <g class="ear-left">
           <path d="M26 52 L18 18 L48 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5" stroke-linejoin="round"/>
           <path d="M28 46 L23 24 L42 36 Z" fill="#ff758f"/>
         </g>
 
-        <!-- Tai phải -->
         <g class="ear-right">
           <path d="M94 52 L102 18 L72 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5" stroke-linejoin="round"/>
           <path d="M92 46 L97 24 L78 36 Z" fill="#ff758f"/>
         </g>
 
-        <!-- Vương miện nhỏ 11B7 trên đỉnh đầu -->
         <path d="M48 33 L52 21 L60 28 L68 21 L72 33 Z" fill="#f3d29c" stroke="#fff" stroke-width="1"/>
         <circle cx="60" cy="18" r="2.2" fill="#ff8fa3"/>
 
-        <!-- Thân cáo -->
         <path d="M42 82 C42 72, 78 72, 78 82 L82 102 C82 106, 38 106, 38 102 Z" fill="#ffe5ec"/>
-        <!-- Nơ cổ vàng ánh kim -->
         <path d="M52 84 L60 88 L68 84 L68 92 L60 88 L52 92 Z" fill="#c9184a"/>
         <circle cx="60" cy="88" r="3" fill="#f3d29c"/>
 
-        <!-- Khuôn mặt cáo bầu bĩnh -->
         <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
-        <!-- Mảng lông hồng 2 bên má -->
         <path d="M29 62 C29 48, 45 40, 60 40 C75 40, 91 48, 91 62 C83 54, 70 52, 60 62 C50 52, 37 54, 29 62 Z" fill="#ffb3c6"/>
 
-        <!-- Má hồng -->
         <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
         <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
 
-        <!-- Đôi mắt (Thay đổi theo trang sách) -->
         <g id="mascotEyesNormal" class="eyes-open">
           <circle cx="45" cy="63" r="4.2" fill="#2b102f"/>
           <circle cx="43.5" cy="61.5" r="1.5" fill="#fff"/>
@@ -497,24 +477,20 @@
           <circle cx="73.5" cy="61.5" r="1.5" fill="#fff"/>
         </g>
 
-        <!-- Mắt cười híp mí -->
         <g id="mascotEyesHappy" style="display: none;">
           <path d="M40 63 Q45 57 50 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
           <path d="M70 63 Q75 57 80 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
         </g>
 
-        <!-- Mũi & Miệng xinh -->
         <polygon points="58,67 62,67 60,70" fill="#c9184a"/>
         <path d="M55 72 Q60 75 60 70 Q60 75 65 72" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
 
-        <!-- Ngôi sao lấp lánh quanh linh vật -->
         <path d="M16 42 L18 46 L22 48 L18 50 L16 54 L14 50 L10 48 L14 46 Z" fill="#f3d29c"/>
         <path d="M104 36 L105.5 39 L108.5 40.5 L105.5 42 L104 45 L102.5 42 L99.5 40.5 L102.5 39 Z" fill="#ff8fa3"/>
       </svg>
       <div class="mascot-badge" id="mascotBadge">👑</div>
     </div>
 
-    <!-- MÀN HÌNH 1: NHẬP TÊN -->
     <div id="welcomeScreen">
       <h1>Cuốn sổ nhỏ<br><i>dành riêng cho các bạn nữ lớp 11B7</i></h1>
       <p class="subtitle">Nhập tên của cậu để Linh vật Cáo Tuyết mở ra 4 trang thông điệp 20/10 được cất giữ riêng cho các bông hoa 11B7 nhé!</p>
@@ -523,14 +499,12 @@
       <button class="btn-primary" onclick="openStoryBook()">Mở sổ lưu niệm 11B7 📖</button>
     </div>
 
-    <!-- MÀN HÌNH 2: ĐỌC TỪNG TRANG -->
     <div id="storyScreen">
       <div class="story-top">
         <div class="recipient-label">Gửi <span id="displayReceiver"></span> · 11B7,</div>
         <div class="page-counter" id="pageIndicator">Trang 1 / 4</div>
       </div>
 
-      <!-- Nội dung trang sách -->
       <div class="page-box" id="pageBox">
         <div>
           <div class="page-chapter" id="chapterTitle"></div>
@@ -539,10 +513,8 @@
         <div class="page-quote" id="chapterQuote"></div>
       </div>
 
-      <!-- Chấm chỉ báo trang -->
       <div class="dots-bar" id="dotsContainer"></div>
 
-      <!-- Nút chuyển trang -->
       <div class="nav-controls">
         <button class="btn-nav" id="prevBtn" onclick="changePage(-1)">← Trang trước</button>
         <button class="btn-nav next-highlight" id="nextBtn" onclick="changePage(1)">Trang tiếp →</button>
@@ -554,82 +526,8 @@
       </div>
     </div>
   </div>
-        <script>
-    // =====================================================
-    // 1. KHO THÔNG ĐIỆP ĐỒ SỘ (HƠN 30 CÂU KHÁC NHAU CHO MỖI TRANG)
-    // =====================================================
-    const poolTrang1 = [
-      { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
-      { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
-      { text: "Gửi {name} – cô gái luôn mang lại năng lượng tích cực cho cả lớp 11B7. Chúc cậu ngày 20/10 thật trọn vẹn và nhận được thật nhiều yêu thương!", quote: "“Mỗi cô gái là một bản nhạc tuyệt vời.”" },
-      { text: "Chúc {name} ngày Phụ nữ Việt Nam tràn ngập tiếng cười. Mong rằng thanh xuân cấp 3 của cậu sẽ luôn có những kỷ niệm đẹp nhất bên tập thể 11B7!", quote: "“Tươi trẻ, tự tin và tỏa sáng.”" },
-      { text: "Món quà nhỏ từ cuốn sổ 11B7 gửi tặng {name}. Chúc cậu luôn an nhiên, đáng yêu và mãi là niềm tự hào của gia đình và bạn bè nhé!", quote: "“Hạnh phúc bắt nguồn từ những điều giản dị.”" },
-      { text: "Chào {name}, chúc cậu ngày 20/10 nhận được nhiều quà đến mức mỏi tay và những lời chúc ngọt ngào nhất từ những người trân quý!", quote: "“Tháng Mười ngọt ngào dành cho cô gái ngọt ngào.”" },
-      { text: "Chúc {name} bước sang ngày lễ với tâm trạng nhẹ nhõm nhất, gác lại mọi lo âu bài vở để tận hưởng một ngày trọn vẹn niềm vui!", quote: "“Cứ rạng rỡ thôi, cả thế giới cứ để 11B7 lo.”" },
-      { text: "Gửi đến {name} chiếc ôm ấm áp nhất từ tập thể 11B7. Chúc cậu ngày nào cũng là ngày lễ và luôn được đối xử dịu dàng như một nàng công chúa!", quote: "“Xinh đẹp, rạng ngời và luôn may mắn.”" }
-    ];
 
-    const poolTrang2 = [
-      { text: "Mong {name} luôn giữ được ánh mắt trong veo và nguồn năng lượng tươi trẻ. Dù áp lực học tập thế nào, hãy luôn yêu chiều bản thân thật tốt nhé!", quote: "“Nụ cười của bạn là trang sức đẹp nhất.”" },
-      { text: "Chúc {name} ngày càng xinh đẹp, sắc sảo và cuốn hút theo cách riêng. Không cần phải giống bất kỳ ai, vì chính cậu đã là bản thể tuyệt vời nhất rồi!", quote: "“Tự tin tỏa sáng theo cách của bạn.”" },
-      { text: "Gửi {name} ngàn lời chúc tốt đẹp! Mong rằng mỗi ngày bước chân vào lớp 11B7, mọi người lại được ngắm nhìn nụ cười tỏa nắng làm bừng sáng cả khung cửa sổ.", quote: "“Rạng rỡ như những đóa hoa mùa xuân.”" },
-      { text: "Chúc cô gái {name} luôn giữ được sự tự tin, lòng nhân ái và khí chất ngời ngời. Chúc cho mọi dự định sắp tới của cậu đều suôn sẻ!", quote: "“Mỗi bước chân đi đều rực rỡ hoa tươi.”" },
-      { text: "Mong {name} luôn giữ được sự hồn nhiên, tinh tế và trái tim ấm áp. Cảm ơn cậu vì đã luôn là một mảnh ghép dịu dàng của 11B7!", quote: "“Vẻ đẹp của sự tự tin và tri thức.”" },
-      { text: "Chúc {name} lúc nào cũng trẻ trung, yêu đời và tràn đầy sức sống. Hãy cứ bước đi hiên ngang vì phía sau luôn có tập thể 11B7 cổ vũ!", quote: "“Tỏa sáng rực rỡ như những vì sao.”" },
-      { text: "Gửi {name}: Chúc cậu sở hữu một phong thái tự tin, một nụ cười không bao giờ tắt và một trái tim luôn đong đầy nhiệt huyết thanh xuân!", quote: "“Sống rực rỡ như ánh dương rọi chiếu.”" },
-      { text: "Chúc {name} luôn giữ được nét đẹp trong trẻo, nụ cười duyên dáng và một thần thái luôn tràn đầy năng lượng tích cực mỗi ngày!", quote: "“Dịu dàng nhưng không kém phần kiên cường.”" }
-    ];
-
-    const poolTrang3 = [
-      { text: "Bước sang trang thứ 3, chúc {name} trong năm học lớp 11 này luôn bứt phá mạnh mẽ, bài kiểm tra hay kỳ thi nào cũng điểm cao chót vót và vượt mọi mốc son!", quote: "“Bản lĩnh vững vàng, tương lai rộng mở.”" },
-      { text: "Mong {name} vừa giữ được trái tim ấm áp, vừa có đủ sự kiên cường để chinh phục mọi mục tiêu học tập. Cả lớp 11B7 sẽ luôn đồng hành cùng cậu!", quote: "“Mọi nỗ lực hôm nay đều sẽ nở hoa.”" },
-      { text: "Chúc {name} học tập thuận lợi, mọi môn học đều qua cửa nhẹ nhàng, luôn tràn đầy cảm hứng sáng tạo và gặt hái thật nhiều điểm 9, điểm 10 đáng tự hào!", quote: "“Chinh phục mọi đỉnh cao tri thức.”" },
-      { text: "Chúc {name} luôn giữ được cái đầu lạnh khi đối mặt với đề khó và một trái tim nóng nhiệt huyết với mọi hoài bão tương lai của mình!", quote: "“Tri thức là sức mạnh tuyệt vời nhất.”" },
-      { text: "Mong rằng trên con đường chinh phục ghế nhà trường và tương lai, {name} sẽ luôn gặp gỡ những điều may mắn và gặt hái trái ngọt xứng đáng.", quote: "“Hành trình vạn dặm bắt đầu từ sự kiên trì.”" },
-      { text: "Chúc {name} luôn giữ vững phong độ học tập đỉnh cao, tự tin phát biểu xây dựng bài và luôn là tấm gương sáng cho cả lớp noi theo!", quote: "“Tự tin, quyết đoán và thành công.”" },
-      { text: "Chúc {name} có một năm học lớp 11 thật đáng nhớ với vô số điểm giỏi, những giải thưởng danh giá và những trải nghiệm tuổi trẻ tuyệt vời!", quote: "“Tương lai thuộc về những ai dám ước mơ.”" },
-      { text: "Chúc {name} luôn tìm thấy niềm vui trong sách vở, sự hào hứng trong bài giảng và sự bứt phá ngoạn mục trong mọi bảng điểm thi đua!", quote: "“Học hết sức, chơi hết mình.”" }
-    ];
-
-    const poolTrang4 = [
-      { text: "Khép lại trang sổ lưu niệm 11B7, chúc {name} suốt 365 ngày trong năm đều ngập tràn hạnh phúc, bình yên và luôn được mọi người yêu thương vô điều kiện!", quote: "“Happy Women's Day 20.10 · Forever 11B7”" },
-      { text: "Món quà tinh thần nhỏ này xin gửi trọn vẹn may mắn đến {name}. Chúc cậu tối nay ngủ thật ngon, ngày mai đến lớp với thật nhiều năng lượng tươi mới!", quote: "“Bình yên ở trong tâm, hạnh phúc ở tay mình.”" },
-      { text: "Trang cuối cùng xin dành tặng {name} hai chữ: Hạnh Phúc và Trọn Vẹn. Cảm ơn cậu đã là một phần thanh xuân tuyệt đẹp của 11B7. Chúc mừng ngày 20/10!", quote: "“Chúc cậu một đời an nhiên và rực rỡ.”" },
-      { text: "Chúc {name} luôn giữ được sự ấm áp trong tâm hồn, sự vững chãi trong cuộc sống và luôn có những người bạn tuyệt vời kề vai sát cánh!", quote: "“Thanh xuân 11B7 mãi rực rỡ sắc hồng.”" },
-      { text: "Mong rằng bất cứ khi nào mở trang web này lên, {name} đều mỉm cười vì biết rằng mình luôn là một cô gái vô cùng đặc biệt và đáng trân trọng.", quote: "“Yêu thương bản thân là khởi đầu của mọi vẻ đẹp.”" },
-      { text: "Chúc {name} có một buổi tối 20/10 ngập tràn kỷ niệm đẹp bên gia đình và những người thân yêu. Luôn hạnh phúc và mỉm cười thật nhiều nhé cậu!", quote: "“Được yêu thương là điều hạnh phúc nhất.”" },
-      { text: "Gửi ngàn lời chúc tốt đẹp nhất khép lại cuốn sổ nhỏ. Chúc {name} mãi giữ được trái tim nhiệt huyết và một thanh xuân không có chỗ cho tiếc nuối!", quote: "“Thanh xuân rực rỡ của những đóa hoa 11B7.”" },
-      { text: "Chúc {name} luôn có một bầu trời sức khỏe, một biển cả yêu thương và những tháng ngày học sinh cấp 3 đẹp đẽ nhất bên mái trường này!", quote: "“Mãi là cô gái rạng ngời và kiêu hãnh.”" }
-    ];
-
-    // (Tùy chọn) Danh sách VIP nếu bạn muốn viết riêng 1 câu độc quyền cho bạn lớp trưởng hoặc người thân thiết
-    const vipWishes = {
-      // "tên_viết_thường": { badge: "👑", happyEyes: true, chapter: "🌸 Đặc Biệt Dành Riêng Cậu", body: "...", quote: "..." }
-    };
-
-    let currentName = "";
-    let currentBookPages = [];
-    let currentPageIndex = 0;
-
-    // =====================================================
-    // 2. THUẬT TOÁN HASH TÊN ĐẢM BẢO 23 BẠN 23 KẾT QUẢ RIÊNG
-    // =====================================================
-    function getIndexByNameAndPage(name, pageIndex, maxLen) {
-      let hash = 0;
-      const cleanStr = name.trim().toLowerCase() + "_p" + pageIndex;
-      for (let i = 0; i < cleanStr.length; i++) {
-        hash = cleanStr.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      return Math.abs(hash) % maxLen;
-    }
-
-    function buildBookForUser(name) {
-      const cleanKey = name.trim().toLowerCase();
-      
-      // Nếu là tên VIP cài sẵn
-          // =====================================================
-    // 1. KHO THÔNG ĐIỆP CHO 4 TRANG
-    // =====================================================
+  <script>
     const poolTrang1 = [
       { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
@@ -712,23 +610,6 @@
         { badge: "🪄", happyEyes: false, chapter: "💎 Trang 3 · Điểm Số & Ước Mơ", body: poolTrang3[idx3].text.replace(/{name}/g, name), quote: poolTrang3[idx3].quote },
         { badge: "💖", happyEyes: true, chapter: "👑 Trang Cuối · Lời Chúc 365 Ngày", body: poolTrang4[idx4].text.replace(/{name}/g, name), quote: poolTrang4[idx4].quote }
       ];
-    }
-    let currentName = "";
-    let currentBookPages = [];
-    let currentPageIndex = 0;
-
-    function pickRandomItem(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
-
-    function buildBookForUser(name) {
-      return pagePools.map(pool => ({
-        badge: pool.badge,
-        happyEyes: pool.happyEyes,
-        chapter: pool.chapter,
-        body: pickRandomItem(pool.messages).replace(/{name}/g, name),
-        quote: pickRandomItem(pool.quotes)
-      }));
     }
 
     function updateMascotMood(badgeIcon, isHappyEyes) {
@@ -869,9 +750,6 @@
       }
     }, { passive: true });
 
-    // =====================================================
-    // HỘP NHẠC PIANO TỰ ĐỘNG
-    // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
     let melodyInterval = null;
@@ -915,9 +793,6 @@
       }
     }
 
-    // =====================================================
-    // HIỆU ỨNG CÁNH HOA & PHÁO SÁNG CANVAS
-    // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
 
