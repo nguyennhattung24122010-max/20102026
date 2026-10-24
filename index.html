@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Secret Envelope · 20.10 Special</title>
+  <title>Nhật Ký Lời Chúc · 20.10 Special</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-deep: #0b0711;
-      --bg-glow: #291224;
+      --bg-glow: #2c1227;
       --gold: #f3d29c;
       --rose: #ff8fa3;
       --rose-dark: #c9184a;
-      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-bg: rgba(255, 255, 255, 0.055);
       --glass-border: rgba(243, 210, 156, 0.25);
     }
 
@@ -35,28 +35,23 @@
       align-items: center;
       overflow: hidden;
       position: relative;
-      padding: 20px;
+      padding: 18px;
     }
 
-    /* Canvas hiệu ứng cánh hoa & bụi sao */
     #bgCanvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       z-index: 1;
     }
 
-    /* Nút bật/tắt nhạc góc trên */
+    /* Nút nhạc */
     .music-btn {
       position: fixed;
-      top: 22px;
-      right: 22px;
+      top: 20px; right: 20px;
       z-index: 10;
-      width: 44px;
-      height: 44px;
+      width: 44px; height: 44px;
       border-radius: 50%;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--glass-border);
@@ -68,13 +63,12 @@
       color: var(--gold);
       font-size: 18px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 
     .music-btn.playing {
       animation: spinSlow 6s linear infinite;
       border-color: var(--rose);
-      box-shadow: 0 0 15px rgba(255, 143, 163, 0.4);
+      box-shadow: 0 0 15px rgba(255, 143, 163, 0.45);
     }
 
     @keyframes spinSlow {
@@ -82,42 +76,41 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Khung Thiệp Chính */
-    .envelope-card {
+    /* Khung Sổ Lưu Niệm */
+    .book-card {
       position: relative;
       z-index: 2;
       width: 100%;
       max-width: 430px;
       background: var(--glass-bg);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
       border: 1px solid var(--glass-border);
       border-radius: 28px;
-      padding: 42px 28px 34px;
+      padding: 36px 26px 30px;
       text-align: center;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-      transition: transform 0.4s ease, opacity 0.4s ease;
     }
 
     .tag-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
-      letter-spacing: 2.8px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
       color: var(--gold);
       background: rgba(243, 210, 156, 0.1);
       border: 1px solid rgba(243, 210, 156, 0.3);
-      padding: 6px 16px;
+      padding: 6px 14px;
       border-radius: 99px;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 34px;
+      font-size: 32px;
       font-weight: 500;
       line-height: 1.25;
       color: #fff;
@@ -135,13 +128,7 @@
       font-size: 14px;
       color: rgba(255, 255, 255, 0.68);
       line-height: 1.6;
-      margin-bottom: 28px;
-    }
-
-    /* Ô nhập tên */
-    .input-wrapper {
-      position: relative;
-      margin-bottom: 16px;
+      margin-bottom: 26px;
     }
 
     input {
@@ -155,23 +142,18 @@
       font-size: 15px;
       text-align: center;
       outline: none;
+      margin-bottom: 16px;
       transition: all 0.3s ease;
-    }
-
-    input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
     }
 
     input:focus {
       border-color: var(--gold);
       box-shadow: 0 0 18px rgba(243, 210, 156, 0.2);
-      background: rgba(0, 0, 0, 0.5);
     }
 
-    /* Nút bấm chính */
     .btn-primary {
       width: 100%;
-      padding: 16px 24px;
+      padding: 15px 22px;
       border-radius: 16px;
       border: none;
       background: linear-gradient(135deg, #ff758f 0%, #c9184a 55%, #800f2f 100%);
@@ -179,103 +161,171 @@
       font-family: inherit;
       font-size: 15px;
       font-weight: 600;
-      letter-spacing: 0.4px;
       cursor: pointer;
       box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
       transition: all 0.25s ease;
     }
 
-    .btn-primary:hover, .btn-primary:active {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(201, 24, 74, 0.6);
+    .btn-primary:active {
+      transform: scale(0.98);
     }
 
-    .btn-ghost {
-      margin-top: 12px;
-      width: 100%;
-      padding: 12px;
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 0.75);
-      border-radius: 14px;
-      font-family: inherit;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-ghost:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fff;
-    }
-
-    /* Màn hình hiển thị lời chúc */
-    #letterScreen {
+    /* MÀN HÌNH LẬT TRANG */
+    #storyScreen {
       display: none;
     }
 
-    .letter-header {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      color: var(--gold);
-      margin-bottom: 16px;
-    }
-
-    .wish-container {
-      min-height: 135px;
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 143, 163, 0.04) 100%);
-      border: 1px solid rgba(243, 210, 156, 0.22);
-      border-radius: 20px;
-      padding: 22px 20px;
-      margin-bottom: 20px;
-      text-align: left;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .wish-text {
-      font-size: 15.5px;
-      line-height: 1.75;
-      color: #fdf2f4;
-      white-space: pre-line;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 16px;
-      background-color: var(--gold);
-      margin-left: 3px;
-      vertical-align: middle;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .wish-footer {
-      margin-top: 16px;
-      padding-top: 12px;
-      border-top: 1px dashed rgba(255, 255, 255, 0.12);
+    .story-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 12px;
+      margin-bottom: 14px;
+      padding: 0 4px;
+    }
+
+    .recipient-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
       color: var(--gold);
-      opacity: 0.85;
     }
 
-    .fade-in {
-      animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    .page-counter {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--rose);
+      background: rgba(255, 143, 163, 0.12);
+      border: 1px solid rgba(255, 143, 163, 0.3);
+      padding: 4px 12px;
+      border-radius: 99px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(15px) scale(0.98); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
+    /* Khung Trang Sách */
+    .page-box {
+      min-height: 230px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 143, 163, 0.04) 100%);
+      border: 1px solid rgba(243, 210, 156, 0.28);
+      border-radius: 22px;
+      padding: 26px 22px 20px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .page-FlipAnim {
+      animation: pageFlip 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes pageFlip {
+      0% { opacity: 0; transform: translateX(22px) rotateY(-8deg) scale(0.97); }
+      100% { opacity: 1; transform: translateX(0) rotateY(0) scale(1); }
+    }
+
+    .page-chapter {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .page-content {
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: #fff5f7;
+      margin-bottom: 16px;
+    }
+
+    .page-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 13.5px;
+      color: rgba(243, 210, 156, 0.85);
+      border-top: 1px dashed rgba(255, 255, 255, 0.14);
+      padding-top: 12px;
+      text-align: right;
+    }
+
+    /* Chấm tròn tiến trình */
+    .dots-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      width: 26px;
+      background: var(--rose);
+      box-shadow: 0 0 10px rgba(255, 143, 163, 0.6);
+    }
+
+    /* Thanh nút điều hướng Trang Trước / Trang Tiếp */
+    .nav-controls {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      flex: 1;
+      padding: 13px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-nav:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .btn-nav.next-highlight {
+      background: linear-gradient(135deg, #ff758f 0%, #c9184a 100%);
+      border: none;
+      box-shadow: 0 6px 18px rgba(201, 24, 74, 0.35);
+    }
+
+    .bottom-links {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+    }
+
+    .link-action {
+      color: rgba(255, 255, 255, 0.6);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: underline;
+      padding: 4px;
+    }
+
+    .link-action:hover {
+      color: var(--gold);
     }
   </style>
 </head>
@@ -283,196 +333,239 @@
 
   <canvas id="bgCanvas"></canvas>
 
-  <!-- Nút bật/tắt nhạc -->
-  <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
-    ♪
-  </button>
+  <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">♪</button>
 
-  <div class="envelope-card">
-    <div class="tag-pill">✦ BỘ SƯU TẬP LỜI CHÚC · 20.10 ✦</div>
+  <div class="book-card">
+    <div class="tag-pill">✦ STORYBOOK · 20.10 EDITION ✦</div>
 
     <!-- MÀN HÌNH 1: NHẬP TÊN -->
     <div id="welcomeScreen">
-      <h1>Hộp thư bí mật<br><i>gửi người đặc biệt</i></h1>
-      <p class="subtitle">Hãy nhập tên của bạn để mở khóa bức thư và giai điệu được cất giữ riêng cho hôm nay.</p>
+      <h1>Cuốn sổ nhỏ<br><i>dành tặng riêng bạn</i></h1>
+      <p class="subtitle">Nhập tên của bạn để mở ra 4 trang thông điệp bí mật được ghép ngẫu nhiên dành riêng cho bạn hôm nay.</p>
 
-      <div class="input-wrapper">
-        <input type="text" id="userName" placeholder="Nhập tên của bạn tại đây..." autocomplete="off" />
-      </div>
-
-      <button class="btn-primary" onclick="unsealLetter()">Mở niêm phong bức thư 💌</button>
+      <input type="text" id="userName" placeholder="Nhập tên của bạn..." autocomplete="off" />
+      <button class="btn-primary" onclick="openStoryBook()">Mở trang đầu tiên 📖</button>
     </div>
 
-    <!-- MÀN HÌNH 2: HIỂN THỊ LỜI CHÚC -->
-    <div id="letterScreen">
-      <div class="letter-header">Thân gửi <span id="receiverName"></span>,</div>
-
-      <div class="wish-container">
-        <div>
-          <span class="wish-text" id="typewriterText"></span><span class="cursor" id="cursor"></span>
-        </div>
-        <div class="wish-footer">
-          <span id="wishBadge">✨ Phiên bản giới hạn</span>
-          <span>20 · 10</span>
-        </div>
+    <!-- MÀN HÌNH 2: ĐỌC TỪNG TRANG -->
+    <div id="storyScreen">
+      <div class="story-top">
+        <div class="recipient-label">Gửi <span id="displayReceiver"></span>,</div>
+        <div class="page-counter" id="pageIndicator">Trang 1 / 4</div>
       </div>
 
-      <button class="btn-primary" onclick="drawAnotherWish()">Rút thêm thông điệp khác ✨</button>
-      <button class="btn-ghost" onclick="goBack()">← Nhập một cái tên khác</button>
+      <!-- Nội dung trang sách (hỗ trợ vuốt ngang trên điện thoại) -->
+      <div class="page-box" id="pageBox">
+        <div>
+          <div class="page-chapter" id="chapterTitle"></div>
+          <div class="page-content" id="chapterBody"></div>
+        </div>
+        <div class="page-quote" id="chapterQuote"></div>
+      </div>
+
+      <!-- Chấm chỉ báo trang -->
+      <div class="dots-bar" id="dotsContainer"></div>
+
+      <!-- Nút chuyển trang -->
+      <div class="nav-controls">
+        <button class="btn-nav" id="prevBtn" onclick="changePage(-1)">← Trang trước</button>
+        <button class="btn-nav next-highlight" id="nextBtn" onclick="changePage(1)">Trang tiếp →</button>
+      </div>
+
+      <div class="bottom-links">
+        <button class="link-action" onclick="regenerateBook()">🎲 Đổi 4 trang ngẫu nhiên khác</button>
+        <button class="link-action" onclick="resetToHome()">Đổi tên người nhận</button>
+      </div>
     </div>
   </div>
 
   <script>
-    // ==========================================
-    // 1. KHO LỜI CHÚC ĐA DẠNG & CÁ NHÂN HÓA
-    // ==========================================
-    const wishesData = [
+    // =====================================================
+    // KHO DỮ LIỆU ĐA TẦNG: MỖI TRANG CÓ NHIỀU PHIÊN BẢN NGẪU NHIÊN
+    // =====================================================
+    const pagePools = [
+      // TRANG 1: LỜI MỞ ĐẦU
       {
-        tag: "🌸 Rạng rỡ & Hạnh phúc",
-        text: "Chúc {name} một ngày 20/10 thật dịu dàng và trọn vẹn. Mong bạn luôn giữ được ánh mắt lấp lánh niềm vui, nụ cười rạng rỡ như nắng sớm và luôn được bao bọc bởi những điều tử tế nhất!"
+        chapter: "🌸 Trang 1 · Lời Chào Tháng Mười",
+        quotes: ["“Mỗi cô gái đều là một bản nhạc dịu dàng của thế gian.”", "“Hôm nay là ngày bầu trời dịu lại để tôn vinh bạn.”"],
+        messages: [
+          "Chào {name}, giữa hàng triệu điều tình cờ, thật vui vì bạn đã mở cuốn sổ nhỏ này. Chúc {name} có một ngày 20/10 mở đầu bằng thật nhiều niềm vui và sự ấm áp!",
+          "Tháng Mười về mang theo những cơn gió dịu dàng nhất, cũng giống như sự hiện diện của {name} vậy. Chúc bạn một ngày Phụ nữ Việt Nam ngập tràn tiếng cười!",
+          "Cuốn sổ nhỏ này được mở ra chỉ để nhắc {name} rằng: Hôm nay là một ngày vô cùng đặc biệt, và bạn xứng đáng nhận được tất cả những lời chúc ngọt ngào nhất."
+        ]
       },
+      // TRANG 2: VẺ ĐẸP & NỤ CƯỜI
       {
-        tag: "💎 Bản lĩnh & Tỏa sáng",
-        text: "Gửi đến {name} lời chúc 20/10 rực rỡ nhất! Chúc bạn luôn tự tin bước đi trên hành trình của riêng mình, vừa đủ mềm mại để yêu thương, vừa đủ kiên cường để chạm tới mọi ước mơ."
+        chapter: "✨ Trang 2 · Nụ Cười & Sự Rạng Rỡ",
+        quotes: ["“Nụ cười của bạn chính là trang sức lấp lánh nhất.”", "“Hãy luôn tỏa sáng theo cách riêng biệt nhất.”"],
+        messages: [
+          "Mong {name} luôn giữ được ánh mắt trong veo và nụ cười tỏa nắng. Dù cuộc sống có bận rộn thế nào, hãy luôn dành thời gian yêu chiều và chăm sóc bản thân thật tốt nhé!",
+          "Chúc {name} tuổi mới, ngày mới lúc nào cũng xinh đẹp rạng ngời. Không cần phải giống bất kỳ ai, vì khi là chính mình, {name} đã là phiên bản cuốn hút nhất rồi.",
+          "Gửi tới {name} một nhành hoa của sự trẻ trung và lạc quan. Mong rằng mỗi khi bạn soi gương đều thấy một cô gái tự tin, rạng rỡ và tràn đầy sức sống!"
+        ]
       },
+      // TRANG 3: ƯỚC MƠ & HÀNH TRÌNH
       {
-        tag: "🍀 May mắn & Bình yên",
-        text: "Nhân ngày 20/10, chúc {name} mọi dự định đang ấp ủ đều sớm nở hoa. Mong mỗi ngày trôi qua của bạn đều nhẹ nhàng, bình yên và tràn ngập tiếng cười bên những người thân yêu."
+        chapter: "💎 Trang 3 · Bản Lĩnh & Ước Mơ",
+        quotes: ["“Mềm mại như nước nhưng kiên cường như kim cương.”", "“Mọi hạt giống nỗ lực đều sẽ nở hoa đúng mùa.”"],
+        messages: [
+          "Trên chặng đường sắp tới, chúc {name} luôn chân cứng đá mềm. Mong mọi dự định, kế hoạch hay ước mơ mà {name} đang ấp ủ đều sẽ thuận buồm xuôi gió và gặt hái quả ngọt!",
+          "Chúc {name} vừa có đủ sự dịu dàng để cảm nhận hạnh phúc, vừa có đủ sự kiên cường để bước qua mọi thử thách. Thành công và may mắn chắc chắn sẽ luôn mỉm cười với bạn.",
+          "Dù ở giảng đường hay trong công việc, chúc {name} luôn giữ vững ngọn lửa nhiệt huyết. Hãy cứ tự tin sải bước vì phía trước bạn là cả một bầu trời rộng mở!"
+        ]
       },
+      // TRANG 4: LỜI KẾT NGỌT NGÀO
       {
-        tag: "✨ Năng lượng tích cực",
-        text: "Cảm ơn {name} vì đã luôn là một sắc màu thật đẹp trong thế giới này. Chúc bạn ngày Phụ nữ Việt Nam ngập tràn hoa tươi, quà xinh và 365 ngày sắp tới lúc nào cũng rạng ngời!"
-      },
-      {
-        tag: "🌷 Ngọt ngào & Yêu thương",
-        text: "Chúc {name} ngày 20/10 thật đặc biệt! Hãy luôn nhớ yêu chiều bản thân mình nhiều hơn một chút, mỉm cười nhiều hơn và đón nhận thật nhiều điều ngọt ngào đang chờ phía trước nhé."
-      },
-      {
-        tag: "🌟 Thành công & Độc lập",
-        text: "Gửi {name} ngàn lời chúc tốt đẹp nhất! Mong bạn luôn giữ vững ngọn lửa nhiệt huyết, học tập hay công việc đều thuận buồm xuôi gió và luôn là phiên bản tự hào nhất của chính mình."
-      },
-      {
-        tag: "🥂 Trọn vẹn từng khoảnh khắc",
-        text: "20/10 này, chúc {name} gác lại mọi âu lo để tận hưởng một ngày thật ý nghĩa. Chúc bạn luôn trẻ trung, xinh đẹp, tâm hồn an nhiên và túi tiền lúc nào cũng rủng rỉnh!"
-      },
-      {
-        tag: "💌 Lời chúc từ trái tim",
-        text: "Không chỉ riêng ngày 20/10, chúc {name} ở bất kỳ cột mốc nào của thanh xuân cũng luôn tỏa sáng, gặp đúng người, đi đúng hướng và hạnh phúc với mọi lựa chọn của mình."
+        chapter: "💌 Trang Cuối · Lời Chúc 365 Ngày",
+        quotes: ["“Happy Vietnamese Women's Day · 20.10”", "“Bình yên ở trong tâm, hạnh phúc ở ngay cạnh.”"],
+        messages: [
+          "Khép lại trang sổ nhỏ này, chúc {name} không chỉ riêng ngày 20/10 mà suốt 365 ngày trong năm đều được yêu thương, trân trọng và sống giữa những điều tử tế nhất!",
+          "Món quà tinh thần nhỏ bé này xin gửi trọn vẹn may mắn đến {name}. Chúc bạn tối nay ngủ thật ngon, ngày mai thức dậy với thật nhiều năng lượng tích cực nhé!",
+          "Trang cuối cùng xin dành để chúc {name} hai chữ: Bình Yên và Trọn Vẹn. Cảm ơn {name} vì đã đọc hết những dòng chữ này. Chúc bạn một mùa 20/10 thật đáng nhớ!"
+        ]
       }
     ];
 
-    // Lời chúc dành riêng nếu người dùng nhập đúng tên đặc biệt (không phân biệt hoa thường)
-    const vipWishes = {
-      "mẹ": {
-        tag: "❤️ Dành riêng cho Mẹ yêu",
-        text: "Nhân ngày 20/10, con chúc Mẹ luôn thật nhiều sức khỏe, mỗi ngày đều tràn ngập niềm vui và tiếng cười. Cảm ơn Mẹ vì đã luôn là điểm tựa ấm áp và tuyệt vời nhất của con!"
-      },
-      "má": {
-        tag: "❤️ Dành riêng cho Má",
-        text: "Chúc Má ngày 20/10 thật vui tươi, mạnh khỏe và trẻ mãi không già. Thương Má thật nhiều!"
-      }
-    };
+    let currentName = "";
+    let currentBookPages = [];
+    let currentPageIndex = 0;
 
-    let currentRecipient = "";
-    let lastIndex = -1;
-    let typingTimer = null;
-
-    function pickWish(name) {
-      const cleanKey = name.trim().toLowerCase();
-      if (vipWishes[cleanKey]) {
-        return vipWishes[cleanKey];
-      }
-
-      let idx;
-      do {
-        idx = Math.floor(Math.random() * wishesData.length);
-      } while (idx === lastIndex && wishesData.length > 1);
-
-      lastIndex = idx;
-      const chosen = wishesData[idx];
-      return {
-        tag: chosen.tag,
-        text: chosen.text.replace(/{name}/g, name)
-      };
+    function pickRandomItem(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
     }
 
-    // Hiệu ứng gõ chữ từng ký tự
-    function typeWriterEffect(text) {
-      clearInterval(typingTimer);
-      const textEl = document.getElementById("typewriterText");
-      const cursorEl = document.getElementById("cursor");
-      textEl.textContent = "";
-      cursorEl.style.display = "inline-block";
-
-      let i = 0;
-      typingTimer = setInterval(() => {
-        if (i < text.length) {
-          textEl.textContent += text.charAt(i);
-          i++;
-        } else {
-          clearInterval(typingTimer);
-        }
-      }, 24);
+    // Tạo ra bộ 4 trang ngẫu nhiên cho người nhận
+    function buildBookForUser(name) {
+      return pagePools.map(pool => ({
+        chapter: pool.chapter,
+        body: pickRandomItem(pool.messages).replace(/{name}/g, name),
+        quote: pickRandomItem(pool.quotes)
+      }));
     }
 
-    function unsealLetter() {
+    function openStoryBook() {
       const input = document.getElementById("userName");
-      const nameVal = input.value.trim();
-
-      if (!nameVal) {
+      const val = input.value.trim();
+      if (!val) {
         input.style.borderColor = "#ff4d6d";
         input.focus();
         return;
       }
 
-      currentRecipient = nameVal;
-      document.getElementById("receiverName").textContent = currentRecipient;
+      currentName = val;
+      document.getElementById("displayReceiver").textContent = currentName;
 
-      const wishObj = pickWish(currentRecipient);
-      document.getElementById("wishBadge").textContent = wishObj.tag;
+      currentBookPages = buildBookForUser(currentName);
+      currentPageIndex = 0;
 
       document.getElementById("welcomeScreen").style.display = "none";
-      const letterScreen = document.getElementById("letterScreen");
-      letterScreen.style.display = "block";
-      letterScreen.classList.remove("fade-in");
-      void letterScreen.offsetWidth;
-      letterScreen.classList.add("fade-in");
+      document.getElementById("storyScreen").style.display = "block";
 
-      typeWriterEffect(wishObj.text);
+      renderDots();
+      updatePageView();
       burstSparkles();
 
-      // Tự động bật nhạc nhẹ nếu chưa bật
-      if (!isMusicPlaying) {
-        startMusicBox();
+      if (!isMusicPlaying) startMusicBox();
+    }
+
+    function renderDots() {
+      const container = document.getElementById("dotsContainer");
+      container.innerHTML = "";
+      currentBookPages.forEach((_, idx) => {
+        const dot = document.createElement("div");
+        dot.className = "dot" + (idx === currentPageIndex ? " active" : "");
+        dot.onclick = () => goToPage(idx);
+        container.appendChild(dot);
+      });
+    }
+
+    function updatePageView() {
+      const pageData = currentBookPages[currentPageIndex];
+      const box = document.getElementById("pageBox");
+
+      // Kích hoạt hiệu ứng lật trang
+      box.classList.remove("page-FlipAnim");
+      void box.offsetWidth;
+      box.classList.add("page-FlipAnim");
+
+      document.getElementById("pageIndicator").textContent = `Trang ${currentPageIndex + 1} / ${currentBookPages.length}`;
+      document.getElementById("chapterTitle").textContent = pageData.chapter;
+      document.getElementById("chapterBody").textContent = pageData.body;
+      document.getElementById("chapterQuote").textContent = pageData.quote;
+
+      // Cập nhật chấm tròn
+      const dots = document.querySelectorAll(".dot");
+      dots.forEach((d, idx) => d.classList.toggle("active", idx === currentPageIndex));
+
+      // Cập nhật trạng thái nút bấm
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+
+      prevBtn.disabled = currentPageIndex === 0;
+
+      if (currentPageIndex === currentBookPages.length - 1) {
+        nextBtn.textContent = "Đọc lại từ đầu ↺";
+      } else {
+        nextBtn.textContent = "Trang tiếp →";
       }
     }
 
-    function drawAnotherWish() {
-      const wishObj = pickWish(currentRecipient);
-      document.getElementById("wishBadge").textContent = wishObj.tag;
-      typeWriterEffect(wishObj.text);
+    function changePage(step) {
+      if (currentPageIndex === currentBookPages.length - 1 && step === 1) {
+        currentPageIndex = 0;
+      } else {
+        currentPageIndex = Math.max(0, Math.min(currentBookPages.length - 1, currentPageIndex + step));
+      }
+      updatePageView();
       burstSparkles();
     }
 
-    function goBack() {
-      clearInterval(typingTimer);
+    function goToPage(index) {
+      currentPageIndex = index;
+      updatePageView();
+    }
+
+    function regenerateBook() {
+      currentBookPages = buildBookForUser(currentName);
+      currentPageIndex = 0;
+      updatePageView();
+      burstSparkles();
+    }
+
+    function resetToHome() {
       document.getElementById("userName").value = "";
-      document.getElementById("letterScreen").style.display = "none";
+      document.getElementById("storyScreen").style.display = "none";
       document.getElementById("welcomeScreen").style.display = "block";
     }
 
     document.getElementById("userName").addEventListener("keypress", (e) => {
-      if (e.key === "Enter") unsealLetter();
+      if (e.key === "Enter") openStoryBook();
     });
 
-    // ==========================================
-    // 2. HỘP NHẠC PIANO TỰ ĐỘNG (KHÔNG CẦN FILE MP3)
-    // ==========================================
+    // Hỗ trợ thao tác vuốt ngang (Swipe) trên điện thoại để lật trang
+    let touchStartX = 0;
+    const pageBoxEl = document.getElementById("pageBox");
+    pageBoxEl.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    pageBoxEl.addEventListener("touchend", (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 45) {
+        if (diff > 0 && currentPageIndex < currentBookPages.length - 1) {
+          changePage(1); // Vuốt sang trái -> Trang tiếp
+        } else if (diff < 0 && currentPageIndex > 0) {
+          changePage(-1); // Vuốt sang phải -> Trang trước
+        }
+      }
+    }, { passive: true });
+
+    // =====================================================
+    // HỘP NHẠC PIANO TỰ ĐỘNG
+    // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
     let melodyInterval = null;
-
-    // Giai điệu nhẹ nhàng (Tần số nốt nhạc)
     const melodyNotes = [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99];
     let noteCursor = 0;
 
@@ -482,28 +575,20 @@
       const gain = audioCtx.createGain();
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
       gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
       gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
-
       osc.connect(gain);
       gain.connect(audioCtx.destination);
-
       osc.start();
       osc.stop(audioCtx.currentTime + 1.4);
     }
 
     function startMusicBox() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioCtx.state === "suspended") {
-        audioCtx.resume();
-      }
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
       isMusicPlaying = true;
       document.getElementById("musicBtn").classList.add("playing");
-
       playSingleNote(melodyNotes[noteCursor]);
       melodyInterval = setInterval(() => {
         noteCursor = (noteCursor + 1) % melodyNotes.length;
@@ -511,23 +596,19 @@
       }, 650);
     }
 
-    function stopMusicBox() {
-      isMusicPlaying = false;
-      clearInterval(melodyInterval);
-      document.getElementById("musicBtn").classList.remove("playing");
-    }
-
     function toggleMusic() {
       if (isMusicPlaying) {
-        stopMusicBox();
+        isMusicPlaying = false;
+        clearInterval(melodyInterval);
+        document.getElementById("musicBtn").classList.remove("playing");
       } else {
         startMusicBox();
       }
     }
 
-    // ==========================================
-    // 3. HIỆU ỨNG CÁNH HOA & PHÁO SÁNG TRÊN CANVAS
-    // ==========================================
+    // =====================================================
+    // HIỆU ỨNG CÁNH HOA & PHÁO SÁNG CANVAS
+    // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
 
@@ -538,7 +619,7 @@
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    const petals = Array.from({ length: 38 }, () => ({
+    const petals = Array.from({ length: 35 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 4 + 2,
@@ -552,14 +633,13 @@
     let sparkles = [];
 
     function burstSparkles() {
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      for (let i = 0; i < 30; i++) {
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      for (let i = 0; i < 24; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4 + 1.5;
+        const speed = Math.random() * 3.8 + 1.2;
         sparkles.push({
-          x: centerX,
-          y: centerY,
+          x: cx, y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
           r: Math.random() * 2.5 + 1,
@@ -571,18 +651,11 @@
 
     function renderCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Vẽ các cánh hoa / bụi vàng rơi nhẹ
       petals.forEach(p => {
         p.y += p.speedY;
         p.x += p.speedX + Math.sin(p.angle) * 0.3;
         p.angle += p.spin;
-
-        if (p.y > canvas.height + 10) {
-          p.y = -10;
-          p.x = Math.random() * canvas.width;
-        }
-
+        if (p.y > canvas.height + 10) { p.y = -10; p.x = Math.random() * canvas.width; }
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.angle);
@@ -593,18 +666,10 @@
         ctx.restore();
       });
 
-      // Vẽ hạt pháo sáng khi bấm nút
       for (let i = sparkles.length - 1; i >= 0; i--) {
         const s = sparkles[i];
-        s.x += s.vx;
-        s.y += s.vy;
-        s.alpha -= 0.02;
-
-        if (s.alpha <= 0) {
-          sparkles.splice(i, 1);
-          continue;
-        }
-
+        s.x += s.vx; s.y += s.vy; s.alpha -= 0.022;
+        if (s.alpha <= 0) { sparkles.splice(i, 1); continue; }
         ctx.save();
         ctx.globalAlpha = s.alpha;
         ctx.fillStyle = s.color;
@@ -613,11 +678,9 @@
         ctx.fill();
         ctx.restore();
       }
-
       requestAnimationFrame(renderCanvas);
     }
     renderCanvas();
   </script>
 </body>
 </html>
-
