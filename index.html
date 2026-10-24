@@ -6,7 +6,8 @@
   <title>Món Quà Nhỏ · Dành Tặng Nữ 11B7</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bộ font hỗ trợ tiếng Việt 100% không lỗi dấu và thẳng hàng chữ số -->
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-deep: #0b0711;
@@ -26,7 +27,7 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       background: radial-gradient(circle at 50% 18%, var(--bg-glow) 0%, var(--bg-deep) 82%);
       color: #fff;
       min-height: 100vh;
@@ -46,14 +47,14 @@
       z-index: 1;
     }
 
-    /* Nút bật/tắt nhạc */
+    /* Nút bật/tắt nhạc đã căn giữa chuẩn */
     .music-btn {
       position: fixed;
-      top: 18px; right: 18px;
+      top: 16px; right: 16px;
       z-index: 10;
       width: 42px; height: 42px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(25, 12, 30, 0.75);
       border: 1px solid var(--glass-border);
       backdrop-filter: blur(10px);
       display: flex;
@@ -61,8 +62,15 @@
       align-items: center;
       cursor: pointer;
       color: var(--gold);
-      font-size: 18px;
+      padding: 0;
+      line-height: 1;
       transition: all 0.3s ease;
+    }
+
+    .music-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     .music-btn.playing {
@@ -87,7 +95,7 @@
       -webkit-backdrop-filter: blur(22px);
       border: 1px solid var(--glass-border);
       border-radius: 28px;
-      padding: 28px 24px 26px;
+      padding: 28px 22px 24px;
       text-align: center;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px rgba(255, 255, 255, 0.15);
     }
@@ -98,7 +106,7 @@
       gap: 6px;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 2.2px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold);
       background: rgba(243, 210, 156, 0.12);
@@ -109,12 +117,12 @@
     }
 
     /* ==========================================
-       LINH VẬT: BÉ CÁO TUYẾT ÁNH SAO (STARRY KITSUNE)
+       LINH VẬT: BÉ CÁO TUYẾT ÁNH SAO
        ========================================== */
     .mascot-stage {
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 118px;
+      height: 118px;
       margin: 0 auto 8px;
       cursor: pointer;
       user-select: none;
@@ -123,7 +131,7 @@
     .mascot-glow {
       position: absolute;
       top: 50%; left: 50%;
-      width: 90px; height: 90px;
+      width: 88px; height: 88px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(255, 143, 163, 0.38) 0%, transparent 70%);
       border-radius: 50%;
@@ -154,7 +162,6 @@
       50% { transform: translateY(-7px) rotate(2deg); }
     }
 
-    /* Chuyển động vẫy tai và chớp mắt */
     .ear-left {
       transform-origin: 35px 45px;
       animation: earWiggleL 4s ease-in-out infinite;
@@ -183,13 +190,12 @@
       97% { transform: scaleY(0.08); }
     }
 
-    /* Bong bóng vật phẩm trên tay linh vật */
     .mascot-badge {
       position: absolute;
-      bottom: 4px;
+      bottom: 2px;
       right: 2px;
       z-index: 3;
-      background: rgba(20, 10, 28, 0.85);
+      background: rgba(20, 10, 28, 0.9);
       border: 1px solid var(--gold);
       border-radius: 50%;
       width: 32px;
@@ -197,7 +203,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 16px;
+      font-size: 15px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       animation: popBadge 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
@@ -208,12 +214,13 @@
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 29px;
-      font-weight: 500;
-      line-height: 1.28;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
       color: #fff;
       margin-bottom: 10px;
+      font-variant-numeric: lining-nums;
     }
 
     h1 i {
@@ -225,8 +232,8 @@
 
     .subtitle {
       font-size: 13.5px;
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.72);
+      line-height: 1.65;
       margin-bottom: 22px;
     }
 
@@ -238,7 +245,7 @@
       background: rgba(0, 0, 0, 0.35);
       color: #fff;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       text-align: center;
       outline: none;
       margin-bottom: 14px;
@@ -258,7 +265,7 @@
       background: linear-gradient(135deg, #ff758f 0%, #c9184a 55%, #800f2f 100%);
       color: #fff;
       font-family: inherit;
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 10px 25px rgba(201, 24, 74, 0.4);
@@ -283,9 +290,11 @@
     }
 
     .recipient-label {
-      font-family: 'Playfair Display', serif;
-      font-size: 19px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
       color: var(--gold);
+      font-variant-numeric: lining-nums;
     }
 
     .page-counter {
@@ -329,26 +338,27 @@
       gap: 8px;
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 12px;
     }
 
     .page-content {
-      font-size: 15px;
+      font-size: 14.5px;
+      font-weight: 400;
       line-height: 1.75;
       color: #fff5f7;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .page-quote {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Be Vietnam Pro', sans-serif;
       font-style: italic;
-      font-size: 13px;
-      color: rgba(243, 210, 156, 0.85);
+      font-size: 12.5px;
+      color: rgba(243, 210, 156, 0.9);
       border-top: 1px dashed rgba(255, 255, 255, 0.14);
-      padding-top: 10px;
+      padding-top: 11px;
       text-align: right;
     }
 
@@ -412,7 +422,7 @@
     }
 
     .link-action {
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.65);
       background: none;
       border: none;
       cursor: pointer;
@@ -430,12 +440,17 @@
 
   <canvas id="bgCanvas"></canvas>
 
-  <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">♪</button>
+  <!-- Nút nhạc dùng icon SVG sắc nét không bị lệch -->
+  <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
+    <svg viewBox="0 0 24 24">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </button>
 
   <div class="book-card">
     <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
-    <!-- LINH VẬT BÉ CÁO TUYẾT ÁNH SAO (Tương tác khi chạm vào) -->
+    <!-- LINH VẬT BÉ CÁO TUYẾT ÁNH SAO -->
     <div class="mascot-stage" onclick="petMascot()" title="Chạm vào Linh Vật 11B7 nhé!">
       <div class="mascot-glow"></div>
       <svg class="mascot-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -482,7 +497,7 @@
           <circle cx="73.5" cy="61.5" r="1.5" fill="#fff"/>
         </g>
 
-        <!-- Mắt cười híp mí (Hiện ở trang chẵn) -->
+        <!-- Mắt cười híp mí -->
         <g id="mascotEyesHappy" style="display: none;">
           <path d="M40 63 Q45 57 50 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
           <path d="M70 63 Q75 57 80 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
@@ -542,7 +557,7 @@
 
   <script>
     // =====================================================
-    // KHO LỜI CHÚC ĐỘC QUYỀN CHO CÁC BẠN NỮ LỚP 11B7
+    // KHO LỜI CHÚC TIẾNG VIỆT CHUẨN 100% CHO NỮ 11B7
     // =====================================================
     const pagePools = [
       // TRANG 1: LỜI CHÀO TỪ 11B7
@@ -575,7 +590,7 @@
           "Chúc cô gái {name} của 11B7 lúc nào cũng rạng ngời, tự tin và cuốn hút. Khi là chính mình, cậu đã là phiên bản tuyệt vời và đáng ngưỡng mộ nhất rồi!"
         ]
       },
-      // TRANG 3: HỌC TẬP & ƯỚC MƠ
+      // TRANG 3: HỌC TẬP & ƯỚC MƠ (ĐÃ FIX LỖI CHỮ)
       {
         badge: "🪄",
         happyEyes: false,
@@ -585,9 +600,9 @@
           "“Mọi nỗ lực hôm nay đều sẽ nở hoa rực rỡ.”"
         ],
         messages: [
-          "Bước sang trang thứ 3, chúc {name} trong năm học lớp 11 này luôn bứt phá mạnh mẽ, контрольные hay kỳ thi nào cũng điểm cao chót vót và chạm tới mọi mục tiêu đã đặt ra!",
+          "Bước sang trang thứ 3, chúc {name} trong năm học lớp 11 này luôn bứt phá mạnh mẽ, bài kiểm tra hay kỳ thi nào cũng điểm cao chót vót và chạm tới mọi mục tiêu đã đặt ra!",
           "Mong {name} vừa giữ được trái tim ấm áp, dịu dàng, vừa có đủ sự kiên cường để chinh phục mọi thử thách. Cả lớp 11B7 sẽ luôn đồng hành và cổ vũ cho những ước mơ của cậu!",
-          "Chúc {name} học tập thuận lợi, mọi môn học đều 'vượt vũ môn' nhẹ nhàng, luôn tràn đầy cảm hứng sáng tạo và gặt hái thật nhiều thành tích đáng tự hào trong năm học này."
+          "Chúc {name} học tập thuận lợi, mọi môn học đều vượt qua nhẹ nhàng, luôn tràn đầy cảm hứng sáng tạo và gặt hái thật nhiều thành tích đáng tự hào trong năm học này!"
         ]
       },
       // TRANG 4: LỜI KẾT 365 NGÀY
@@ -625,7 +640,6 @@
       }));
     }
 
-    // Thay đổi trạng thái biểu cảm của Linh vật theo từng trang
     function updateMascotMood(badgeIcon, isHappyEyes) {
       const badgeEl = document.getElementById("mascotBadge");
       badgeEl.textContent = badgeIcon;
@@ -702,7 +716,6 @@
       document.getElementById("chapterBody").textContent = pageData.body;
       document.getElementById("chapterQuote").textContent = pageData.quote;
 
-      // Cập nhật biểu cảm Linh vật theo trang
       updateMascotMood(pageData.badge, pageData.happyEyes);
 
       const dots = document.querySelectorAll(".dot");
@@ -748,7 +761,6 @@
       if (e.key === "Enter") openStoryBook();
     });
 
-    // Hỗ trợ vuốt ngang trên điện thoại
     let touchStartX = 0;
     const pageBoxEl = document.getElementById("pageBox");
     pageBoxEl.addEventListener("touchstart", (e) => {
