@@ -528,6 +528,7 @@
   </div>
 
   <script>
+    // 4 KHO DỮ LIỆU ĐỘC LẬP TUYỆT ĐỐI CHO 4 TRANG KHÁC NHAU
     const poolTrang1 = [
       { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
@@ -580,7 +581,7 @@
 
     function getIndexByNameAndPage(name, pageIndex, maxLen) {
       let hash = 0;
-      const cleanStr = name.trim().toLowerCase() + "_p" + pageIndex;
+      const cleanStr = name.trim().toLowerCase() + "_page_" + pageIndex;
       for (let i = 0; i < cleanStr.length; i++) {
         hash = cleanStr.charCodeAt(i) + ((hash << 5) - hash);
       }
@@ -599,10 +600,11 @@
         ];
       }
 
-      const idx1 = getIndexByNameAndPage(name, 0, poolTrang1.length);
-      const idx2 = getIndexByNameAndPage(name, 1, poolTrang2.length);
-      const idx3 = getIndexByNameAndPage(name, 2, poolTrang3.length);
-      const idx4 = getIndexByNameAndPage(name, 3, poolTrang4.length);
+      // Mỗi trang lấy từ 1 kho riêng biệt, không bao giờ trùng nhau
+      const idx1 = getIndexByNameAndPage(name, 101, poolTrang1.length);
+      const idx2 = getIndexByNameAndPage(name, 202, poolTrang2.length);
+      const idx3 = getIndexByNameAndPage(name, 303, poolTrang3.length);
+      const idx4 = getIndexByNameAndPage(name, 404, poolTrang4.length);
 
       return [
         { badge: "💌", happyEyes: false, chapter: "🌸 Trang 1 · Thanh Xuân 11B7", body: poolTrang1[idx1].text.replace(/{name}/g, name), quote: poolTrang1[idx1].quote },
