@@ -433,8 +433,7 @@
     .link-action:hover { color: var(--gold); }
 
     /* ====================================================
-       MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE)
-       TÍCH HỢP Ý TƯỞNG 3, 5, 7
+       MÀN HÌNH KẾT THÚC TOÀN CẢNH (ĐÃ TỐI ƯU CỰC KỲ MƯỢT MÀ)
        ==================================================== */
     #finaleScreen {
       display: none;
@@ -447,15 +446,110 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 30px 18px 40px;
+      padding: 26px 18px 45px;
       text-align: center;
       overflow-y: auto;
       animation: zoomInFinale 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      user-select: none;
     }
 
     @keyframes zoomInFinale {
       from { opacity: 0; transform: scale(0.85); }
       to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Container hiệu ứng đèn lồng và tim HTML */
+    #heartFxLayer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 102;
+      overflow: hidden;
+    }
+
+    .flying-heart-dom {
+      position: absolute;
+      pointer-events: none;
+      font-size: 24px;
+      animation: floatHeart 1.4s ease-out forwards;
+      filter: drop-shadow(0 0 8px rgba(255, 117, 143, 0.8));
+    }
+
+    @keyframes floatHeart {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(0.6) rotate(0deg); }
+      50% { transform: translate(calc(-50% + var(--rand-x)), calc(-50% - 70px)) scale(1.3) rotate(var(--rand-rot)); }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--rand-x)), calc(-50% - 150px)) scale(1) rotate(var(--rand-rot)); }
+    }
+
+    /* ĐÈN LỒNG BAY LÊN (SKY LANTERN NÂNG CẤP CHỈN CHU) */
+    .sky-lantern-flight {
+      position: fixed;
+      bottom: -150px;
+      width: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 105;
+      pointer-events: none;
+      animation: flyLanternUp 9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      filter: drop-shadow(0 0 25px rgba(255, 179, 71, 0.9));
+    }
+
+    @keyframes flyLanternUp {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(-80px) scale(1) rotate(2deg);
+      }
+      50% {
+        transform: translateY(-50vh) scale(0.9) rotate(-3deg);
+      }
+      100% {
+        transform: translateY(-120vh) scale(0.4) rotate(4deg);
+        opacity: 0;
+      }
+    }
+
+    .lantern-balloon {
+      width: 90px;
+      height: 105px;
+      background: radial-gradient(circle at 50% 65%, #fff 0%, #ffbe76 35%, #f0932b 70%, #d35400 100%);
+      border-radius: 40px 40px 25px 25px;
+      position: relative;
+      box-shadow: inset 0 0 20px #fff, 0 0 35px rgba(240, 147, 43, 0.8);
+    }
+
+    .lantern-balloon::after {
+      content: "";
+      position: absolute;
+      bottom: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 15px 5px #fffa65;
+    }
+
+    .lantern-streamer {
+      background: rgba(255, 245, 230, 0.95);
+      color: #900c3f;
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 6px 12px;
+      border-radius: 8px;
+      margin-top: 6px;
+      border: 1px solid var(--gold);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      max-width: 180px;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .finale-box {
@@ -465,6 +559,7 @@
       flex-direction: column;
       align-items: center;
       position: relative;
+      z-index: 2;
     }
 
     .finale-badge {
@@ -498,7 +593,6 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* BÉ CÁO CỬU VĨ */
     .super-mascot-container {
       position: relative;
       width: 160px;
@@ -569,66 +663,23 @@
       50% { transform: scale(1.15); filter: drop-shadow(0 0 12px #ff4d6d); }
     }
 
-    /* Ý TƯỞNG 3: BỘ ĐẾM THẢ TIM */
     .tap-heart-hint {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 11.5px;
+      font-size: 12px;
       color: #ffb3c6;
-      background: rgba(255, 117, 143, 0.14);
-      border: 1px solid rgba(255, 117, 143, 0.3);
-      padding: 5px 14px;
+      background: rgba(255, 117, 143, 0.16);
+      border: 1px solid rgba(255, 117, 143, 0.35);
+      padding: 6px 16px;
       border-radius: 99px;
       margin-bottom: 12px;
-      animation: pulseGlow 2.5s infinite;
-    }
-
-    /* Ý TƯỞNG 5: THANH CHỌN TÂM TRẠNG ÂM NHẠC (MOOD MUSIC BOX) */
-    .mood-music-panel {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(243, 210, 156, 0.25);
-      border-radius: 18px;
-      padding: 10px 14px;
-      margin-bottom: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .mood-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      color: var(--gold);
-      text-transform: uppercase;
-      text-align: left;
-    }
-
-    .mood-btn-group {
-      display: flex;
-      gap: 6px;
-    }
-
-    .mood-btn {
-      flex: 1;
-      padding: 8px 6px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      background: rgba(0, 0, 0, 0.3);
-      color: #fff;
-      font-family: inherit;
-      font-size: 11.5px;
-      font-weight: 500;
       cursor: pointer;
-      transition: all 0.25s ease;
+      user-select: none;
     }
 
-    .mood-btn.active {
-      background: linear-gradient(135deg, #ff758f, #c9184a);
-      border-color: var(--gold);
-      box-shadow: 0 4px 12px rgba(201, 24, 74, 0.4);
+    .tap-heart-hint:active {
+      transform: scale(0.95);
     }
 
     .finale-wish-card {
@@ -637,7 +688,7 @@
       border: 1px solid rgba(243, 210, 156, 0.35);
       border-radius: 22px;
       padding: 20px 16px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
@@ -659,19 +710,21 @@
       padding-top: 11px;
     }
 
-    /* Ý TƯỞNG 7: KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN */
+    /* KHUNG THẢ ĐÈN TRỜI */
     .sky-lantern-card {
       width: 100%;
-      background: linear-gradient(145deg, rgba(255, 182, 193, 0.1) 0%, rgba(243, 210, 156, 0.08) 100%);
-      border: 1px solid rgba(243, 210, 156, 0.35);
+      background: linear-gradient(145deg, rgba(255, 182, 193, 0.12) 0%, rgba(243, 210, 156, 0.1) 100%);
+      border: 1px solid rgba(243, 210, 156, 0.38);
       border-radius: 20px;
       padding: 16px 14px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       text-align: center;
+      position: relative;
+      z-index: 5;
     }
 
     .lantern-title {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--gold);
       letter-spacing: 0.8px;
@@ -695,7 +748,7 @@
       padding: 12px 14px;
       border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       color: #fff;
       font-family: inherit;
       font-size: 13px;
@@ -716,7 +769,10 @@
       cursor: pointer;
       white-space: nowrap;
       box-shadow: 0 4px 15px rgba(243, 210, 156, 0.35);
+      transition: transform 0.2s;
     }
+
+    .lantern-btn:active { transform: scale(0.95); }
 
     .finale-btn-group {
       width: 100%;
@@ -729,6 +785,7 @@
 <body>
 
   <canvas id="bgCanvas"></canvas>
+  <div id="heartFxLayer"></div>
 
   <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
     <svg viewBox="0 0 24 24">
@@ -764,7 +821,7 @@
 
         <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
         <path d="M29 62 C29 48, 45 40, 60 40 C75 40, 91 48, 91 62 C83 54, 70 52, 60 62 C50 52, 37 54, 29 62 Z" fill="#ffb3c6"/>
-
+        
         <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
         <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
 
@@ -883,7 +940,7 @@
   </div>
 
   <!-- MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE) -->
-  <div id="finaleScreen" onclick="handleFinaleScreenTap(event)">
+  <div id="finaleScreen">
     <div class="finale-box">
       <div class="finale-badge">👑 FOREVER 11B7 · 20.10.2026 👑</div>
       <h2 class="finale-title">Gửi <span><span id="finaleReceiver"></span>!</span></h2>
@@ -980,19 +1037,9 @@
         </svg>
       </div>
 
-      <!-- Ý TƯỞNG 3: BỘ ĐẾM THẢ TIM KHI CHẠM MÀN HÌNH -->
-      <div class="tap-heart-hint" id="heartCountBadge">
-        ✨ Chạm bất kỳ đâu để thả tim: <b id="heartCountNum">0</b> ❤️
-      </div>
-
-      <!-- Ý TƯỞNG 5: THANH CHỌN TÂM TRẠNG ÂM NHẠC -->
-      <div class="mood-music-panel">
-        <div class="mood-label">🎵 Hộp Nhạc 11B7 · Chọn Giai Điệu:</div>
-        <div class="mood-btn-group">
-          <button class="mood-btn active" id="moodBtn0" onclick="switchMood(0, event)">🌸 Nhẹ nhàng</button>
-          <button class="mood-btn" id="moodBtn1" onclick="switchMood(1, event)">✨ Vui tươi</button>
-          <button class="mood-btn" id="moodBtn2" onclick="switchMood(2, event)">☕ Thơ mộng</button>
-        </div>
+      <!-- NÚT BỘ ĐẾM THẢ TIM CHẠM THÍCH TAY -->
+      <div class="tap-heart-hint" id="heartCountBadge" onclick="triggerHeartBurst(event)">
+        💖 Chạm vào đây hoặc màn hình: <b id="heartCountNum" style="color:#fff; font-size:14px; margin: 0 2px;">0</b> ❤️
       </div>
 
       <div class="finale-wish-card">
@@ -1002,12 +1049,12 @@
         <div class="finale-quote">“Thanh xuân rực rỡ nhất là khi có các bông hoa 11B7!”</div>
       </div>
 
-      <!-- Ý TƯỞNG 7: KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN -->
+      <!-- KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN NÂNG CẤP CHỈN CHU -->
       <div class="sky-lantern-card">
         <div class="lantern-title">🏮 Thả Đèn Trời Ước Nguyện 11B7</div>
-        <div class="lantern-desc">Gửi gắm một điều ước cho tuổi 16, 17 để chiếc đèn mang lên bầu trời sao nhé:</div>
+        <div class="lantern-desc">Gửi gắm một điều ước để chiếc đèn lồng mang lên bầu trời sao nhé:</div>
         <div class="lantern-input-wrap">
-          <input type="text" class="lantern-input" id="wishInput" placeholder="Nhập điều ước của cậu tại đây..." autocomplete="off" />
+          <input type="text" class="lantern-input" id="wishInput" placeholder="Nhập điều ước của cậu..." autocomplete="off" />
           <button class="lantern-btn" onclick="releaseLantern(event)">Thả Đèn ✨</button>
         </div>
       </div>
@@ -1475,24 +1522,75 @@
     });
 
     // =====================================================
-    // XỬ LÝ Ý TƯỞNG 3: CHẠM MÀN HÌNH BẮN PHÁO & TĂNG TIM
+    // SỬA LỖI THẢ TIM: BẬT HIỆU ỨNG TRỰC TIẾP TẠI TỌA ĐỘ CHẠM
     // =====================================================
-    function handleFinaleScreenTap(e) {
-      // Bỏ qua nếu chạm vào ô input hoặc button
-      if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+    function createFlyingHeart(x, y) {
+      const container = document.getElementById("heartFxLayer");
+      const heart = document.createElement("div");
+      heart.className = "flying-heart-dom";
       
-      heartTapCount++;
-      document.getElementById("heartCountNum").textContent = heartTapCount;
-      burstCustomSparkles(e.clientX, e.clientY);
-      spawnFlyingHeart(e.clientX, e.clientY);
-      playSingleNote(1046.50 + Math.random() * 300, 0.4, 0.03);
+      const emojis = ["💖", "💗", "🌸", "✨", "❤️", "💕"];
+      heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      heart.style.left = `${x}px`;
+      heart.style.top = `${y}px`;
+
+      const randX = (Math.random() - 0.5) * 80 + "px";
+      const randRot = (Math.random() - 0.5) * 60 + "deg";
+      heart.style.setProperty("--rand-x", randX);
+      heart.style.setProperty("--rand-rot", randRot);
+
+      container.appendChild(heart);
+
+      setTimeout(() => {
+        if (heart.parentNode) heart.parentNode.removeChild(heart);
+      }, 1400);
     }
 
+    function triggerHeartBurst(e) {
+      if (e) e.stopPropagation();
+      heartTapCount++;
+      document.getElementById("heartCountNum").textContent = heartTapCount;
+
+      const rect = e.target.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => createFlyingHeart(x + (Math.random()-0.5)*40, y), i * 60);
+      }
+      burstCustomSparkles(x, y);
+      playSingleNote(1046.50 + Math.random() * 200, 0.4, 0.04);
+    }
+
+    // Lắng nghe thao tác chạm bất kỳ trên màn hình kết thúc
+    const finaleScreenEl = document.getElementById("finaleScreen");
+    function handleFinaleInteraction(e) {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+      
+      const touch = e.touches ? e.touches[0] : e;
+      const clientX = touch.clientX || window.innerWidth / 2;
+      const clientY = touch.clientY || window.innerHeight / 2;
+
+      heartTapCount++;
+      document.getElementById("heartCountNum").textContent = heartTapCount;
+
+      createFlyingHeart(clientX, clientY);
+      burstCustomSparkles(clientX, clientY);
+      playSingleNote(987.77 + Math.random() * 250, 0.35, 0.035);
+    }
+
+    finaleScreenEl.addEventListener("click", handleFinaleInteraction);
+    finaleScreenEl.addEventListener("touchstart", (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+      handleFinaleInteraction(e);
+    }, { passive: true });
+
     // =====================================================
-    // XỬ LÝ Ý TƯỞNG 7: THẢ ĐÈN TRỜI ƯỚC NGUYỆN (SKY LANTERN)
+    // THẢ ĐÈN TRỜI 3D CHỈN CHU BAY LÊN BẦU TRỜI
     // =====================================================
     function releaseLantern(e) {
-      e.stopPropagation();
+      if (e) e.stopPropagation();
       const input = document.getElementById("wishInput");
       const wishText = input.value.trim();
       if (!wishText) {
@@ -1501,48 +1599,40 @@
         return;
       }
 
-      spawnLantern(wishText);
+      // Tạo lồng đèn DOM bay lên đỉnh màn hình
+      const lantern = document.createElement("div");
+      lantern.className = "sky-lantern-flight";
+
+      // Vị trí ngang ngẫu nhiên quanh tâm màn hình
+      const randLeft = window.innerWidth / 2 + (Math.random() - 0.5) * (window.innerWidth * 0.5);
+      lantern.style.left = `${randLeft - 70}px`;
+
+      lantern.innerHTML = `
+        <div class="lantern-balloon"></div>
+        <div class="lantern-streamer">${wishText}</div>
+      `;
+
+      document.body.appendChild(lantern);
+
       input.value = "";
-      input.placeholder = "Đèn trời đang mang điều ước bay lên rồi ✨";
-      playUnlockChime();
+      input.placeholder = "Đèn trời đang mang ước nguyện bay lên rồi ✨";
+      
       burstSparkles();
+      playUnlockChime();
+
+      setTimeout(() => {
+        if (lantern.parentNode) lantern.parentNode.removeChild(lantern);
+      }, 9500);
     }
 
     // =====================================================
-    // HỘP NHẠC PIANO - XỬ LÝ Ý TƯỞNG 5: ĐỔI THEO TÂM TRẠNG
+    // HỘP NHẠC PIANO
     // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
     let melodyInterval = null;
     let noteCursor = 0;
-
-    // 3 Giai điệu theo tâm trạng
-    const moodMelodies = [
-      // 0: Nhẹ nhàng (Tone ấm C major)
-      { notes: [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99], speed: 650 },
-      // 1: Vui tươi (Tiết tấu nhanh, nốt cao F major / A)
-      { notes: [659.25, 783.99, 880.00, 1046.50, 1174.66, 1046.50, 880.00, 783.99, 659.25, 880.00, 1046.50, 1318.51], speed: 420 },
-      // 2: Thơ mộng (Giai điệu lãng đãng Pentatonic)
-      { notes: [587.33, 659.25, 880.00, 987.77, 1174.66, 987.77, 880.00, 659.25, 587.33, 440.00, 523.25, 659.25], speed: 750 }
-    ];
-
-    let currentMoodIdx = 0;
-
-    function switchMood(idx, e) {
-      if (e) e.stopPropagation();
-      currentMoodIdx = idx;
-      for (let i = 0; i < 3; i++) {
-        document.getElementById("moodBtn" + i).classList.toggle("active", i === idx);
-      }
-
-      if (isMusicPlaying) {
-        clearInterval(melodyInterval);
-        noteCursor = 0;
-        startMoodLoop();
-      }
-      playUnlockChime();
-      burstSparkles();
-    }
+    const melodyNotes = [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99];
 
     function playSingleNote(freq, duration = 1.4, maxGain = 0.08) {
       if (!audioCtx) return;
@@ -1568,21 +1658,16 @@
       });
     }
 
-    function startMoodLoop() {
-      const mood = moodMelodies[currentMoodIdx];
-      playSingleNote(mood.notes[noteCursor]);
-      melodyInterval = setInterval(() => {
-        noteCursor = (noteCursor + 1) % mood.notes.length;
-        playSingleNote(mood.notes[noteCursor]);
-      }, mood.speed);
-    }
-
     function startMusicBox() {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === "suspended") audioCtx.resume();
       isMusicPlaying = true;
       document.getElementById("musicBtn").classList.add("playing");
-      startMoodLoop();
+      playSingleNote(melodyNotes[noteCursor]);
+      melodyInterval = setInterval(() => {
+        noteCursor = (noteCursor + 1) % melodyNotes.length;
+        playSingleNote(melodyNotes[noteCursor]);
+      }, 650);
     }
 
     function toggleMusic() {
@@ -1596,7 +1681,7 @@
     }
 
     // =====================================================
-    // CANVAS: CÁNH HOA + PHÁO KIM TUYẾN + TIM BAY + ĐÈN TRỜI
+    // CANVAS NỀN: MƯA HOA & PHÁO SÁNG
     // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
@@ -1620,8 +1705,6 @@
     }));
 
     let sparkles = [];
-    let lanterns = [];
-    let flyingHearts = [];
 
     function burstSparkles() {
       const cx = canvas.width / 2;
@@ -1644,33 +1727,9 @@
       }
     }
 
-    function spawnFlyingHeart(x, y) {
-      flyingHearts.push({
-        x: x, y: y,
-        vy: -(Math.random() * 2.5 + 2),
-        vx: (Math.random() - 0.5) * 1.5,
-        alpha: 1,
-        size: Math.random() * 8 + 14
-      });
-    }
-
-    function spawnLantern(text) {
-      lanterns.push({
-        x: canvas.width / 2 + (Math.random() - 0.5) * 60,
-        y: canvas.height + 40,
-        speedY: -(Math.random() * 0.8 + 0.9),
-        speedX: (Math.random() - 0.5) * 0.4,
-        alpha: 1,
-        text: text,
-        w: 48,
-        h: 62
-      });
-    }
-
     function renderCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Cánh hoa rơi
       petals.forEach(p => {
         p.y += p.speedY;
         p.x += p.speedX + Math.sin(p.angle) * 0.3;
@@ -1686,54 +1745,6 @@
         ctx.restore();
       });
 
-      // Tim bay lên khi chạm (Ý tưởng 3)
-      for (let i = flyingHearts.length - 1; i >= 0; i--) {
-        const h = flyingHearts[i];
-        h.y += h.vy;
-        h.x += h.vx;
-        h.alpha -= 0.02;
-        if (h.alpha <= 0) { flyingHearts.splice(i, 1); continue; }
-
-        ctx.save();
-        ctx.globalAlpha = h.alpha;
-        ctx.font = `${h.size}px sans-serif`;
-        ctx.textAlign = "center";
-        ctx.fillText("💖", h.x, h.y);
-        ctx.restore();
-      }
-
-      // Đèn trời ước nguyện bay lên (Ý tưởng 7)
-      for (let i = lanterns.length - 1; i >= 0; i--) {
-        const lt = lanterns[i];
-        lt.y += lt.speedY;
-        lt.x += lt.speedX;
-        if (lt.y < -100) { lanterns.splice(i, 1); continue; }
-
-        ctx.save();
-        ctx.shadowColor = "rgba(243, 210, 156, 0.8)";
-        ctx.shadowBlur = 18;
-        // Thân đèn trời phát sáng
-        ctx.fillStyle = "rgba(255, 183, 77, 0.85)";
-        ctx.beginPath();
-        ctx.roundRect(lt.x - lt.w / 2, lt.y - lt.h / 2, lt.w, lt.h, 12);
-        ctx.fill();
-
-        // Ngọn lửa bên trong
-        ctx.fillStyle = "#fff";
-        ctx.beginPath();
-        ctx.arc(lt.x, lt.y + 12, 6, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Dòng chữ điều ước treo lơ lửng dưới đèn
-        ctx.shadowBlur = 0;
-        ctx.font = "11px 'Be Vietnam Pro', sans-serif";
-        ctx.fillStyle = "#fff";
-        ctx.textAlign = "center";
-        ctx.fillText(lt.text.length > 15 ? lt.text.substring(0, 15) + "..." : lt.text, lt.x, lt.y + lt.h / 2 + 16);
-        ctx.restore();
-      }
-
-      // Pháo sáng kim tuyến
       for (let i = sparkles.length - 1; i >= 0; i--) {
         const s = sparkles[i];
         s.x += s.vx; s.y += s.vy; s.alpha -= 0.02;
