@@ -113,7 +113,7 @@
       margin-bottom: 8px;
     }
 
-    /* LINH VẬT */
+    /* LINH VẬT GIAO DIỆN CHÍNH */
     .mascot-stage {
       position: relative;
       width: 108px;
@@ -450,7 +450,7 @@
       text-align: right;
     }
 
-    /* TRANG MINI-GAMES */
+    /* MINI-GAMES */
     .interactive-stage {
       display: none;
       flex-direction: column;
@@ -662,7 +662,7 @@
     .link-action:hover { color: var(--gold); }
 
     /* ====================================================
-       MÀN HÌNH TOÀN CẢNH PHÓNG TO KẾT THÚC (FULLSCREEN FINALE)
+       MÀN HÌNH TOÀN CẢNH KẾT THÚC & BÉ CÁO THẦN THOẠI NÂNG CẤP
        ==================================================== */
     #finaleScreen {
       display: none;
@@ -675,7 +675,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 24px;
+      padding: 24px 18px;
       text-align: center;
       overflow-y: auto;
       animation: zoomInFinale 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -708,16 +708,16 @@
       border: 1px solid rgba(243, 210, 156, 0.4);
       padding: 6px 18px;
       border-radius: 99px;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
 
     .finale-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 38px;
+      font-size: 36px;
       font-weight: 700;
       line-height: 1.2;
       color: #fff;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .finale-title span {
@@ -726,12 +726,85 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .finale-mascot-wrap {
-      width: 120px;
-      height: 120px;
-      margin: 10px auto 14px;
-      animation: floatMascot 3s ease-in-out infinite;
-      filter: drop-shadow(0 10px 25px rgba(255, 143, 163, 0.5));
+    /* KHUNG BÉ CÁO THẦN THOẠI CỬU VĨ (SUPER MASCOT) */
+    .super-mascot-container {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 6px auto 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .super-halo-ring {
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(243, 210, 156, 0.45);
+      animation: spinHalo 14s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes spinHalo {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .super-glow-back {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(255, 117, 143, 0.45) 0%, rgba(201, 24, 74, 0.2) 55%, transparent 75%);
+      border-radius: 50%;
+      animation: pulseGlow 2.8s ease-in-out infinite;
+      filter: blur(8px);
+    }
+
+    .super-mascot-svg {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      animation: floatSuperMascot 3.2s ease-in-out infinite;
+      filter: drop-shadow(0 12px 24px rgba(255, 117, 143, 0.45));
+    }
+
+    @keyframes floatSuperMascot {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-9px) scale(1.02); }
+    }
+
+    /* Chuyển động vẫy của các dải đuôi thần thoại */
+    .tail-left-outer { transform-origin: 50px 105px; animation: tailWaveL1 3.5s ease-in-out infinite; }
+    .tail-left-inner { transform-origin: 55px 108px; animation: tailWaveL2 3s ease-in-out infinite; }
+    .tail-center     { transform-origin: 75px 110px; animation: tailWaveC 2.8s ease-in-out infinite; }
+    .tail-right-inner{ transform-origin: 95px 108px; animation: tailWaveR2 3s ease-in-out infinite; }
+    .tail-right-outer{ transform-origin: 100px 105px; animation: tailWaveR1 3.5s ease-in-out infinite; }
+
+    @keyframes tailWaveL1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-8deg); } }
+    @keyframes tailWaveL2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+    @keyframes tailWaveC  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    @keyframes tailWaveR2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
+    @keyframes tailWaveR1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+
+    /* Chuyển động đập cánh thiên thần */
+    .wing-left { transform-origin: 45px 85px; animation: flapWingL 2.4s ease-in-out infinite; }
+    .wing-right { transform-origin: 105px 85px; animation: flapWingR 2.4s ease-in-out infinite; }
+
+    @keyframes flapWingL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-10deg) scaleX(1.08); } }
+    @keyframes flapWingR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg) scaleX(1.08); } }
+
+    /* Trái tim phát sáng nhịp nhàng */
+    .heart-gem {
+      animation: pulseGem 1.6s ease-in-out infinite;
+      transform-origin: 75px 98px;
+    }
+    @keyframes pulseGem {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #ff758f); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 12px #ff4d6d); }
     }
 
     .finale-wish-card {
@@ -739,18 +812,18 @@
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(243, 210, 156, 0.35);
       border-radius: 24px;
-      padding: 24px 20px;
-      margin: 12px 0 20px;
+      padding: 22px 18px;
+      margin: 8px 0 18px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
 
     .finale-wish-body {
-      font-size: 15px;
+      font-size: 14.5px;
       font-weight: 500;
       line-height: 1.8;
       color: #ffeef2;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .finale-quote {
@@ -759,7 +832,7 @@
       font-size: 15px;
       color: var(--gold);
       border-top: 1px dashed rgba(255, 255, 255, 0.2);
-      padding-top: 12px;
+      padding-top: 11px;
     }
 
     .finale-btn-group {
@@ -783,7 +856,7 @@
   <div class="book-card" id="mainBookCard">
     <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
-    <!-- LINH VẬT BÉ CÁO TUYẾT -->
+    <!-- LINH VẬT BÉ CÁO TUYẾT Ở CÁC TRANG TRƯỚC -->
     <div class="mascot-stage" onclick="petMascot()" title="Chạm vào Linh Vật 11B7 nhé!">
       <div class="mascot-glow"></div>
       <svg class="mascot-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -851,7 +924,6 @@
       </div>
 
       <div class="page-box" id="pageBox">
-        <!-- Phong ấn ở các trang lời chúc -->
         <div class="seal-overlay" id="sealOverlay" onclick="unlockCurrentPage()">
           <div class="seal-orb-wrap">
             <div class="seal-ring"></div>
@@ -862,7 +934,6 @@
           <div class="seal-hint">✨ Chạm vào biểu tượng để mở khóa trang này ✨</div>
         </div>
 
-        <!-- Khung Lời chúc -->
         <div class="page-inner-content" id="wishStage">
           <div>
             <div class="page-chapter" id="chapterTitle"></div>
@@ -871,7 +942,6 @@
           <div class="page-quote" id="chapterQuote"></div>
         </div>
 
-        <!-- Game 1: Tưới hoa -->
         <div class="interactive-stage" id="gameFlowerStage">
           <div>
             <div class="game-title">🌱 Trạm Tương Tác 1 · Ươm Mầm Hoa 11B7</div>
@@ -886,7 +956,6 @@
           </div>
         </div>
 
-        <!-- Game 2: Bắt sao -->
         <div class="interactive-stage" id="gameStarStage">
           <div>
             <div class="game-title">🌟 Trạm Tương Tác 2 · Thu Thập Sao May Mắn</div>
@@ -896,7 +965,6 @@
           <div class="game-status" id="starStatus">Đã thu thập: 0 / 5 ngôi sao ✨</div>
         </div>
 
-        <!-- Game 3: Rút tarot -->
         <div class="interactive-stage" id="gameTarotStage">
           <div>
             <div class="game-title">🔮 Trạm Tương Tác 3 · Lá Bài Tiên Tri 20/10</div>
@@ -934,28 +1002,113 @@
     </div>
   </div>
 
-  <!-- MÀN HÌNH TOÀN CẢNH PHÓNG TO KẾT THÚC (FULLSCREEN FINALE) -->
+  <!-- MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE) -->
   <div id="finaleScreen">
     <div class="finale-box">
       <div class="finale-badge">👑 FOREVER 11B7 · 20.10.2026 👑</div>
-      <h2 class="finale-title">Gửi <span id="finaleReceiver"></span>!</h2>
+      <h2 class="finale-title">Gửi <span><span id="finaleReceiver"></span>!</span></h2>
       
-      <div class="finale-mascot-wrap">
-        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M85 88 C108 85, 114 62, 95 56 C86 53, 82 68, 78 78 Z" fill="#ffb3c6"/>
-          <path d="M95 56 C105 59, 108 69, 98 73 C93 67, 92 61, 95 56 Z" fill="#fff5f7"/>
-          <g class="ear-left"><path d="M26 52 L18 18 L48 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M28 46 L23 24 L42 36 Z" fill="#ff758f"/></g>
-          <g class="ear-right"><path d="M94 52 L102 18 L72 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M92 46 L97 24 L78 36 Z" fill="#ff758f"/></g>
-          <path d="M48 33 L52 21 L60 28 L68 21 L72 33 Z" fill="#f3d29c" stroke="#fff" stroke-width="1"/><circle cx="60" cy="18" r="2.2" fill="#ff8fa3"/>
-          <path d="M42 82 C42 72, 78 72, 78 82 L82 102 C82 106, 38 106, 38 102 Z" fill="#ffe5ec"/>
-          <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
-          <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.75"/>
-          <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.75"/>
-          <!-- Mắt cười híp mí chúc mừng -->
-          <path d="M40 63 Q45 56 50 63" stroke="#2b102f" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-          <path d="M70 63 Q75 56 80 63" stroke="#2b102f" stroke-width="2.8" stroke-linecap="round" fill="none"/>
-          <polygon points="58,67 62,67 60,70" fill="#c9184a"/>
-          <path d="M55 72 Q60 75 60 70 Q60 75 65 72" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <!-- BÉ CÁO THẦN THOẠI CỬU VĨ ĐƯỢC THIẾT KẾ ĐỘT PHÁ -->
+      <div class="super-mascot-container" onclick="petSuperMascot()" title="Chạm vào Bé Cáo Cửu Vĩ nhé!">
+        <div class="super-halo-ring"></div>
+        <div class="super-glow-back"></div>
+
+        <svg class="super-mascot-svg" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 1. HỆ THỐNG 5 ĐUÔI CỬU VĨ HỒNG BUNG XÒE PHÁT QUANG -->
+          <g class="tail-left-outer">
+            <path d="M45 110 C15 95, 8 60, 24 45 C35 34, 45 55, 48 95 Z" fill="url(#tailGrad)" opacity="0.85"/>
+            <path d="M24 45 C18 50, 20 62, 28 65 C32 55, 30 48, 24 45 Z" fill="#fff5f7"/>
+          </g>
+          <g class="tail-left-inner">
+            <path d="M52 112 C28 95, 25 58, 42 42 C54 30, 60 55, 58 98 Z" fill="url(#tailGrad)" opacity="0.95"/>
+            <path d="M42 42 C36 48, 38 58, 46 60 C50 50, 48 44, 42 42 Z" fill="#fff5f7"/>
+          </g>
+          <g class="tail-center">
+            <path d="M75 115 C60 85, 62 40, 75 25 C88 40, 90 85, 75 115 Z" fill="url(#tailGrad)"/>
+            <path d="M75 25 C70 32, 72 42, 75 45 C78 42, 80 32, 75 25 Z" fill="#fff5f7"/>
+          </g>
+          <g class="tail-right-inner">
+            <path d="M98 112 C122 95, 125 58, 108 42 C96 30, 90 55, 92 98 Z" fill="url(#tailGrad)" opacity="0.95"/>
+            <path d="M108 42 C114 48, 112 58, 104 60 C100 50, 102 44, 108 42 Z" fill="#fff5f7"/>
+          </g>
+          <g class="tail-right-outer">
+            <path d="M105 110 C135 95, 142 60, 126 45 C115 34, 105 55, 102 95 Z" fill="url(#tailGrad)" opacity="0.85"/>
+            <path d="M126 45 C132 50, 130 62, 122 65 C118 55, 120 48, 126 45 Z" fill="#fff5f7"/>
+          </g>
+
+          <!-- 2. ĐÔI CÁNH THIÊN THẦN ÁNH KIM -->
+          <g class="wing-left">
+            <path d="M42 85 C22 75, 18 55, 30 50 C40 45, 48 65, 48 85 Z" fill="rgba(243, 210, 156, 0.45)" stroke="#f3d29c" stroke-width="1.2"/>
+            <path d="M38 80 C26 72, 24 58, 32 54 C38 50, 44 65, 44 80 Z" fill="#fff" opacity="0.7"/>
+          </g>
+          <g class="wing-right">
+            <path d="M108 85 C128 75, 132 55, 120 50 C110 45, 102 65, 102 85 Z" fill="rgba(243, 210, 156, 0.45)" stroke="#f3d29c" stroke-width="1.2"/>
+            <path d="M112 80 C124 72, 126 58, 118 54 C112 50, 106 65, 106 80 Z" fill="#fff" opacity="0.7"/>
+          </g>
+
+          <!-- 3. TAI CÁO LINH HOẠT -->
+          <g class="ear-left">
+            <path d="M44 58 L32 20 L68 40 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M46 50 L38 28 L60 40 Z" fill="#ff758f"/>
+          </g>
+          <g class="ear-right">
+            <path d="M106 58 L118 20 L82 40 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M104 50 L112 28 L90 40 Z" fill="#ff758f"/>
+          </g>
+
+          <!-- 4. THÂN & ÁO CHOÀNG BÉ CÁO -->
+          <path d="M52 90 C52 78, 98 78, 98 90 L102 118 C102 124, 48 124, 48 118 Z" fill="#ffe5ec"/>
+          <path d="M50 115 C60 120, 90 120, 100 115" stroke="#f3d29c" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- 5. ĐẦU VÀ KHUÔN MẶT CÁO BẦU BĨNH -->
+          <ellipse cx="75" cy="68" rx="36" ry="28" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.8"/>
+          <path d="M39 68 C39 52, 58 44, 75 44 C92 44, 111 52, 111 68 C102 59, 87 56, 75 68 C63 56, 48 59, 39 68 Z" fill="#ffb3c6"/>
+          
+          <ellipse cx="50" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
+          <ellipse cx="100" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
+
+          <!-- Mắt cười híp mí siêu đáng yêu của chặng kết -->
+          <path d="M52 69 Q58 60 64 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M86 69 Q92 60 98 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+          <polygon points="73,74 77,74 75,77" fill="#c9184a"/>
+          <path d="M70 79 Q75 83 75 78 Q75 83 80 79" stroke="#2b102f" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+          <!-- 6. HAI TAY ÔM VIÊN NGỌC TRÁI TIM RUBY PHÁT QUANG -->
+          <g class="heart-gem">
+            <!-- Viên ngọc Ruby -->
+            <path d="M75 92 C68 82, 54 86, 58 100 C62 110, 75 118, 75 118 C75 118, 88 110, 92 100 C96 86, 82 82, 75 92 Z" fill="url(#rubyGrad)" stroke="#f3d29c" stroke-width="1.5"/>
+            <!-- Ánh sáng phản chiếu -->
+            <path d="M63 90 C60 94, 62 100, 66 102" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+          </g>
+          <!-- Hai tay mũm mĩm ôm trái tim -->
+          <ellipse cx="56" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
+          <ellipse cx="94" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
+
+          <!-- 7. VƯƠNG MIỆN NẠM NGỌC LỚN 11B7 -->
+          <path d="M60 38 L65 20 L75 30 L85 20 L90 38 Z" fill="url(#goldGrad)" stroke="#fff" stroke-width="1.2"/>
+          <circle cx="75" cy="18" r="3.2" fill="#ff4d6d"/>
+          <circle cx="65" cy="19" r="2.2" fill="#f3d29c"/>
+          <circle cx="85" cy="19" r="2.2" fill="#f3d29c"/>
+
+          <!-- GRADIENT DEFINITIONS -->
+          <defs>
+            <linearGradient id="tailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffccd5"/>
+              <stop offset="60%" stop-color="#ff758f"/>
+              <stop offset="100%" stop-color="#c9184a"/>
+            </linearGradient>
+            <linearGradient id="rubyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff758f"/>
+              <stop offset="50%" stop-color="#c9184a"/>
+              <stop offset="100%" stop-color="#800f2f"/>
+            </linearGradient>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="40%" stop-color="#f3d29c"/>
+              <stop offset="100%" stop-color="#d4af37"/>
+            </linearGradient>
+          </defs>
         </svg>
       </div>
 
@@ -974,7 +1127,6 @@
   </div>
 
   <script>
-    // 48 LỜI CHÚC ĐỘC LẬP (12 CÂU x 4 TRANG THƯ)
     const poolTrang1 = [
       { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
@@ -1247,6 +1399,15 @@
       }, 900);
     }
 
+    // Tương tác chạm vào Bé Cáo Cửu Vĩ ở màn hình kết thúc
+    function petSuperMascot() {
+      burstSparkles();
+      playUnlockChime();
+      for (let i = 0; i < 2; i++) {
+        setTimeout(() => burstSparkles(), i * 200);
+      }
+    }
+
     function openStoryBook() {
       const input = document.getElementById("userName");
       const val = input.value.trim();
@@ -1278,20 +1439,15 @@
       if (!isMusicPlaying) startMusicBox();
     }
 
-    // ==========================================
-    // KÍCH HOẠT MÀN HÌNH TOÀN CẢNH KẾT THÚC
-    // ==========================================
     function triggerFullscreenFinale() {
       isFinaleMode = true;
       document.getElementById("mainBookCard").style.display = "none";
       const finale = document.getElementById("finaleScreen");
       finale.style.display = "flex";
 
-      // Cập nhật lời chúc chặng cuối vào khung toàn màn hình
       const lastStep = journeySteps[6];
       document.getElementById("finaleWishText").textContent = lastStep.body;
 
-      // Bắn pháo hoa ăn mừng dồn dập
       for (let i = 0; i < 4; i++) {
         setTimeout(() => burstSparkles(), i * 300);
       }
@@ -1310,7 +1466,6 @@
       burstSparkles();
       updateNavButtons();
 
-      // NẾU LÀ CHẶNG CUỐI (CHẶNG 7): Sau 1.2s đọc lướt sẽ phóng to toàn màn hình kết thúc
       if (currentStepIndex === 6) {
         setTimeout(() => {
           triggerFullscreenFinale();
@@ -1395,7 +1550,6 @@
       const currentStep = journeySteps[currentStepIndex];
       if (delta > 0 && !currentStep.unlocked) return;
 
-      // Nếu ở chặng 7 bấm tiếp sẽ mở màn hình toàn cảnh kết thúc
       if (currentStepIndex === journeySteps.length - 1 && delta === 1) {
         triggerFullscreenFinale();
         return;
@@ -1438,7 +1592,7 @@
     });
 
     // =====================================================
-    // HỘP NHẠC PIANO & ÂM THANH TƯƠNG TÁC
+    // HỘP NHẠC PIANO & ÂM THANH
     // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
@@ -1493,7 +1647,7 @@
     }
 
     // =====================================================
-    // CANVAS PHÁO HOA & MƯA CÁNH HOA TOÀN MÀN HÌNH
+    // CANVAS PHÁO HOA & MƯA CÁNH HOA
     // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
