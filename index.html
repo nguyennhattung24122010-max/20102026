@@ -49,7 +49,7 @@
     .music-btn {
       position: fixed;
       top: 16px; right: 16px;
-      z-index: 10;
+      z-index: 100;
       width: 42px; height: 42px;
       border-radius: 50%;
       background: rgba(25, 12, 30, 0.75);
@@ -317,7 +317,7 @@
       box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
     }
 
-    /* LỚP PHONG ẤN CHO TRANG LỜI CHÚC */
+    /* PHONG ẤN */
     .seal-overlay {
       position: absolute;
       inset: 0;
@@ -450,9 +450,7 @@
       text-align: right;
     }
 
-    /* ====================================================
-       GIAO DIỆN 3 TRANG TƯƠNG TÁC (MINI-GAMES) Ở GIỮA
-       ==================================================== */
+    /* TRANG MINI-GAMES */
     .interactive-stage {
       display: none;
       flex-direction: column;
@@ -485,7 +483,6 @@
       line-height: 1.45;
     }
 
-    /* GAME 1: TƯỚI HOA */
     .flower-pot {
       width: 78px;
       height: 78px;
@@ -502,10 +499,7 @@
       user-select: none;
     }
 
-    .flower-pot:active {
-      transform: scale(0.86);
-    }
-
+    .flower-pot:active { transform: scale(0.86); }
     .flower-pot.bloomed {
       border-style: solid;
       border-color: var(--gold);
@@ -530,7 +524,6 @@
       transition: width 0.35s ease;
     }
 
-    /* GAME 2: BẮT SAO ƯỚC NGUYỆN */
     .star-sky {
       display: flex;
       flex-wrap: wrap;
@@ -560,7 +553,6 @@
       pointer-events: none;
     }
 
-    /* GAME 3: RÚT BÀI TAROT 20/10 */
     .tarot-deck {
       display: flex;
       justify-content: center;
@@ -586,11 +578,7 @@
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
     }
 
-    .tarot-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-    }
-
+    .tarot-card:hover { transform: translateY(-4px); border-color: var(--gold); }
     .tarot-card.picked {
       background: linear-gradient(145deg, #ff758f 0%, #9e143b 100%);
       border-color: #fff;
@@ -598,25 +586,10 @@
       box-shadow: 0 0 20px rgba(255, 143, 163, 0.6);
     }
 
-    .tarot-icon {
-      font-size: 24px;
-      margin-bottom: 6px;
-    }
+    .tarot-icon { font-size: 24px; margin-bottom: 6px; }
+    .tarot-label { font-size: 11px; font-weight: 600; color: var(--gold); }
+    .game-status { font-size: 12.5px; font-weight: 600; color: #ffe5ec; min-height: 20px; }
 
-    .tarot-label {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--gold);
-    }
-
-    .game-status {
-      font-size: 12.5px;
-      font-weight: 600;
-      color: #ffe5ec;
-      min-height: 20px;
-    }
-
-    /* CHẤM TRÒN TIẾN TRÌNH 7 TRANG */
     .dots-bar {
       display: flex;
       justify-content: center;
@@ -686,8 +659,114 @@
       padding: 4px;
     }
 
-    .link-action:hover {
+    .link-action:hover { color: var(--gold); }
+
+    /* ====================================================
+       MÀN HÌNH TOÀN CẢNH PHÓNG TO KẾT THÚC (FULLSCREEN FINALE)
+       ==================================================== */
+    #finaleScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99;
+      background: radial-gradient(circle at 50% 25%, #381533 0%, #0e0414 75%, #050108 100%);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      text-align: center;
+      overflow-y: auto;
+      animation: zoomInFinale 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes zoomInFinale {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .finale-box {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .finale-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
       color: var(--gold);
+      background: rgba(243, 210, 156, 0.15);
+      border: 1px solid rgba(243, 210, 156, 0.4);
+      padding: 6px 18px;
+      border-radius: 99px;
+      margin-bottom: 14px;
+    }
+
+    .finale-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .finale-title span {
+      background: linear-gradient(135deg, #ff8fa3, #f3d29c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .finale-mascot-wrap {
+      width: 120px;
+      height: 120px;
+      margin: 10px auto 14px;
+      animation: floatMascot 3s ease-in-out infinite;
+      filter: drop-shadow(0 10px 25px rgba(255, 143, 163, 0.5));
+    }
+
+    .finale-wish-card {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(243, 210, 156, 0.35);
+      border-radius: 24px;
+      padding: 24px 20px;
+      margin: 12px 0 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .finale-wish-body {
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.8;
+      color: #ffeef2;
+      margin-bottom: 14px;
+    }
+
+    .finale-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gold);
+      border-top: 1px dashed rgba(255, 255, 255, 0.2);
+      padding-top: 12px;
+    }
+
+    .finale-btn-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
   </style>
 </head>
@@ -701,7 +780,7 @@
     </svg>
   </button>
 
-  <div class="book-card">
+  <div class="book-card" id="mainBookCard">
     <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
     <!-- LINH VẬT BÉ CÁO TUYẾT -->
@@ -764,7 +843,7 @@
       <button class="btn-primary" onclick="openStoryBook()">Bắt đầu hành trình 11B7 📖</button>
     </div>
 
-    <!-- MÀN HÌNH 2: HÀNH TRÌNH 7 CHẶNG ĐAN XEN -->
+    <!-- MÀN HÌNH 2: HÀNH TRÌNH 7 CHẶNG -->
     <div id="storyScreen">
       <div class="story-top">
         <div class="recipient-label">Gửi <span id="displayReceiver"></span> · 11B7,</div>
@@ -772,7 +851,7 @@
       </div>
 
       <div class="page-box" id="pageBox">
-        <!-- Lớp Phong Ấn (Hiện ở các trang lời chúc 1, 3, 5, 7) -->
+        <!-- Phong ấn ở các trang lời chúc -->
         <div class="seal-overlay" id="sealOverlay" onclick="unlockCurrentPage()">
           <div class="seal-orb-wrap">
             <div class="seal-ring"></div>
@@ -783,7 +862,7 @@
           <div class="seal-hint">✨ Chạm vào biểu tượng để mở khóa trang này ✨</div>
         </div>
 
-        <!-- Khung hiển thị Lời chúc (Trang 1, 3, 5, 7) -->
+        <!-- Khung Lời chúc -->
         <div class="page-inner-content" id="wishStage">
           <div>
             <div class="page-chapter" id="chapterTitle"></div>
@@ -792,7 +871,7 @@
           <div class="page-quote" id="chapterQuote"></div>
         </div>
 
-        <!-- Khung Tương Tác 1: Tưới Hoa (Trang 2) -->
+        <!-- Game 1: Tưới hoa -->
         <div class="interactive-stage" id="gameFlowerStage">
           <div>
             <div class="game-title">🌱 Trạm Tương Tác 1 · Ươm Mầm Hoa 11B7</div>
@@ -807,7 +886,7 @@
           </div>
         </div>
 
-        <!-- Khung Tương Tác 2: Bắt Sao (Trang 4) -->
+        <!-- Game 2: Bắt sao -->
         <div class="interactive-stage" id="gameStarStage">
           <div>
             <div class="game-title">🌟 Trạm Tương Tác 2 · Thu Thập Sao May Mắn</div>
@@ -817,11 +896,11 @@
           <div class="game-status" id="starStatus">Đã thu thập: 0 / 5 ngôi sao ✨</div>
         </div>
 
-        <!-- Khung Tương Tác 3: Rút Quẻ Tarot (Trang 6) -->
+        <!-- Game 3: Rút tarot -->
         <div class="interactive-stage" id="gameTarotStage">
           <div>
             <div class="game-title">🔮 Trạm Tương Tác 3 · Lá Bài Tiên Tri 20/10</div>
-            <div class="game-desc">Hãy chọn 1 trong 3 lá bài bí ẩn để nhận thông điệp vũ trụ gửi riêng cho cậu trước khi mở trang cuối!</div>
+            <div class="game-desc">Hãy chọn 1 trong 3 lá bài bí ẩn để nhận thông điệp vũ trụ gửi riêng cho cậu trước khi mở chặng cuối!</div>
           </div>
           <div class="tarot-deck">
             <div class="tarot-card" id="tarot0" onclick="pickTarot(0)">
@@ -855,10 +934,47 @@
     </div>
   </div>
 
+  <!-- MÀN HÌNH TOÀN CẢNH PHÓNG TO KẾT THÚC (FULLSCREEN FINALE) -->
+  <div id="finaleScreen">
+    <div class="finale-box">
+      <div class="finale-badge">👑 FOREVER 11B7 · 20.10.2026 👑</div>
+      <h2 class="finale-title">Gửi <span id="finaleReceiver"></span>!</h2>
+      
+      <div class="finale-mascot-wrap">
+        <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M85 88 C108 85, 114 62, 95 56 C86 53, 82 68, 78 78 Z" fill="#ffb3c6"/>
+          <path d="M95 56 C105 59, 108 69, 98 73 C93 67, 92 61, 95 56 Z" fill="#fff5f7"/>
+          <g class="ear-left"><path d="M26 52 L18 18 L48 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M28 46 L23 24 L42 36 Z" fill="#ff758f"/></g>
+          <g class="ear-right"><path d="M94 52 L102 18 L72 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M92 46 L97 24 L78 36 Z" fill="#ff758f"/></g>
+          <path d="M48 33 L52 21 L60 28 L68 21 L72 33 Z" fill="#f3d29c" stroke="#fff" stroke-width="1"/><circle cx="60" cy="18" r="2.2" fill="#ff8fa3"/>
+          <path d="M42 82 C42 72, 78 72, 78 82 L82 102 C82 106, 38 106, 38 102 Z" fill="#ffe5ec"/>
+          <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
+          <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.75"/>
+          <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.75"/>
+          <!-- Mắt cười híp mí chúc mừng -->
+          <path d="M40 63 Q45 56 50 63" stroke="#2b102f" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          <path d="M70 63 Q75 56 80 63" stroke="#2b102f" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+          <polygon points="58,67 62,67 60,70" fill="#c9184a"/>
+          <path d="M55 72 Q60 75 60 70 Q60 75 65 72" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="finale-wish-card">
+        <div class="finale-wish-body" id="finaleWishText">
+          Cảm ơn cậu vì đã luôn là một mảnh ghép thanh xuân tuyệt vời của đại gia đình 11B7! Chúc cậu không chỉ riêng ngày 20/10 mà suốt 365 ngày trong năm luôn rạng rỡ, bình yên, nụ cười luôn tỏa nắng trên môi và được cả thế giới này yêu thương! 💖
+        </div>
+        <div class="finale-quote">“Thanh xuân rực rỡ nhất là khi có các bông hoa 11B7!”</div>
+      </div>
+
+      <div class="finale-btn-group">
+        <button class="btn-primary" onclick="restartJourney()">Xem lại hành trình từ đầu ↺</button>
+        <button class="btn-nav" onclick="resetToHome()">Nhập tên bạn khác</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // =====================================================
-    // NGÂN HÀNG 48 LỜI CHÚC ĐỘC LẬP (12 CÂU x 4 TRANG THƯ)
-    // =====================================================
+    // 48 LỜI CHÚC ĐỘC LẬP (12 CÂU x 4 TRANG THƯ)
     const poolTrang1 = [
       { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
@@ -932,10 +1048,10 @@
     let currentStepIndex = 0;
     let regenSeed = 0;
 
-    // Trạng thái các màn tương tác
     let flowerCount = 0;
     let starsCollected = 0;
     let tarotPicked = -1;
+    let isFinaleMode = false;
 
     function getIndexByNameAndPage(name, pageSalt, maxLen) {
       let hash = 0;
@@ -946,7 +1062,6 @@
       return (Math.abs(hash) + regenSeed) % maxLen;
     }
 
-    // Xây dựng 7 chặng đan xen: 4 Trang Thư + 3 Trạm Tương Tác ở giữa
     function buildJourneyForUser(name) {
       const idx1 = getIndexByNameAndPage(name, 101, poolTrang1.length);
       const idx2 = getIndexByNameAndPage(name, 202, poolTrang2.length);
@@ -954,7 +1069,6 @@
       const idx4 = getIndexByNameAndPage(name, 404, poolTrang4.length);
 
       return [
-        // Chặng 1: Thư 1
         {
           type: "wish",
           unlocked: false,
@@ -966,14 +1080,12 @@
           body: poolTrang1[idx1].text.replace(/{name}/g, name),
           quote: poolTrang1[idx1].quote
         },
-        // Chặng 2: Mini-game Tưới Hoa
         {
           type: "game_flower",
           unlocked: false,
           badge: "🌱",
           happyEyes: true
         },
-        // Chặng 3: Thư 2
         {
           type: "wish",
           unlocked: false,
@@ -985,14 +1097,12 @@
           body: poolTrang2[idx2].text.replace(/{name}/g, name),
           quote: poolTrang2[idx2].quote
         },
-        // Chặng 4: Mini-game Bắt Sao
         {
           type: "game_star",
           unlocked: false,
           badge: "🌟",
           happyEyes: false
         },
-        // Chặng 5: Thư 3
         {
           type: "wish",
           unlocked: false,
@@ -1004,14 +1114,12 @@
           body: poolTrang3[idx3].text.replace(/{name}/g, name),
           quote: poolTrang3[idx3].quote
         },
-        // Chặng 6: Mini-game Rút Tarot
         {
           type: "game_tarot",
           unlocked: false,
           badge: "🔮",
           happyEyes: true
         },
-        // Chặng 7: Thư Kết
         {
           type: "wish",
           unlocked: false,
@@ -1027,7 +1135,6 @@
     }
 
     function resetMiniGames() {
-      // Reset Game 1: Tưới Hoa
       flowerCount = 0;
       const pot = document.getElementById("flowerPot");
       pot.textContent = "🌱";
@@ -1035,7 +1142,6 @@
       document.getElementById("flowerBar").style.width = "0%";
       document.getElementById("flowerStatus").textContent = "Chạm vào mầm cây (0 / 3) 💧";
 
-      // Reset Game 2: Bắt Sao
       starsCollected = 0;
       const starBox = document.getElementById("starContainer");
       starBox.innerHTML = "";
@@ -1049,7 +1155,6 @@
       });
       document.getElementById("starStatus").textContent = "Đã thu thập: 0 / 5 ngôi sao ✨";
 
-      // Reset Game 3: Tarot
       tarotPicked = -1;
       for (let i = 0; i < 3; i++) {
         document.getElementById("tarot" + i).classList.remove("picked");
@@ -1057,7 +1162,6 @@
       document.getElementById("tarotStatus").textContent = "Chạm vào 1 lá bài bất kỳ để lật mở ✨";
     }
 
-    // Xử lý Game 1: Tưới Hoa
     function tapFlower() {
       if (flowerCount >= 3) return;
       flowerCount++;
@@ -1085,7 +1189,6 @@
       }
     }
 
-    // Xử lý Game 2: Bắt Sao
     function collectStar(btnEl) {
       if (btnEl.classList.contains("collected")) return;
       btnEl.classList.add("collected");
@@ -1103,7 +1206,6 @@
       }
     }
 
-    // Xử lý Game 3: Rút Tarot
     function pickTarot(cardIdx) {
       tarotPicked = cardIdx;
       for (let i = 0; i < 3; i++) {
@@ -1156,13 +1258,17 @@
 
       currentName = val;
       regenSeed = 0;
+      isFinaleMode = false;
       document.getElementById("displayReceiver").textContent = currentName;
+      document.getElementById("finaleReceiver").textContent = currentName;
 
       journeySteps = buildJourneyForUser(currentName);
       currentStepIndex = 0;
       resetMiniGames();
 
       document.getElementById("welcomeScreen").style.display = "none";
+      document.getElementById("finaleScreen").style.display = "none";
+      document.getElementById("mainBookCard").style.display = "block";
       document.getElementById("storyScreen").style.display = "block";
 
       renderDots();
@@ -1170,6 +1276,26 @@
       burstSparkles();
 
       if (!isMusicPlaying) startMusicBox();
+    }
+
+    // ==========================================
+    // KÍCH HOẠT MÀN HÌNH TOÀN CẢNH KẾT THÚC
+    // ==========================================
+    function triggerFullscreenFinale() {
+      isFinaleMode = true;
+      document.getElementById("mainBookCard").style.display = "none";
+      const finale = document.getElementById("finaleScreen");
+      finale.style.display = "flex";
+
+      // Cập nhật lời chúc chặng cuối vào khung toàn màn hình
+      const lastStep = journeySteps[6];
+      document.getElementById("finaleWishText").textContent = lastStep.body;
+
+      // Bắn pháo hoa ăn mừng dồn dập
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => burstSparkles(), i * 300);
+      }
+      playUnlockChime();
     }
 
     function unlockCurrentPage() {
@@ -1183,6 +1309,13 @@
       playUnlockChime();
       burstSparkles();
       updateNavButtons();
+
+      // NẾU LÀ CHẶNG CUỐI (CHẶNG 7): Sau 1.2s đọc lướt sẽ phóng to toàn màn hình kết thúc
+      if (currentStepIndex === 6) {
+        setTimeout(() => {
+          triggerFullscreenFinale();
+        }, 1200);
+      }
     }
 
     function renderDots() {
@@ -1201,11 +1334,10 @@
       const nextBtn = document.getElementById("nextBtn");
 
       prevBtn.disabled = currentStepIndex === 0;
-      // Phải mở phong ấn hoặc hoàn thành mini-game mới được bấm Chặng tiếp
       nextBtn.disabled = !step.unlocked;
 
       if (currentStepIndex === journeySteps.length - 1) {
-        nextBtn.textContent = "Xem lại từ đầu ↺";
+        nextBtn.textContent = "Phóng To Kết Thúc 🌟";
       } else if (!step.unlocked) {
         nextBtn.textContent = "Hoàn thành để mở khóa 🔒";
       } else {
@@ -1223,7 +1355,6 @@
 
       document.getElementById("pageIndicator").textContent = `Chặng ${currentStepIndex + 1} / ${journeySteps.length}`;
 
-      // Ẩn tất cả các stage trước
       wishStage.style.display = "none";
       flowerStage.style.display = "none";
       starStage.style.display = "none";
@@ -1246,7 +1377,6 @@
           wishStage.classList.add("blurred");
         }
       } else {
-        // Ẩn lớp phong ấn ở các trang Mini-game
         sealOverlay.classList.add("unlocked");
         if (step.type === "game_flower") flowerStage.style.display = "flex";
         if (step.type === "game_star") starStage.style.display = "flex";
@@ -1265,12 +1395,23 @@
       const currentStep = journeySteps[currentStepIndex];
       if (delta > 0 && !currentStep.unlocked) return;
 
+      // Nếu ở chặng 7 bấm tiếp sẽ mở màn hình toàn cảnh kết thúc
       if (currentStepIndex === journeySteps.length - 1 && delta === 1) {
-        currentStepIndex = 0;
-      } else {
-        currentStepIndex = Math.max(0, Math.min(journeySteps.length - 1, currentStepIndex + delta));
+        triggerFullscreenFinale();
+        return;
       }
+
+      currentStepIndex = Math.max(0, Math.min(journeySteps.length - 1, currentStepIndex + delta));
       updatePageView();
+    }
+
+    function restartJourney() {
+      isFinaleMode = false;
+      document.getElementById("finaleScreen").style.display = "none";
+      document.getElementById("mainBookCard").style.display = "block";
+      currentStepIndex = 0;
+      updatePageView();
+      burstSparkles();
     }
 
     function regenerateBook() {
@@ -1283,8 +1424,11 @@
     }
 
     function resetToHome() {
+      isFinaleMode = false;
       document.getElementById("userName").value = "";
+      document.getElementById("finaleScreen").style.display = "none";
       document.getElementById("storyScreen").style.display = "none";
+      document.getElementById("mainBookCard").style.display = "block";
       document.getElementById("welcomeScreen").style.display = "block";
       updateMascotMood("👑", false);
     }
@@ -1349,7 +1493,7 @@
     }
 
     // =====================================================
-    // HIỆU ỨNG CÁNH HOA & PHÁO SÁNG CANVAS
+    // CANVAS PHÁO HOA & MƯA CÁNH HOA TOÀN MÀN HÌNH
     // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
@@ -1361,7 +1505,7 @@
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    const petals = Array.from({ length: 35 }, () => ({
+    const petals = Array.from({ length: 40 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 4 + 2,
@@ -1377,14 +1521,14 @@
     function burstSparkles() {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 35; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4.2 + 1.2;
+        const speed = Math.random() * 4.8 + 1.2;
         sparkles.push({
           x: cx, y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          r: Math.random() * 2.6 + 1,
+          r: Math.random() * 2.8 + 1,
           alpha: 1,
           color: i % 2 === 0 ? "#f3d29c" : "#ff8fa3"
         });
@@ -1410,7 +1554,7 @@
 
       for (let i = sparkles.length - 1; i >= 0; i--) {
         const s = sparkles[i];
-        s.x += s.vx; s.y += s.vy; s.alpha -= 0.022;
+        s.x += s.vx; s.y += s.vy; s.alpha -= 0.02;
         if (s.alpha <= 0) { sparkles.splice(i, 1); continue; }
         ctx.save();
         ctx.globalAlpha = s.alpha;
