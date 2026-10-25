@@ -18,12 +18,7 @@
       --glass-border: rgba(243, 210, 156, 0.25);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 
     body {
       font-family: 'Be Vietnam Pro', sans-serif;
@@ -61,7 +56,6 @@
       cursor: pointer;
       color: var(--gold);
       padding: 0;
-      line-height: 1;
       transition: all 0.3s ease;
     }
 
@@ -72,10 +66,7 @@
       box-shadow: 0 0 15px rgba(255, 143, 163, 0.45);
     }
 
-    @keyframes spinSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .book-card {
       position: relative;
@@ -108,10 +99,11 @@
       margin-bottom: 8px;
     }
 
+    /* KHUNG LINH VẬT TƯƠNG TÁC CHÍNH */
     .mascot-stage {
       position: relative;
-      width: 108px;
-      height: 108px;
+      width: 110px;
+      height: 110px;
       margin: 0 auto 6px;
       cursor: pointer;
       user-select: none;
@@ -120,7 +112,7 @@
     .mascot-glow {
       position: absolute;
       top: 50%; left: 50%;
-      width: 82px; height: 82px;
+      width: 84px; height: 84px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(255, 143, 163, 0.38) 0%, transparent 70%);
       border-radius: 50%;
@@ -132,7 +124,7 @@
       50% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
     }
 
-    .mascot-svg {
+    .mascot-svg-wrap {
       position: relative;
       z-index: 2;
       width: 100%;
@@ -142,34 +134,22 @@
       transition: transform 0.25s ease;
     }
 
-    .mascot-stage:active .mascot-svg { transform: scale(0.92) rotate(-5deg); }
+    .mascot-stage:active .mascot-svg-wrap { transform: scale(0.92) rotate(-5deg); }
 
     @keyframes floatMascot {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-7px) rotate(2deg); }
     }
 
-    .ear-left { transform-origin: 35px 45px; animation: earWiggleL 4s ease-in-out infinite; }
-    .ear-right { transform-origin: 85px 45px; animation: earWiggleR 4s ease-in-out infinite; }
-    @keyframes earWiggleL { 0%, 85%, 100% { transform: rotate(0deg); } 90% { transform: rotate(-8deg); } 95% { transform: rotate(4deg); } }
-    @keyframes earWiggleR { 0%, 85%, 100% { transform: rotate(0deg); } 90% { transform: rotate(8deg); } 95% { transform: rotate(-4deg); } }
-
-    .eyes-open { transform-origin: 60px 66px; animation: blinkEyes 4.5s infinite; }
-    @keyframes blinkEyes { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.08); } }
-
     .mascot-badge {
       position: absolute;
-      bottom: 2px;
-      right: 2px;
+      bottom: 2px; right: 2px;
       z-index: 3;
       background: rgba(20, 10, 28, 0.9);
       border: 1px solid var(--gold);
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 30px; height: 30px;
+      display: flex; justify-content: center; align-items: center;
       font-size: 14px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.4);
       animation: popBadge 0.4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -205,10 +185,7 @@
       transition: all 0.3s ease;
     }
 
-    input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 18px rgba(243, 210, 156, 0.22);
-    }
+    input:focus { border-color: var(--gold); box-shadow: 0 0 18px rgba(243, 210, 156, 0.22); }
 
     .btn-primary {
       width: 100%;
@@ -227,7 +204,7 @@
 
     .btn-primary:active { transform: scale(0.98); }
 
-    /* MÀN HÌNH LẬT TRANG */
+    /* MÀN HÌNH HÀNH TRÌNH */
     #storyScreen { display: none; }
     .story-top {
       display: flex;
@@ -256,7 +233,7 @@
     }
 
     .page-box {
-      min-height: 245px;
+      min-height: 255px;
       background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 143, 163, 0.04) 100%);
       border: 1px solid rgba(243, 210, 156, 0.28);
       border-radius: 22px;
@@ -293,11 +270,8 @@
 
     .seal-orb-wrap {
       position: relative;
-      width: 72px;
-      height: 72px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      width: 72px; height: 72px;
+      display: flex; justify-content: center; align-items: center;
       margin-bottom: 12px;
     }
 
@@ -320,14 +294,11 @@
     .seal-core {
       position: relative;
       z-index: 2;
-      width: 58px;
-      height: 58px;
+      width: 58px; height: 58px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ff758f 0%, #c9184a 60%, #800f2f 100%);
       border: 1.5px solid var(--gold);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       font-size: 25px;
       box-shadow: 0 0 25px rgba(255, 117, 143, 0.55);
       animation: beatSeal 1.5s infinite ease-in-out;
@@ -351,7 +322,7 @@
     .page-content { font-size: 14.5px; font-weight: 400; line-height: 1.75; color: #fff5f7; margin-bottom: 14px; }
     .page-quote { font-family: 'Be Vietnam Pro', sans-serif; font-style: italic; font-size: 12px; color: rgba(243, 210, 156, 0.9); border-top: 1px dashed rgba(255, 255, 255, 0.14); padding-top: 10px; text-align: right; }
 
-    /* MINI-GAMES */
+    /* KHUNG MINI-GAMES */
     .interactive-stage {
       display: none;
       flex-direction: column;
@@ -365,50 +336,86 @@
 
     @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
     .game-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 4px; }
-    .game-desc { font-size: 12.5px; color: rgba(255, 255, 255, 0.78); margin-bottom: 10px; line-height: 1.45; }
+    .game-desc { font-size: 12px; color: rgba(255, 255, 255, 0.78); margin-bottom: 8px; line-height: 1.45; }
 
+    /* GAME 1: HOA */
     .flower-pot {
-      width: 78px; height: 78px; border-radius: 50%;
+      width: 74px; height: 74px; border-radius: 50%;
       background: radial-gradient(circle, rgba(255, 143, 163, 0.25) 0%, rgba(255, 255, 255, 0.05) 75%);
       border: 1.5px dashed rgba(243, 210, 156, 0.5);
       display: flex; justify-content: center; align-items: center;
-      font-size: 38px; cursor: pointer; margin: 4px auto 10px;
+      font-size: 36px; cursor: pointer; margin: 4px auto 8px;
       transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
       user-select: none;
     }
     .flower-pot:active { transform: scale(0.86); }
     .flower-pot.bloomed { border-style: solid; border-color: var(--gold); box-shadow: 0 0 25px rgba(255, 143, 163, 0.6); animation: beatSeal 1.8s infinite; }
-
-    .progress-track { width: 85%; height: 8px; background: rgba(255, 255, 255, 0.12); border-radius: 99px; overflow: hidden; margin: 4px auto 8px; }
+    .progress-track { width: 85%; height: 8px; background: rgba(255, 255, 255, 0.12); border-radius: 99px; overflow: hidden; margin: 4px auto 6px; }
     .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ff8fa3, #f3d29c); border-radius: 99px; transition: width 0.35s ease; }
 
-    .star-sky { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 6px 0 10px; }
+    /* GAME 2: SAO */
+    .star-sky { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 6px 0 8px; }
     .star-pill {
-      padding: 8px 13px; border-radius: 99px;
+      padding: 8px 12px; border-radius: 99px;
       background: rgba(243, 210, 156, 0.12); border: 1px solid rgba(243, 210, 156, 0.4);
-      color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer;
+      color: #fff; font-size: 12px; font-weight: 600; cursor: pointer;
       transition: all 0.25s ease; animation: floatMascot 2.6s ease-in-out infinite;
     }
     .star-pill.collected { background: linear-gradient(135deg, #ff758f, #c9184a); border-color: var(--gold); transform: scale(0.92); opacity: 0.45; pointer-events: none; }
 
-    .tarot-deck { display: flex; justify-content: center; gap: 10px; width: 100%; margin: 6px 0 8px; }
+    /* GAME 3: BẺ BÁNH MAY MẮN (FORTUNE COOKIE) */
+    .fortune-cookie-btn {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #f3d29c 0%, #d4af37 80%);
+      display: flex; justify-content: center; align-items: center;
+      font-size: 40px; cursor: pointer;
+      box-shadow: 0 8px 20px rgba(243, 210, 156, 0.35);
+      margin: 4px auto;
+      transition: transform 0.25s ease;
+    }
+    .fortune-cookie-btn:active { transform: scale(0.88); }
+    .fortune-strip {
+      display: none;
+      background: #fff;
+      color: #900c3f;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      margin-top: 8px;
+      border-left: 3px solid #c9184a;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* GAME 4: ĐẬP HỘP QUÀ BÍ MẬT */
+    .gift-box-btn {
+      font-size: 52px;
+      cursor: pointer;
+      margin: 4px auto;
+      animation: beatSeal 1.8s infinite;
+      transition: transform 0.2s;
+    }
+    .gift-box-btn:active { transform: scale(0.85); }
+
+    /* GAME 5: TAROT */
+    .tarot-deck { display: flex; justify-content: center; gap: 8px; width: 100%; margin: 6px 0 8px; }
     .tarot-card {
-      flex: 1; max-width: 92px; height: 105px; border-radius: 14px;
+      flex: 1; max-width: 90px; height: 102px; border-radius: 14px;
       background: linear-gradient(150deg, #3a1535 0%, #19091c 100%);
       border: 1.5px solid rgba(243, 210, 156, 0.45);
       display: flex; flex-direction: column; justify-content: center; align-items: center;
-      cursor: pointer; padding: 8px; transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+      cursor: pointer; padding: 6px; transition: all 0.3s ease;
     }
-    .tarot-card:hover { transform: translateY(-4px); border-color: var(--gold); }
     .tarot-card.picked {
       background: linear-gradient(145deg, #ff758f 0%, #9e143b 100%);
-      border-color: #fff; transform: translateY(-5px) scale(1.05);
+      border-color: #fff; transform: translateY(-4px) scale(1.04);
       box-shadow: 0 0 20px rgba(255, 143, 163, 0.6);
     }
-    .tarot-icon { font-size: 24px; margin-bottom: 6px; }
+    .tarot-icon { font-size: 24px; margin-bottom: 4px; }
     .tarot-label { font-size: 11px; font-weight: 600; color: var(--gold); }
-    .game-status { font-size: 12.5px; font-weight: 600; color: #ffe5ec; min-height: 20px; }
+    .game-status { font-size: 12px; font-weight: 600; color: #ffe5ec; min-height: 20px; }
 
     .dots-bar { display: flex; justify-content: center; gap: 6px; margin: 15px 0; }
     .dot { width: 7px; height: 7px; border-radius: 99px; background: rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
@@ -432,9 +439,7 @@
     .link-action { color: rgba(255, 255, 255, 0.65); background: none; border: none; cursor: pointer; font-family: inherit; text-decoration: underline; padding: 4px; }
     .link-action:hover { color: var(--gold); }
 
-    /* ====================================================
-       MÀN HÌNH KẾT THÚC TOÀN CẢNH (ĐÃ TỐI ƯU CỰC KỲ MƯỢT MÀ)
-       ==================================================== */
+    /* MÀN HÌNH KẾT THÚC TOÀN CẢNH */
     #finaleScreen {
       display: none;
       position: fixed;
@@ -453,20 +458,9 @@
       user-select: none;
     }
 
-    @keyframes zoomInFinale {
-      from { opacity: 0; transform: scale(0.85); }
-      to { opacity: 1; transform: scale(1); }
-    }
+    @keyframes zoomInFinale { from { opacity: 0; transform: scale(0.85); } to { opacity: 1; transform: scale(1); } }
 
-    /* Container hiệu ứng đèn lồng và tim HTML */
-    #heartFxLayer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 102;
-      overflow: hidden;
-    }
-
+    #heartFxLayer { position: fixed; inset: 0; pointer-events: none; z-index: 102; overflow: hidden; }
     .flying-heart-dom {
       position: absolute;
       pointer-events: none;
@@ -481,7 +475,7 @@
       100% { opacity: 0; transform: translate(calc(-50% + var(--rand-x)), calc(-50% - 150px)) scale(1) rotate(var(--rand-rot)); }
     }
 
-    /* ĐÈN LỒNG BAY LÊN (SKY LANTERN NÂNG CẤP CHỈN CHU) */
+    /* ĐÈN LỒNG BAY */
     .sky-lantern-flight {
       position: fixed;
       bottom: -150px;
@@ -496,26 +490,14 @@
     }
 
     @keyframes flyLanternUp {
-      0% {
-        transform: translateY(0) scale(0.8) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-        transform: translateY(-80px) scale(1) rotate(2deg);
-      }
-      50% {
-        transform: translateY(-50vh) scale(0.9) rotate(-3deg);
-      }
-      100% {
-        transform: translateY(-120vh) scale(0.4) rotate(4deg);
-        opacity: 0;
-      }
+      0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; transform: translateY(-80px) scale(1) rotate(2deg); }
+      50% { transform: translateY(-50vh) scale(0.9) rotate(-3deg); }
+      100% { transform: translateY(-120vh) scale(0.4) rotate(4deg); opacity: 0; }
     }
 
     .lantern-balloon {
-      width: 90px;
-      height: 105px;
+      width: 90px; height: 105px;
       background: radial-gradient(circle at 50% 65%, #fff 0%, #ffbe76 35%, #f0932b 70%, #d35400 100%);
       border-radius: 40px 40px 25px 25px;
       position: relative;
@@ -525,11 +507,9 @@
     .lantern-balloon::after {
       content: "";
       position: absolute;
-      bottom: 6px;
-      left: 50%;
+      bottom: 6px; left: 50%;
       transform: translateX(-50%);
-      width: 16px;
-      height: 16px;
+      width: 16px; height: 16px;
       background: #fff;
       border-radius: 50%;
       box-shadow: 0 0 15px 5px #fffa65;
@@ -552,234 +532,70 @@
       text-overflow: ellipsis;
     }
 
-    .finale-box {
-      width: 100%;
-      max-width: 440px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
+    .finale-box { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; position: relative; z-index: 2; }
     .finale-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10.5px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: rgba(243, 210, 156, 0.15);
-      border: 1px solid rgba(243, 210, 156, 0.4);
-      padding: 6px 18px;
-      border-radius: 99px;
-      margin-bottom: 8px;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--gold); background: rgba(243, 210, 156, 0.15); border: 1px solid rgba(243, 210, 156, 0.4);
+      padding: 6px 18px; border-radius: 99px; margin-bottom: 8px;
     }
-
-    .finale-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 34px;
-      font-weight: 700;
-      line-height: 1.2;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .finale-title span {
-      background: linear-gradient(135deg, #ff8fa3, #f3d29c);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .finale-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; line-height: 1.2; color: #fff; margin-bottom: 4px; }
+    .finale-title span { background: linear-gradient(135deg, #ff8fa3, #f3d29c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
     .super-mascot-container {
       position: relative;
-      width: 160px;
-      height: 160px;
+      width: 160px; height: 160px;
       margin: 4px auto 8px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      display: flex; justify-content: center; align-items: center;
       cursor: pointer;
     }
 
     .super-halo-ring {
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 1.5px dashed rgba(243, 210, 156, 0.45);
-      animation: spinHalo 14s linear infinite;
-      pointer-events: none;
+      position: absolute; width: 150px; height: 150px;
+      border-radius: 50%; border: 1.5px dashed rgba(243, 210, 156, 0.45);
+      animation: spinHalo 14s linear infinite; pointer-events: none;
     }
-
     @keyframes spinHalo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .super-glow-back {
-      position: absolute;
-      width: 130px;
-      height: 130px;
+      position: absolute; width: 130px; height: 130px;
       background: radial-gradient(circle, rgba(255, 117, 143, 0.45) 0%, rgba(201, 24, 74, 0.2) 55%, transparent 75%);
-      border-radius: 50%;
-      animation: pulseGlow 2.8s ease-in-out infinite;
-      filter: blur(8px);
-    }
-
-    .super-mascot-svg {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 2;
-      animation: floatSuperMascot 3.2s ease-in-out infinite;
-      filter: drop-shadow(0 12px 24px rgba(255, 117, 143, 0.45));
-    }
-
-    @keyframes floatSuperMascot {
-      0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-8px) scale(1.02); }
-    }
-
-    .tail-left-outer { transform-origin: 50px 105px; animation: tailWaveL1 3.5s ease-in-out infinite; }
-    .tail-left-inner { transform-origin: 55px 108px; animation: tailWaveL2 3s ease-in-out infinite; }
-    .tail-center     { transform-origin: 75px 110px; animation: tailWaveC 2.8s ease-in-out infinite; }
-    .tail-right-inner{ transform-origin: 95px 108px; animation: tailWaveR2 3s ease-in-out infinite; }
-    .tail-right-outer{ transform-origin: 100px 105px; animation: tailWaveR1 3.5s ease-in-out infinite; }
-
-    @keyframes tailWaveL1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-8deg); } }
-    @keyframes tailWaveL2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
-    @keyframes tailWaveC  { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
-    @keyframes tailWaveR2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
-    @keyframes tailWaveR1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
-
-    .wing-left { transform-origin: 45px 85px; animation: flapWingL 2.4s ease-in-out infinite; }
-    .wing-right { transform-origin: 105px 85px; animation: flapWingR 2.4s ease-in-out infinite; }
-    @keyframes flapWingL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-10deg) scaleX(1.08); } }
-    @keyframes flapWingR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg) scaleX(1.08); } }
-
-    .heart-gem { animation: pulseGem 1.6s ease-in-out infinite; transform-origin: 75px 98px; }
-    @keyframes pulseGem {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #ff758f); }
-      50% { transform: scale(1.15); filter: drop-shadow(0 0 12px #ff4d6d); }
+      border-radius: 50%; animation: pulseGlow 2.8s ease-in-out infinite; filter: blur(8px);
     }
 
     .tap-heart-hint {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: #ffb3c6;
-      background: rgba(255, 117, 143, 0.16);
-      border: 1px solid rgba(255, 117, 143, 0.35);
-      padding: 6px 16px;
-      border-radius: 99px;
-      margin-bottom: 12px;
-      cursor: pointer;
-      user-select: none;
+      display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #ffb3c6;
+      background: rgba(255, 117, 143, 0.16); border: 1px solid rgba(255, 117, 143, 0.35);
+      padding: 6px 16px; border-radius: 99px; margin-bottom: 12px; cursor: pointer; user-select: none;
     }
-
-    .tap-heart-hint:active {
-      transform: scale(0.95);
-    }
+    .tap-heart-hint:active { transform: scale(0.95); }
 
     .finale-wish-card {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(243, 210, 156, 0.35);
-      border-radius: 22px;
-      padding: 20px 16px;
-      margin-bottom: 16px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-      text-align: center;
+      width: 100%; background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(243, 210, 156, 0.35); border-radius: 22px;
+      padding: 20px 16px; margin-bottom: 16px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); text-align: center;
     }
+    .finale-wish-body { font-size: 14.5px; font-weight: 500; line-height: 1.8; color: #ffeef2; margin-bottom: 12px; }
+    .finale-quote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--gold); border-top: 1px dashed rgba(255, 255, 255, 0.2); padding-top: 11px; }
 
-    .finale-wish-body {
-      font-size: 14.5px;
-      font-weight: 500;
-      line-height: 1.8;
-      color: #ffeef2;
-      margin-bottom: 12px;
-    }
-
-    .finale-quote {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 15px;
-      color: var(--gold);
-      border-top: 1px dashed rgba(255, 255, 255, 0.2);
-      padding-top: 11px;
-    }
-
-    /* KHUNG THẢ ĐÈN TRỜI */
     .sky-lantern-card {
-      width: 100%;
-      background: linear-gradient(145deg, rgba(255, 182, 193, 0.12) 0%, rgba(243, 210, 156, 0.1) 100%);
-      border: 1px solid rgba(243, 210, 156, 0.38);
-      border-radius: 20px;
-      padding: 16px 14px;
-      margin-bottom: 20px;
-      text-align: center;
-      position: relative;
-      z-index: 5;
+      width: 100%; background: linear-gradient(145deg, rgba(255, 182, 193, 0.12) 0%, rgba(243, 210, 156, 0.1) 100%);
+      border: 1px solid rgba(243, 210, 156, 0.38); border-radius: 20px;
+      padding: 16px 14px; margin-bottom: 20px; text-align: center; position: relative; z-index: 5;
     }
-
-    .lantern-title {
-      font-size: 12.5px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    .lantern-desc {
-      font-size: 11.5px;
-      color: rgba(255, 255, 255, 0.72);
-      margin-bottom: 10px;
-    }
-
-    .lantern-input-wrap {
-      display: flex;
-      gap: 6px;
-    }
-
+    .lantern-title { font-size: 12.5px; font-weight: 700; color: var(--gold); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+    .lantern-desc { font-size: 11.5px; color: rgba(255, 255, 255, 0.72); margin-bottom: 10px; }
+    .lantern-input-wrap { display: flex; gap: 6px; }
     .lantern-input {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(0, 0, 0, 0.45);
-      color: #fff;
-      font-family: inherit;
-      font-size: 13px;
-      outline: none;
-      margin-bottom: 0;
-      text-align: left;
+      flex: 1; padding: 12px 14px; border-radius: 14px; border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.45); color: #fff; font-family: inherit; font-size: 13px; outline: none; margin-bottom: 0; text-align: left;
     }
-
     .lantern-btn {
-      padding: 0 16px;
-      border-radius: 14px;
-      border: none;
-      background: linear-gradient(135deg, #f3d29c, #d4af37);
-      color: #2b102f;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
-      white-space: nowrap;
+      padding: 0 16px; border-radius: 14px; border: none; background: linear-gradient(135deg, #f3d29c, #d4af37);
+      color: #2b102f; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
       box-shadow: 0 4px 15px rgba(243, 210, 156, 0.35);
-      transition: transform 0.2s;
     }
-
     .lantern-btn:active { transform: scale(0.95); }
-
-    .finale-btn-group {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .finale-btn-group { width: 100%; display: flex; flex-direction: column; gap: 10px; }
   </style>
 </head>
 <body>
@@ -788,70 +604,25 @@
   <div id="heartFxLayer"></div>
 
   <button class="music-btn" id="musicBtn" title="Bật / Tắt giai điệu" onclick="toggleMusic()">
-    <svg viewBox="0 0 24 24">
-      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-    </svg>
+    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
   </button>
 
   <div class="book-card" id="mainBookCard">
-    <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
+    <div class="tag-pill" id="headerTagPill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
-    <div class="mascot-stage" onclick="petMascot()" title="Chạm vào Linh Vật 11B7 nhé!">
+    <!-- KHU VỰC LINH VẬT ĐỘNG (SẼ ĐƯỢC CHÈN BẰNG JS TỰ ĐỘNG) -->
+    <div class="mascot-stage" onclick="petCurrentMascot()" title="Chạm vào Linh Vật nhé!">
       <div class="mascot-glow"></div>
-      <svg class="mascot-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M85 88 C108 85, 114 62, 95 56 C86 53, 82 68, 78 78 Z" fill="#ffb3c6"/>
-        <path d="M95 56 C105 59, 108 69, 98 73 C93 67, 92 61, 95 56 Z" fill="#fff5f7"/>
-
-        <g class="ear-left">
-          <path d="M26 52 L18 18 L48 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M28 46 L23 24 L42 36 Z" fill="#ff758f"/>
-        </g>
-
-        <g class="ear-right">
-          <path d="M94 52 L102 18 L72 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M92 46 L97 24 L78 36 Z" fill="#ff758f"/>
-        </g>
-
-        <path d="M48 33 L52 21 L60 28 L68 21 L72 33 Z" fill="#f3d29c" stroke="#fff" stroke-width="1"/>
-        <circle cx="60" cy="18" r="2.2" fill="#ff8fa3"/>
-
-        <path d="M42 82 C42 72, 78 72, 78 82 L82 102 C82 106, 38 106, 38 102 Z" fill="#ffe5ec"/>
-        <path d="M52 84 L60 88 L68 84 L68 92 L60 88 L52 92 Z" fill="#c9184a"/>
-        <circle cx="60" cy="88" r="3" fill="#f3d29c"/>
-
-        <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
-        <path d="M29 62 C29 48, 45 40, 60 40 C75 40, 91 48, 91 62 C83 54, 70 52, 60 62 C50 52, 37 54, 29 62 Z" fill="#ffb3c6"/>
-        
-        <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
-        <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
-
-        <g id="mascotEyesNormal" class="eyes-open">
-          <circle cx="45" cy="63" r="4.2" fill="#2b102f"/>
-          <circle cx="43.5" cy="61.5" r="1.5" fill="#fff"/>
-          <circle cx="75" cy="63" r="4.2" fill="#2b102f"/>
-          <circle cx="73.5" cy="61.5" r="1.5" fill="#fff"/>
-        </g>
-
-        <g id="mascotEyesHappy" style="display: none;">
-          <path d="M40 63 Q45 57 50 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-          <path d="M70 63 Q75 57 80 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-        </g>
-
-        <polygon points="58,67 62,67 60,70" fill="#c9184a"/>
-        <path d="M55 72 Q60 75 60 70 Q60 75 65 72" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
-
-        <path d="M16 42 L18 46 L22 48 L18 50 L16 54 L14 50 L10 48 L14 46 Z" fill="#f3d29c"/>
-        <path d="M104 36 L105.5 39 L108.5 40.5 L105.5 42 L104 45 L102.5 42 L99.5 40.5 L102.5 39 Z" fill="#ff8fa3"/>
-      </svg>
+      <div class="mascot-svg-wrap" id="mascotSvgSlot"></div>
       <div class="mascot-badge" id="mascotBadge">👑</div>
     </div>
 
     <div id="welcomeScreen">
       <h1>Cuốn sổ nhỏ<br><i>dành riêng cho các bạn nữ lớp 11B7</i></h1>
-      <p class="subtitle">Nhập tên của cậu để cùng Linh vật Cáo Tuyết đi qua 7 chặng hành trình tương tác và lời chúc bí mật ngày 20/10 nhé!</p>
+      <p class="subtitle" id="welcomeSubtitle">Nhập tên của cậu để mở hộp mù khám phá Linh vật Hộ mệnh và hành trình tương tác 20/10 nhé!</p>
 
       <input type="text" id="userName" placeholder="Nhập tên của bạn nữ 11B7..." autocomplete="off" />
-      <button class="btn-primary" onclick="openStoryBook()">Bắt đầu hành trình 11B7 📖</button>
+      <button class="btn-primary" onclick="openStoryBook()">Mở hộp mù 11B7 🎁</button>
     </div>
 
     <div id="storyScreen">
@@ -879,47 +650,56 @@
           <div class="page-quote" id="chapterQuote"></div>
         </div>
 
+        <!-- CÁC MINI-GAME LUÂN PHIÊN -->
         <div class="interactive-stage" id="gameFlowerStage">
           <div>
-            <div class="game-title">🌱 Trạm Tương Tác 1 · Ươm Mầm Hoa 11B7</div>
-            <div class="game-desc">Hãy chạm 3 lần vào mầm cây để truyền năng lượng giúp đóa hoa thanh xuân bung nở và mở khóa trang thư tiếp theo!</div>
+            <div class="game-title">🌱 Trạm Tương Tác · Ươm Mầm Hoa 11B7</div>
+            <div class="game-desc">Hãy chạm 3 lần vào mầm cây để truyền năng lượng giúp đóa hoa bung nở và đi tiếp nhé!</div>
           </div>
           <div class="flower-pot" id="flowerPot" onclick="tapFlower()">🌱</div>
           <div style="width: 100%;">
-            <div class="progress-track">
-              <div class="progress-fill" id="flowerBar"></div>
-            </div>
+            <div class="progress-track"><div class="progress-fill" id="flowerBar"></div></div>
             <div class="game-status" id="flowerStatus">Chạm vào mầm cây (0 / 3) 💧</div>
           </div>
         </div>
 
         <div class="interactive-stage" id="gameStarStage">
           <div>
-            <div class="game-title">🌟 Trạm Tương Tác 2 · Thu Thập Sao May Mắn</div>
-            <div class="game-desc">Chạm vào cả 5 ngôi sao dưới đây để gom trọn bộ vía may mắn trước khi bước vào trang lời chúc học tập nhé!</div>
+            <div class="game-title">🌟 Trạm Tương Tác · Bắt Sao Ước Nguyện</div>
+            <div class="game-desc">Chạm vào cả 5 ngôi sao dưới đây để gom trọn bộ may mắn trước khi đi tiếp!</div>
           </div>
           <div class="star-sky" id="starContainer"></div>
           <div class="game-status" id="starStatus">Đã thu thập: 0 / 5 ngôi sao ✨</div>
         </div>
 
+        <div class="interactive-stage" id="gameCookieStage">
+          <div>
+            <div class="game-title">🥠 Trạm Tương Tác · Bẻ Bánh May Mắn</div>
+            <div class="game-desc">Chạm vào chiếc bánh quy giòn tan để bẻ đôi và rút dải ruy băng bí mật!</div>
+          </div>
+          <div class="fortune-cookie-btn" id="cookieBtn" onclick="crackFortuneCookie()">🥠</div>
+          <div class="fortune-strip" id="fortuneStrip"></div>
+          <div class="game-status" id="cookieStatus">Chạm vào bánh quy để bẻ đôi ✨</div>
+        </div>
+
+        <div class="interactive-stage" id="gameGiftStage">
+          <div>
+            <div class="game-title">🎁 Trạm Tương Tác · Hộp Quà Bí Mật</div>
+            <div class="game-desc">Một hộp quà bất ngờ từ tập thể 11B7, hãy chạm để mở nắp hộp nhé!</div>
+          </div>
+          <div class="gift-box-btn" id="giftBoxBtn" onclick="openMysteryGift()">🎁</div>
+          <div class="game-status" id="giftStatus">Chạm vào hộp quà để mở nắp ✨</div>
+        </div>
+
         <div class="interactive-stage" id="gameTarotStage">
           <div>
-            <div class="game-title">🔮 Trạm Tương Tác 3 · Lá Bài Tiên Tri 20/10</div>
-            <div class="game-desc">Hãy chọn 1 trong 3 lá bài bí ẩn để nhận thông điệp vũ trụ gửi riêng cho cậu trước khi mở chặng cuối!</div>
+            <div class="game-title">🔮 Trạm Tương Tác · Lá Bài Tiên Tri 20/10</div>
+            <div class="game-desc">Hãy chọn 1 trong 3 lá bài để nhận thông điệp vũ trụ gửi riêng cho cậu!</div>
           </div>
           <div class="tarot-deck">
-            <div class="tarot-card" id="tarot0" onclick="pickTarot(0)">
-              <div class="tarot-icon">☀️</div>
-              <div class="tarot-label">Mặt Trời</div>
-            </div>
-            <div class="tarot-card" id="tarot1" onclick="pickTarot(1)">
-              <div class="tarot-icon">🌙</div>
-              <div class="tarot-label">Ánh Trăng</div>
-            </div>
-            <div class="tarot-card" id="tarot2" onclick="pickTarot(2)">
-              <div class="tarot-icon">⭐</div>
-              <div class="tarot-label">Tinh Tú</div>
-            </div>
+            <div class="tarot-card" id="tarot0" onclick="pickTarot(0)"><div class="tarot-icon">☀️</div><div class="tarot-label">Mặt Trời</div></div>
+            <div class="tarot-card" id="tarot1" onclick="pickTarot(1)"><div class="tarot-icon">🌙</div><div class="tarot-label">Ánh Trăng</div></div>
+            <div class="tarot-card" id="tarot2" onclick="pickTarot(2)"><div class="tarot-icon">⭐</div><div class="tarot-label">Tinh Tú</div></div>
           </div>
           <div class="game-status" id="tarotStatus">Chạm vào 1 lá bài bất kỳ để lật mở ✨</div>
         </div>
@@ -933,7 +713,7 @@
       </div>
 
       <div class="bottom-links">
-        <button class="link-action" onclick="regenerateBook()">🎲 Đổi bộ lời chúc khác</button>
+        <button class="link-action" onclick="regenerateBook()">🎲 Đổi bộ trải nghiệm khác</button>
         <button class="link-action" onclick="resetToHome()">Nhập tên bạn khác</button>
       </div>
     </div>
@@ -942,114 +722,24 @@
   <!-- MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE) -->
   <div id="finaleScreen">
     <div class="finale-box">
-      <div class="finale-badge">👑 FOREVER 11B7 · 20.10.2026 👑</div>
+      <div class="finale-badge" id="finaleBadgeText">👑 FOREVER 11B7 · 20.10.2026 👑</div>
       <h2 class="finale-title">Gửi <span><span id="finaleReceiver"></span>!</span></h2>
       
-      <!-- BÉ CÁO CỬU VĨ NÂNG CẤP -->
-      <div class="super-mascot-container" onclick="petSuperMascot(event)" title="Chạm vào Bé Cáo Cửu Vĩ nhé!">
+      <div class="super-mascot-container" onclick="petSuperMascot(event)" title="Chạm vào Linh Vật nhé!">
         <div class="super-halo-ring"></div>
         <div class="super-glow-back"></div>
-
-        <svg class="super-mascot-svg" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g class="tail-left-outer">
-            <path d="M45 110 C15 95, 8 60, 24 45 C35 34, 45 55, 48 95 Z" fill="url(#tailGrad)" opacity="0.85"/>
-            <path d="M24 45 C18 50, 20 62, 28 65 C32 55, 30 48, 24 45 Z" fill="#fff5f7"/>
-          </g>
-          <g class="tail-left-inner">
-            <path d="M52 112 C28 95, 25 58, 42 42 C54 30, 60 55, 58 98 Z" fill="url(#tailGrad)" opacity="0.95"/>
-            <path d="M42 42 C36 48, 38 58, 46 60 C50 50, 48 44, 42 42 Z" fill="#fff5f7"/>
-          </g>
-          <g class="tail-center">
-            <path d="M75 115 C60 85, 62 40, 75 25 C88 40, 90 85, 75 115 Z" fill="url(#tailGrad)"/>
-            <path d="M75 25 C70 32, 72 42, 75 45 C78 42, 80 32, 75 25 Z" fill="#fff5f7"/>
-          </g>
-          <g class="tail-right-inner">
-            <path d="M98 112 C122 95, 125 58, 108 42 C96 30, 90 55, 92 98 Z" fill="url(#tailGrad)" opacity="0.95"/>
-            <path d="M108 42 C114 48, 112 58, 104 60 C100 50, 102 44, 108 42 Z" fill="#fff5f7"/>
-          </g>
-          <g class="tail-right-outer">
-            <path d="M105 110 C135 95, 142 60, 126 45 C115 34, 105 55, 102 95 Z" fill="url(#tailGrad)" opacity="0.85"/>
-            <path d="M126 45 C132 50, 130 62, 122 65 C118 55, 120 48, 126 45 Z" fill="#fff5f7"/>
-          </g>
-
-          <g class="wing-left">
-            <path d="M42 85 C22 75, 18 55, 30 50 C40 45, 48 65, 48 85 Z" fill="rgba(243, 210, 156, 0.45)" stroke="#f3d29c" stroke-width="1.2"/>
-            <path d="M38 80 C26 72, 24 58, 32 54 C38 50, 44 65, 44 80 Z" fill="#fff" opacity="0.7"/>
-          </g>
-          <g class="wing-right">
-            <path d="M108 85 C128 75, 132 55, 120 50 C110 45, 102 65, 102 85 Z" fill="rgba(243, 210, 156, 0.45)" stroke="#f3d29c" stroke-width="1.2"/>
-            <path d="M112 80 C124 72, 126 58, 118 54 C112 50, 106 65, 106 80 Z" fill="#fff" opacity="0.7"/>
-          </g>
-
-          <g class="ear-left">
-            <path d="M44 58 L32 20 L68 40 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M46 50 L38 28 L60 40 Z" fill="#ff758f"/>
-          </g>
-          <g class="ear-right">
-            <path d="M106 58 L118 20 L82 40 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M104 50 L112 28 L90 40 Z" fill="#ff758f"/>
-          </g>
-
-          <path d="M52 90 C52 78, 98 78, 98 90 L102 118 C102 124, 48 124, 48 118 Z" fill="#ffe5ec"/>
-          <path d="M50 115 C60 120, 90 120, 100 115" stroke="#f3d29c" stroke-width="2" stroke-linecap="round"/>
-
-          <ellipse cx="75" cy="68" rx="36" ry="28" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.8"/>
-          <path d="M39 68 C39 52, 58 44, 75 44 C92 44, 111 52, 111 68 C102 59, 87 56, 75 68 C63 56, 48 59, 39 68 Z" fill="#ffb3c6"/>
-          
-          <ellipse cx="50" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
-          <ellipse cx="100" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
-
-          <path d="M52 69 Q58 60 64 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
-          <path d="M86 69 Q92 60 98 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
-
-          <polygon points="73,74 77,74 75,77" fill="#c9184a"/>
-          <path d="M70 79 Q75 83 75 78 Q75 83 80 79" stroke="#2b102f" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-
-          <g class="heart-gem">
-            <path d="M75 92 C68 82, 54 86, 58 100 C62 110, 75 118, 75 118 C75 118, 88 110, 92 100 C96 86, 82 82, 75 92 Z" fill="url(#rubyGrad)" stroke="#f3d29c" stroke-width="1.5"/>
-            <path d="M63 90 C60 94, 62 100, 66 102" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
-          </g>
-          <ellipse cx="56" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
-          <ellipse cx="94" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
-
-          <path d="M60 38 L65 20 L75 30 L85 20 L90 38 Z" fill="url(#goldGrad)" stroke="#fff" stroke-width="1.2"/>
-          <circle cx="75" cy="18" r="3.2" fill="#ff4d6d"/>
-          <circle cx="65" cy="19" r="2.2" fill="#f3d29c"/>
-          <circle cx="85" cy="19" r="2.2" fill="#f3d29c"/>
-
-          <defs>
-            <linearGradient id="tailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ffccd5"/>
-              <stop offset="60%" stop-color="#ff758f"/>
-              <stop offset="100%" stop-color="#c9184a"/>
-            </linearGradient>
-            <linearGradient id="rubyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ff758f"/>
-              <stop offset="50%" stop-color="#c9184a"/>
-              <stop offset="100%" stop-color="#800f2f"/>
-            </linearGradient>
-            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#fff"/>
-              <stop offset="40%" stop-color="#f3d29c"/>
-              <stop offset="100%" stop-color="#d4af37"/>
-            </linearGradient>
-          </defs>
-        </svg>
+        <div id="superMascotSvgSlot" style="width:100%; height:100%; display:flex; justify-content:center; align-items:center;"></div>
       </div>
 
-      <!-- NÚT BỘ ĐẾM THẢ TIM CHẠM THÍCH TAY -->
       <div class="tap-heart-hint" id="heartCountBadge" onclick="triggerHeartBurst(event)">
-        💖 Chạm vào đây hoặc màn hình: <b id="heartCountNum" style="color:#fff; font-size:14px; margin: 0 2px;">0</b> ❤️
+        💖 Chạm vào màn hình để thả tim: <b id="heartCountNum" style="color:#fff; font-size:14px; margin: 0 2px;">0</b> ❤️
       </div>
 
       <div class="finale-wish-card">
-        <div class="finale-wish-body" id="finaleWishText">
-          Cảm ơn cậu vì đã luôn là một mảnh ghép thanh xuân tuyệt vời của đại gia đình 11B7! Chúc cậu không chỉ riêng ngày 20/10 mà suốt 365 ngày trong năm luôn rạng rỡ, bình yên, nụ cười luôn tỏa nắng trên môi và được cả thế giới này yêu thương! 💖
-        </div>
+        <div class="finale-wish-body" id="finaleWishText"></div>
         <div class="finale-quote">“Thanh xuân rực rỡ nhất là khi có các bông hoa 11B7!”</div>
       </div>
 
-      <!-- KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN NÂNG CẤP CHỈN CHU -->
       <div class="sky-lantern-card">
         <div class="lantern-title">🏮 Thả Đèn Trời Ước Nguyện 11B7</div>
         <div class="lantern-desc">Gửi gắm một điều ước để chiếc đèn lồng mang lên bầu trời sao nhé:</div>
@@ -1067,75 +757,142 @@
   </div>
 
   <script>
+    // =====================================================
+    // 1. KHO ĐỒ HỌA 3 LINH VẬT ĐỘC QUYỀN (SVG DẠNG CODE)
+    // =====================================================
+    const mascotTemplates = [
+      // 0: BÉ CÁO TUYẾT ÁNH SAO (KITSUNE)
+      {
+        id: "fox",
+        name: "Cáo Tuyết Ánh Sao",
+        badge: "🦊",
+        titlePill: "✦ HỘ MỆNH: CÁO TUYẾT ÁNH SAO · 11B7 ✦",
+        svg: `
+          <svg viewBox="0 0 120 120" fill="none" style="width:100%; height:100%;">
+            <path d="M85 88 C108 85, 114 62, 95 56 C86 53, 82 68, 78 78 Z" fill="#ffb3c6"/>
+            <path d="M95 56 C105 59, 108 69, 98 73 C93 67, 92 61, 95 56 Z" fill="#fff5f7"/>
+            <g><path d="M26 52 L18 18 L48 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M28 46 L23 24 L42 36 Z" fill="#ff758f"/></g>
+            <g><path d="M94 52 L102 18 L72 36 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.5"/><path d="M92 46 L97 24 L78 36 Z" fill="#ff758f"/></g>
+            <path d="M48 33 L52 21 L60 28 L68 21 L72 33 Z" fill="#f3d29c" stroke="#fff" stroke-width="1"/><circle cx="60" cy="18" r="2.2" fill="#ff8fa3"/>
+            <path d="M42 82 C42 72, 78 72, 78 82 L82 102 C82 106, 38 106, 38 102 Z" fill="#ffe5ec"/>
+            <ellipse cx="60" cy="62" rx="31" ry="25" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.5"/>
+            <path d="M29 62 C29 48, 45 40, 60 40 C75 40, 91 48, 91 62 C83 54, 70 52, 60 62 C50 52, 37 54, 29 62 Z" fill="#ffb3c6"/>
+            <ellipse cx="39" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
+            <ellipse cx="81" cy="69" rx="5.5" ry="3.2" fill="#ff758f" opacity="0.65"/>
+            <circle cx="45" cy="63" r="4.2" fill="#2b102f"/><circle cx="43.5" cy="61.5" r="1.5" fill="#fff"/>
+            <circle cx="75" cy="63" r="4.2" fill="#2b102f"/><circle cx="73.5" cy="61.5" r="1.5" fill="#fff"/>
+            <polygon points="58,67 62,67 60,70" fill="#c9184a"/>
+            <path d="M55 72 Q60 75 60 70 Q60 75 65 72" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        `
+      },
+      // 1: BÉ MÈO THẦN TÀI THIÊN HÀ (LUCKY NEKO)
+      {
+        id: "cat",
+        name: "Mèo Thần Tài Thiên Hà",
+        badge: "🐱",
+        titlePill: "✦ HỘ MỆNH: MÈO MAY MẮN · 11B7 ✦",
+        svg: `
+          <svg viewBox="0 0 120 120" fill="none" style="width:100%; height:100%;">
+            <!-- Tai mèo tròn viền vàng -->
+            <path d="M30 50 L25 24 L52 38 Z" fill="#fff" stroke="#f3d29c" stroke-width="1.8"/>
+            <path d="M32 44 L29 30 L46 38 Z" fill="#ff8fa3"/>
+            <path d="M90 50 L95 24 L68 38 Z" fill="#fff" stroke="#f3d29c" stroke-width="1.8"/>
+            <path d="M88 44 L91 30 L74 38 Z" fill="#ff8fa3"/>
+            <!-- Thân mèo tròn mũm mĩm -->
+            <ellipse cx="60" cy="88" rx="28" ry="24" fill="#fff" stroke="#f3d29c" stroke-width="1.5"/>
+            <!-- Vòng chuông vàng may mắn -->
+            <rect x="42" y="80" width="36" height="6" rx="3" fill="#c9184a"/>
+            <circle cx="60" cy="85" r="5" fill="#f3d29c" stroke="#fff" stroke-width="1"/>
+            <!-- Mặt mèo tròn -->
+            <ellipse cx="60" cy="60" rx="33" ry="27" fill="#fff" stroke="#f3d29c" stroke-width="1.8"/>
+            <ellipse cx="40" cy="67" rx="6" ry="3.5" fill="#ff758f" opacity="0.6"/>
+            <ellipse cx="80" cy="67" rx="6" ry="3.5" fill="#ff758f" opacity="0.6"/>
+            <!-- Mắt mèo lấp lánh sao -->
+            <circle cx="46" cy="60" r="4.5" fill="#2b102f"/><circle cx="44.5" cy="58.5" r="1.6" fill="#fff"/>
+            <circle cx="74" cy="60" r="4.5" fill="#2b102f"/><circle cx="72.5" cy="58.5" r="1.6" fill="#fff"/>
+            <!-- Mũi miệng mèo -->
+            <polygon points="58,64 62,64 60,67" fill="#ff758f"/>
+            <path d="M55 69 Q60 72 60 68 Q60 72 65 69" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <!-- Tay mèo vẫy lộc may mắn -->
+            <ellipse cx="86" cy="74" rx="7" ry="11" fill="#fff" stroke="#f3d29c" stroke-width="1.5" transform="rotate(-20 86 74)"/>
+            <path d="M86 64 L86 68" stroke="#ff758f" stroke-width="1.5"/>
+          </svg>
+        `
+      },
+      // 2: BÉ THỎ NGỌC CUNG TRĂNG (MOON BUNNY)
+      {
+        id: "bunny",
+        name: "Thỏ Ngọc Cung Trăng",
+        badge: "🐰",
+        titlePill: "✦ HỘ MỆNH: THỎ NGỌC BÌNH YÊN · 11B7 ✦",
+        svg: `
+          <svg viewBox="0 0 120 120" fill="none" style="width:100%; height:100%;">
+            <!-- Đôi tai thỏ dài thẳng đứng -->
+            <ellipse cx="44" cy="30" rx="9" ry="24" fill="#fff" stroke="#f3d29c" stroke-width="1.8" transform="rotate(-8 44 30)"/>
+            <ellipse cx="44" cy="30" rx="5" ry="17" fill="#ffb3c6" transform="rotate(-8 44 30)"/>
+            <ellipse cx="76" cy="30" rx="9" ry="24" fill="#fff" stroke="#f3d29c" stroke-width="1.8" transform="rotate(8 76 30)"/>
+            <ellipse cx="76" cy="30" rx="5" ry="17" fill="#ffb3c6" transform="rotate(8 76 30)"/>
+            <!-- Vương miện hoa trên đầu -->
+            <circle cx="50" cy="46" r="3" fill="#ff8fa3"/><circle cx="60" cy="44" r="3.5" fill="#f3d29c"/><circle cx="70" cy="46" r="3" fill="#ff8fa3"/>
+            <!-- Thân thỏ -->
+            <ellipse cx="60" cy="90" rx="26" ry="22" fill="#fff" stroke="#f3d29c" stroke-width="1.5"/>
+            <!-- Đầu thỏ bầu bĩnh -->
+            <ellipse cx="60" cy="64" rx="31" ry="26" fill="#fff" stroke="#f3d29c" stroke-width="1.8"/>
+            <ellipse cx="41" cy="71" rx="5.5" ry="3.5" fill="#ff758f" opacity="0.65"/>
+            <ellipse cx="79" cy="71" rx="5.5" ry="3.5" fill="#ff758f" opacity="0.65"/>
+            <!-- Mắt híp cười dịu dàng -->
+            <path d="M44 63 Q48 57 52 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+            <path d="M68 63 Q72 57 76 63" stroke="#2b102f" stroke-width="2.6" stroke-linecap="round" fill="none"/>
+            <!-- Mũi miệng chữ Y -->
+            <polygon points="58,66 62,66 60,69" fill="#c9184a"/>
+            <path d="M60 69 L60 72 M57 74 Q60 72 60 72 Q60 72 63 74" stroke="#2b102f" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        `
+      }
+    ];
+
+    // =====================================================
+    // 2. KHO LỜI CHÚC (ĐỘC LẬP THEO TỪNG TRANG)
+    // =====================================================
     const poolTrang1 = [
-      { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
+      { text: "Chào {name} – đóa hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
       { text: "Gửi {name} – cô gái luôn mang lại năng lượng tích cực cho cả lớp 11B7. Chúc cậu ngày 20/10 thật trọn vẹn và nhận được thật nhiều yêu thương!", quote: "“Mỗi cô gái là một bản nhạc tuyệt vời.”" },
-      { text: "Chúc {name} ngày Phụ nữ Việt Nam tràn ngập tiếng cười. Mong rằng thanh xuân cấp 3 của cậu sẽ luôn có những kỷ niệm đẹp nhất bên tập thể 11B7!", quote: "“Tươi trẻ, tự tin và tỏa sáng.”" },
-      { text: "Món quà nhỏ từ cuốn sổ 11B7 gửi tặng {name}. Chúc cậu luôn an nhiên, đáng yêu và mãi là niềm tự hào của gia đình và bạn bè nhé!", quote: "“Hạnh phúc bắt nguồn từ những điều giản dị.”" },
-      { text: "Chào {name}, chúc cậu ngày 20/10 nhận được nhiều quà đến mức mỏi tay và những lời chúc ngọt ngào nhất từ những người trân quý!", quote: "“Tháng Mười ngọt ngào dành cho cô gái ngọt ngào.”" },
-      { text: "Chúc {name} bước sang ngày lễ 20/10 với tâm trạng nhẹ nhõm nhất, tạm gác lại mọi bài vở để tận hưởng một ngày trọn vẹn niềm vui!", quote: "“Cứ rạng rỡ thôi, cả thế giới cứ để 11B7 lo.”" },
-      { text: "Gửi đến {name} lời chúc ấm áp nhất từ tập thể 11B7. Chúc cậu ngày nào cũng là ngày lễ và luôn được đối xử dịu dàng như một nàng công chúa!", quote: "“Xinh đẹp, rạng ngời và luôn may mắn.”" },
-      { text: "Giữa hàng ngàn điều tình cờ, thật tuyệt vì {name} là một thành viên của 11B7. Chúc cậu có một mùa 20/10 rực rỡ, ấm áp và đáng nhớ nhất!", quote: "“11B7 mãi là ngôi nhà thanh xuân của cậu.”" },
-      { text: "Mở trang đầu tiên, Linh vật Cáo Tuyết gửi tới {name} một giỏ nắng ấm tháng Mười. Chúc cậu hôm nay đi đến đâu cũng gặp niềm vui và sự bất ngờ!", quote: "“Mỗi ngày đến lớp là một ngày vui.”" },
-      { text: "Chúc {name} của lớp 11B7 một ngày 20/10 thật lung linh! Cảm ơn cậu vì đã luôn góp tiếng cười làm nên một tập thể 11B7 đoàn kết và đầy ắp kỷ niệm.", quote: "“Những năm tháng rực rỡ nhất của tuổi học trò.”" },
-      { text: "Hôm nay là ngày tôn vinh những điều đẹp đẽ nhất, và {name} chính là một trong số đó! Chúc cô gái 11B7 một ngày lễ ngập tràn kẹo ngọt và hoa thơm.", quote: "“Bạn xứng đáng với mọi điều tuyệt vời nhất.”" }
+      { text: "Chúc {name} ngày Phụ nữ Việt Nam tràn ngập tiếng cười. Mong rằng thanh xuân cấp 3 của cậu sẽ luôn có những kỷ niệm đẹp nhất bên tập thể 11B7!", quote: "“Tươi trẻ, tự tin và tỏa sáng.”" }
     ];
-
     const poolTrang2 = [
-      { text: "Cảm ơn {name} vừa tưới nở đóa hoa 11B7! Mong cậu cũng luôn giữ được ánh mắt trong veo, nguồn năng lượng tươi trẻ và luôn yêu chiều bản thân thật tốt nhé!", quote: "“Nụ cười của bạn là trang sức đẹp nhất.”" },
+      { text: "Mong {name} luôn giữ được ánh mắt trong veo và nguồn năng lượng tươi trẻ. Dù áp lực học tập thế nào, hãy luôn yêu chiều bản thân thật tốt nhé!", quote: "“Nụ cười của bạn là trang sức đẹp nhất.”" },
       { text: "Chúc {name} ngày càng xinh đẹp, sắc sảo và cuốn hút theo cách riêng. Không cần phải giống bất kỳ ai, vì chính cậu đã là bản thể tuyệt vời nhất rồi!", quote: "“Tự tin tỏa sáng theo cách của bạn.”" },
-      { text: "Gửi {name} ngàn lời chúc tốt đẹp! Mong rằng mỗi ngày bước chân vào lớp 11B7, mọi người lại được ngắm nhìn nụ cười tỏa nắng làm bừng sáng cả khung cửa sổ.", quote: "“Rạng rỡ như những đóa hoa mùa xuân.”" },
-      { text: "Chúc cô gái {name} luôn giữ được sự tự tin, lòng nhân ái và khí chất ngời ngời. Chúc cho mọi dự định sắp tới của cậu đều suôn sẻ!", quote: "“Mỗi bước chân đi đều rực rỡ hoa tươi.”" },
-      { text: "Mong {name} luôn giữ được sự hồn nhiên, tinh tế và trái tim ấm áp. Cảm ơn cậu vì đã luôn là một mảnh ghép dịu dàng của 11B7!", quote: "“Vẻ đẹp của sự tự tin và tri thức.”" },
-      { text: "Chúc {name} lúc nào cũng trẻ trung, yêu đời và tràn đầy sức sống. Hãy cứ bước đi hiên ngang vì phía sau luôn có tập thể 11B7 cổ vũ!", quote: "“Tỏa sáng rực rỡ như những vì sao.”" },
-      { text: "Gửi {name}: Chúc cậu sở hữu một phong thái tự tin, một nụ cười không bao giờ tắt và một trái tim luôn đong đầy nhiệt huyết thanh xuân!", quote: "“Sống rực rỡ như ánh dương rọi chiếu.”" },
-      { text: "Chúc {name} luôn giữ được nét đẹp trong trẻo, nụ cười duyên dáng và một thần thái luôn tràn đầy năng lượng tích cực mỗi ngày!", quote: "“Dịu dàng nhưng không kém phần kiên cường.”" },
-      { text: "Chúc {name} mỗi lần soi gương đều thấy yêu thêm chính mình. Hãy luôn ăn ngon, mặc đẹp, giữ tâm trạng phơi phới và rạng ngời ở tuổi 16, 17 nhé!", quote: "“Đẹp từ tâm hồn đến ánh mắt, nụ cười.”" },
-      { text: "Như đóa hoa vừa nở rộ trên tay cậu, chúc {name} luôn giữ được vẻ ngoài rạng rỡ, lạc quan và thu hút mọi điều tốt lành về phía mình!", quote: "“Hãy là đóa hoa kiêu hãnh nhất.”" },
-      { text: "Chúc {name} luôn mang trong mình sự duyên dáng, thông minh và nét đáng yêu khó lẫn. Sự hiện diện của cậu chính là điểm nhấn tươi sáng của 11B7!", quote: "“Nét duyên thầm làm dịu mát ngày thu.”" },
-      { text: "Mong rằng thời gian chỉ làm {name} thêm phần xinh đẹp, trưởng thành và bản lĩnh hơn, còn những muộn phiền sẽ tự khắc tan biến sau nụ cười của cậu!", quote: "“Nụ cười mở ra vạn điều may.”" }
+      { text: "Gửi {name} ngàn lời chúc tốt đẹp! Mong rằng mỗi ngày bước chân vào lớp 11B7, mọi người lại được ngắm nhìn nụ cười tỏa nắng làm bừng sáng cả khung cửa sổ.", quote: "“Rạng rỡ như những đóa hoa mùa xuân.”" }
     ];
-
     const poolTrang3 = [
-      { text: "5 ngôi sao may mắn đã nằm gọn trong tay {name}! Chúc cậu trong năm học lớp 11 này luôn bứt phá mạnh mẽ, bài kiểm tra hay kỳ thi nào cũng điểm cao chót vót!", quote: "“Bản lĩnh vững vàng, tương lai rộng mở.”" },
+      { text: "Chúc {name} trong năm học lớp 11 này luôn bứt phá mạnh mẽ, bài kiểm tra hay kỳ thi nào cũng điểm cao chót vót và vượt mọi mốc son!", quote: "“Bản lĩnh vững vàng, tương lai rộng mở.”" },
       { text: "Mong {name} vừa giữ được trái tim ấm áp, vừa có đủ sự kiên cường để chinh phục mọi mục tiêu học tập. Cả lớp 11B7 sẽ luôn đồng hành cùng cậu!", quote: "“Mọi nỗ lực hôm nay đều sẽ nở hoa.”" },
-      { text: "Chúc {name} học tập thuận lợi, mọi môn học đều qua cửa nhẹ nhàng, luôn tràn đầy cảm hứng sáng tạo và gặt hái thật nhiều điểm 9, điểm 10 đáng tự hào!", quote: "“Chinh phục mọi đỉnh cao tri thức.”" },
-      { text: "Chúc {name} luôn giữ được cái đầu lạnh khi đối mặt với đề khó và một trái tim nóng nhiệt huyết với mọi hoài bão tương lai của mình!", quote: "“Tri thức là sức mạnh tuyệt vời nhất.”" },
-      { text: "Mong rằng trên con đường chinh phục ghế nhà trường và tương lai, {name} sẽ luôn gặp gỡ những điều may mắn và gặt hái trái ngọt xứng đáng.", quote: "“Hành trình vạn dặm bắt đầu từ sự kiên trì.”" },
-      { text: "Chúc {name} luôn giữ vững phong độ học tập đỉnh cao, tự tin phát biểu xây dựng bài và luôn là tấm gương sáng cho cả lớp noi theo!", quote: "“Tự tin, quyết đoán và thành công.”" },
-      { text: "Chúc {name} có một năm học lớp 11 thật đáng nhớ với vô số điểm giỏi, những giải thưởng danh giá và những trải nghiệm tuổi trẻ tuyệt vời!", quote: "“Tương lai thuộc về những ai dám ước mơ.”" },
-      { text: "Chúc {name} luôn tìm thấy niềm vui trong sách vở, sự hào hứng trong bài giảng và sự bứt phá ngoạn mục trong mọi bảng điểm thi đua!", quote: "“Học hết sức, chơi hết mình.”" },
-      { text: "Mọi công thức Toán, Lý, Hóa hay những trang Văn dài sẽ chẳng làm khó được {name}. Chúc cậu học một hiểu mười và luôn đạt kết quả vượt mong đợi!", quote: "“Bình tĩnh, tự tin, ẵm trọn điểm mười.”" },
-      { text: "Chúc cho những ước mơ đại học và dự định tương lai mà {name} đang ấp ủ sẽ từng bước trở thành hiện thực. Cứ kiên trì nhé, cậu làm được mà!", quote: "“Ước mơ lớn bắt đầu từ những trang vở nhỏ.”" },
-      { text: "Mong {name} luôn có những người bạn cùng tiến tuyệt vời trong lớp 11B7, cùng nhau giải bài khó, cùng nhau ôn thi và cùng nhau bước tới thành công!", quote: "“Đi cùng nhau, chúng ta sẽ tiến thật xa.”" },
-      { text: "Chúc {name} luôn giữ được sự tập trung cao độ, trí nhớ siêu phàm và tinh thần minh mẫn để biến mọi kỳ thi trong năm nay thành sân chơi tỏa sáng của riêng mình!", quote: "“Ngôi sao may mắn luôn chiếu rọi bước đường cậu đi.”" }
+      { text: "Chúc {name} học tập thuận lợi, mọi môn học đều qua cửa nhẹ nhàng, luôn tràn đầy cảm hứng sáng tạo và gặt hái thật nhiều điểm 9, điểm 10!", quote: "“Chinh phục mọi đỉnh cao tri thức.”" }
     ];
-
     const poolTrang4 = [
-      { text: "Khép lại hành trình 7 chặng của 11B7, chúc {name} suốt 365 ngày trong năm đều ngập tràn hạnh phúc, bình yên và luôn được mọi người yêu thương vô điều kiện!", quote: "“Happy Women's Day 20.10 · Forever 11B7”" },
-      { text: "Món quà tinh thần nhỏ này xin gửi trọn vẹn may mắn đến {name}. Chúc cậu tối nay ngủ thật ngon, ngày mai đến lớp với thật nhiều năng lượng tươi mới!", quote: "“Bình yên ở trong tâm, hạnh phúc ở tay mình.”" },
+      { text: "Khép lại hành trình 11B7, chúc {name} suốt 365 ngày trong năm đều ngập tràn hạnh phúc, bình yên và luôn được mọi người yêu thương vô điều kiện!", quote: "“Happy Women's Day 20.10 · Forever 11B7”" },
       { text: "Chặng cuối cùng xin dành tặng {name} hai chữ: Hạnh Phúc và Trọn Vẹn. Cảm ơn cậu đã là một phần thanh xuân tuyệt đẹp của 11B7. Chúc mừng ngày 20/10!", quote: "“Chúc cậu một đời an nhiên và rực rỡ.”" },
-      { text: "Chúc {name} luôn giữ được sự ấm áp trong tâm hồn, sự vững chãi trong cuộc sống và luôn có những người bạn tuyệt vời kề vai sát cánh!", quote: "“Thanh xuân 11B7 mãi rực rỡ sắc hồng.”" },
-      { text: "Mong rằng bất cứ khi nào mở trang web này lên, {name} đều mỉm cười vì biết rằng mình luôn là một cô gái vô cùng đặc biệt và đáng trân trọng.", quote: "“Yêu thương bản thân là khởi đầu của mọi vẻ đẹp.”" },
-      { text: "Chúc {name} có một buổi tối 20/10 ngập tràn kỷ niệm đẹp bên gia đình và những người thân yêu. Luôn hạnh phúc và mỉm cười thật nhiều nhé cậu!", quote: "“Được yêu thương là điều hạnh phúc nhất.”" },
-      { text: "Gửi ngàn lời chúc tốt đẹp nhất khép lại cuốn sổ nhỏ. Chúc {name} mãi giữ được trái tim nhiệt huyết và một thanh xuân không có chỗ cho tiếc nuối!", quote: "“Thanh xuân rực rỡ của những đóa hoa 11B7.”" },
-      { text: "Chúc {name} luôn có một bầu trời sức khỏe, một biển cả yêu thương và những tháng ngày học sinh cấp 3 đẹp đẽ nhất bên mái trường này!", quote: "“Mãi là cô gái rạng ngời và kiêu hãnh.”" },
-      { text: "Trang sách khép lại nhưng những điều may mắn dành cho {name} bây giờ mới thực sự bắt đầu. Chúc cậu một tháng Mười ngọt ngào và cả năm suôn sẻ!", quote: "“May mắn luôn mỉm cười với người tử tế.”" },
-      { text: "Dù sau này chúng mình có trưởng thành và đi xa đến đâu, mong {name} sẽ luôn nhớ về mùa 20/10 năm lớp 11B7 thật ấm áp này nhé!", quote: "“Kỷ niệm đẹp sẽ theo ta suốt cuộc đời.”" },
-      { text: "Chúc {name} luôn bước đi dưới ánh nắng rực rỡ, gặp được những người chân thành và đón nhận vạn điều tốt lành trong cả 4 mùa Xuân - Hạ - Thu - Đông!", quote: "“Bốn mùa bình yên, tám hướng thuận lợi.”" },
-      { text: "Lời chúc cuối cùng trong 48 thông điệp của 11B7: Chúc {name} luôn tự do bay nhảy với đam mê, luôn được chở che và mãi là cô gái hạnh phúc nhất!", quote: "“Trọn vẹn yêu thương · 20/10 Tuyệt Vời!”" }
+      { text: "Chúc {name} luôn giữ được sự ấm áp trong tâm hồn, sự vững chãi trong cuộc sống và luôn có những người bạn tuyệt vời kề vai sát cánh!", quote: "“Thanh xuân 11B7 mãi rực rỡ sắc hồng.”" }
     ];
 
     const tarotMessages = [
       "☀️ Quẻ Mặt Trời: Sắp tới cậu sẽ đón nhận một tin cực vui trong học tập và rực rỡ suốt cả tháng!",
       "🌙 Quẻ Ánh Trăng: Tâm hồn an nhiên, mọi điều cậu đang thầm ước nguyện đều sắp thành hiện thực!",
-      "⭐ Quẻ Tinh Tú: Nhân duyên tốt lành, đi đến đâu cũng được bạn bè yêu quý và quý nhân giúp đỡ!"
+      "⭐ Quẻ Tinh Tú: Đi đến đâu cũng được bạn bè yêu quý và quý nhân giúp đỡ!"
+    ];
+
+    const cookieFortunes = [
+      "🥠 “Cậu là một cô gái rất đặc biệt, hãy luôn tin tưởng vào chính mình nhé!”",
+      "🥠 “Tuần mới sẽ có một bất ngờ siêu ngọt ngào gõ cửa bàn học của cậu!”",
+      "🥠 “Mọi sự cố gắng âm thầm của cậu trong năm lớp 11 này đều sẽ được đền đáp xứng đáng!”"
     ];
 
     const starLabels = ["⭐ Xinh Đẹp", "🌟 Điểm 10", "✨ Vui Vẻ", "💫 Tự Tin", "🌠 Hạnh Phúc"];
 
     let currentName = "";
+    let currentMascotIndex = 0;
     let journeySteps = [];
     let currentStepIndex = 0;
     let regenSeed = 0;
@@ -1143,124 +900,124 @@
     let flowerCount = 0;
     let starsCollected = 0;
     let tarotPicked = -1;
+    let cookieCracked = false;
+    let giftOpened = false;
     let isFinaleMode = false;
     let heartTapCount = 0;
 
-    function getIndexByNameAndPage(name, pageSalt, maxLen) {
+    function hashString(str) {
       let hash = 0;
-      const cleanStr = name.trim().toLowerCase() + "_salt_" + pageSalt;
-      for (let i = 0; i < cleanStr.length; i++) {
-        hash = cleanStr.charCodeAt(i) + ((hash << 5) - hash);
-      }
-      return (Math.abs(hash) + regenSeed) % maxLen;
+      for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash);
+      return Math.abs(hash);
     }
 
-    function buildJourneyForUser(name) {
-      const idx1 = getIndexByNameAndPage(name, 101, poolTrang1.length);
-      const idx2 = getIndexByNameAndPage(name, 202, poolTrang2.length);
-      const idx3 = getIndexByNameAndPage(name, 303, poolTrang3.length);
-      const idx4 = getIndexByNameAndPage(name, 404, poolTrang4.length);
+    // =====================================================
+    // 3. KHỞI TẠO HỘP MÙ (BLIND BOX) THEO TÊN HOẶC LẦN TRUY CẬP
+    // =====================================================
+    function selectMascotAndBuild(name) {
+      const hashVal = hashString(name.trim().toLowerCase() + "_" + regenSeed);
+      currentMascotIndex = hashVal % mascotTemplates.length;
+      const mascot = mascotTemplates[currentMascotIndex];
 
+      // Đặt linh vật vào khung
+      document.getElementById("mascotSvgSlot").innerHTML = mascot.svg;
+      document.getElementById("superMascotSvgSlot").innerHTML = mascot.svg;
+      document.getElementById("headerTagPill").textContent = mascot.titlePill;
+      document.getElementById("mascotBadge").textContent = mascot.badge;
+
+      // Danh sách 5 mini-game có sẵn
+      const allMiniGameTypes = ["game_flower", "game_star", "game_cookie", "game_gift", "game_tarot"];
+      // Trộn và lấy ngẫu nhiên 3 game khác nhau
+      const shuffledGames = [...allMiniGameTypes].sort(() => 0.5 - Math.random()).slice(0, 3);
+
+      const pickWish = (arr, salt) => arr[(hashVal + salt) % arr.length];
+
+      const w1 = pickWish(poolTrang1, 11);
+      const w2 = pickWish(poolTrang2, 22);
+      const w3 = pickWish(poolTrang3, 33);
+      const w4 = pickWish(poolTrang4, 44);
+
+      // Cấu trúc 7 chặng đan xen (4 Thư + 3 Mini-game ngẫu nhiên)
       return [
-        {
-          type: "wish",
-          unlocked: false,
-          badge: "💌",
-          sealIcon: "💌",
-          sealName: "Phong Ấn Chặng 1 · Lời Chào",
-          happyEyes: false,
-          chapter: "🌸 Chặng 1 · Thanh Xuân 11B7",
-          body: poolTrang1[idx1].text.replace(/{name}/g, name),
-          quote: poolTrang1[idx1].quote
-        },
-        { type: "game_flower", unlocked: false, badge: "🌱", happyEyes: true },
-        {
-          type: "wish",
-          unlocked: false,
-          badge: "🌹",
-          sealIcon: "🌷",
-          sealName: "Đóa Hoa Đã Nở · Mở Thư Chặng 3",
-          happyEyes: true,
-          chapter: "✨ Chặng 3 · Nụ Cười & Sự Rạng Rỡ",
-          body: poolTrang2[idx2].text.replace(/{name}/g, name),
-          quote: poolTrang2[idx2].quote
-        },
-        { type: "game_star", unlocked: false, badge: "🌟", happyEyes: false },
-        {
-          type: "wish",
-          unlocked: false,
-          badge: "🪄",
-          sealIcon: "🌟",
-          sealName: "Ánh Sao Dẫn Lối · Mở Thư Chặng 5",
-          happyEyes: false,
-          chapter: "💎 Chặng 5 · Điểm Số & Ước Mơ",
-          body: poolTrang3[idx3].text.replace(/{name}/g, name),
-          quote: poolTrang3[idx3].quote
-        },
-        { type: "game_tarot", unlocked: false, badge: "🔮", happyEyes: true },
-        {
-          type: "wish",
-          unlocked: false,
-          badge: "💖",
-          sealIcon: "💝",
-          sealName: "Trái Tim 365 Ngày · Chặng Cuối",
-          happyEyes: true,
-          chapter: "👑 Chặng Cuối · Lời Chúc 365 Ngày",
-          body: poolTrang4[idx4].text.replace(/{name}/g, name),
-          quote: poolTrang4[idx4].quote
-        }
+        { type: "wish", unlocked: false, badge: "💌", sealIcon: "💌", sealName: "Phong Ấn Chặng 1 · Lời Chào", chapter: "🌸 Chặng 1 · Thanh Xuân 11B7", body: w1.text.replace(/{name}/g, name), quote: w1.quote },
+        { type: shuffledGames[0], unlocked: false, badge: "🎮" },
+        { type: "wish", unlocked: false, badge: "🌹", sealIcon: "🌷", sealName: "Mở Khóa Thư Chặng 3", chapter: "✨ Chặng 3 · Nụ Cười & Sự Rạng Rỡ", body: w2.text.replace(/{name}/g, name), quote: w2.quote },
+        { type: shuffledGames[1], unlocked: false, badge: "✨" },
+        { type: "wish", unlocked: false, badge: "🪄", sealIcon: "🌟", sealName: "Mở Khóa Thư Chặng 5", chapter: "💎 Chặng 5 · Điểm Số & Ước Mơ", body: w3.text.replace(/{name}/g, name), quote: w3.quote },
+        { type: shuffledGames[2], unlocked: false, badge: "🔮" },
+        { type: "wish", unlocked: false, badge: "💖", sealIcon: "💝", sealName: "Trái Tim 365 Ngày · Chặng Cuối", chapter: "👑 Chặng Cuối · Lời Chúc 365 Ngày", body: w4.text.replace(/{name}/g, name), quote: w4.quote }
       ];
     }
 
-    function resetMiniGames() {
+    // Hiển thị linh vật mặc định khi vừa vào web
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("mascotSvgSlot").innerHTML = mascotTemplates[0].svg;
+    });
+
+    function resetAllMiniGames() {
       flowerCount = 0;
       const pot = document.getElementById("flowerPot");
-      pot.textContent = "🌱";
-      pot.classList.remove("bloomed");
-      document.getElementById("flowerBar").style.width = "0%";
-      document.getElementById("flowerStatus").textContent = "Chạm vào mầm cây (0 / 3) 💧";
+      if (pot) {
+        pot.textContent = "🌱";
+        pot.classList.remove("bloomed");
+        document.getElementById("flowerBar").style.width = "0%";
+        document.getElementById("flowerStatus").textContent = "Chạm vào mầm cây (0 / 3) 💧";
+      }
 
       starsCollected = 0;
       const starBox = document.getElementById("starContainer");
-      starBox.innerHTML = "";
-      starLabels.forEach((label, idx) => {
-        const pill = document.createElement("button");
-        pill.className = "star-pill";
-        pill.style.animationDelay = `${idx * 0.2}s`;
-        pill.textContent = label;
-        pill.onclick = () => collectStar(pill);
-        starBox.appendChild(pill);
-      });
-      document.getElementById("starStatus").textContent = "Đã thu thập: 0 / 5 ngôi sao ✨";
+      if (starBox) {
+        starBox.innerHTML = "";
+        starLabels.forEach((label, idx) => {
+          const pill = document.createElement("button");
+          pill.className = "star-pill";
+          pill.style.animationDelay = `${idx * 0.2}s`;
+          pill.textContent = label;
+          pill.onclick = () => collectStar(pill);
+          starBox.appendChild(pill);
+        });
+        document.getElementById("starStatus").textContent = "Đã thu thập: 0 / 5 ngôi sao ✨";
+      }
+
+      cookieCracked = false;
+      const cookieBtn = document.getElementById("cookieBtn");
+      if (cookieBtn) {
+        cookieBtn.textContent = "🥠";
+        cookieBtn.style.transform = "none";
+        document.getElementById("fortuneStrip").style.display = "none";
+        document.getElementById("cookieStatus").textContent = "Chạm vào bánh quy để bẻ đôi ✨";
+      }
+
+      giftOpened = false;
+      const giftBtn = document.getElementById("giftBoxBtn");
+      if (giftBtn) {
+        giftBtn.textContent = "🎁";
+        document.getElementById("giftStatus").textContent = "Chạm vào hộp quà để mở nắp ✨";
+      }
 
       tarotPicked = -1;
       for (let i = 0; i < 3; i++) {
-        document.getElementById("tarot" + i).classList.remove("picked");
+        const t = document.getElementById("tarot" + i);
+        if (t) t.classList.remove("picked");
       }
-      document.getElementById("tarotStatus").textContent = "Chạm vào 1 lá bài bất kỳ để lật mở ✨";
+      const ts = document.getElementById("tarotStatus");
+      if (ts) ts.textContent = "Chạm vào 1 lá bài bất kỳ để lật mở ✨";
     }
 
+    // XỬ LÝ CÁC GAME
     function tapFlower() {
       if (flowerCount >= 3) return;
       flowerCount++;
       playUnlockChime();
       burstSparkles();
-
       const pot = document.getElementById("flowerPot");
       const bar = document.getElementById("flowerBar");
       const status = document.getElementById("flowerStatus");
-
       bar.style.width = `${(flowerCount / 3) * 100}%`;
-
-      if (flowerCount === 1) {
-        pot.textContent = "🌿";
-        status.textContent = "Cây đang lớn rồi! Chạm tiếp nhé (1 / 3) 🌤️";
-      } else if (flowerCount === 2) {
-        pot.textContent = "🌷";
-        status.textContent = "Nụ hoa sắp nở rồi! Chạm thêm 1 lần nữa (2 / 3) ✨";
-      } else if (flowerCount === 3) {
-        pot.textContent = "🌸";
-        pot.classList.add("bloomed");
+      if (flowerCount === 1) { pot.textContent = "🌿"; status.textContent = "Cây đang lớn rồi! Chạm tiếp nhé (1 / 3) 🌤️"; }
+      else if (flowerCount === 2) { pot.textContent = "🌷"; status.textContent = "Nụ hoa sắp nở rồi! Thêm 1 lần nữa (2 / 3) ✨"; }
+      else if (flowerCount === 3) {
+        pot.textContent = "🌸"; pot.classList.add("bloomed");
         status.textContent = "🎉 Hoa đã nở rực rỡ! Bấm 'Chặng tiếp →' nhé!";
         journeySteps[currentStepIndex].unlocked = true;
         updateNavButtons();
@@ -1273,65 +1030,48 @@
       starsCollected++;
       playUnlockChime();
       burstSparkles();
-
       const status = document.getElementById("starStatus");
-      if (starsCollected < 5) {
-        status.textContent = `Đã thu thập: ${starsCollected} / 5 ngôi sao ✨`;
-      } else {
-        status.textContent = "🎉 Đã gom đủ 5 ngôi sao may mắn! Bấm 'Chặng tiếp →' nhé!";
+      if (starsCollected < 5) status.textContent = `Đã thu thập: ${starsCollected} / 5 ngôi sao ✨`;
+      else {
+        status.textContent = "🎉 Đã gom đủ 5 ngôi sao! Bấm 'Chặng tiếp →' nhé!";
         journeySteps[currentStepIndex].unlocked = true;
         updateNavButtons();
       }
     }
 
-    function pickTarot(cardIdx) {
-      tarotPicked = cardIdx;
-      for (let i = 0; i < 3; i++) {
-        document.getElementById("tarot" + i).classList.toggle("picked", i === cardIdx);
-      }
+    function crackFortuneCookie() {
+      if (cookieCracked) return;
+      cookieCracked = true;
       playUnlockChime();
       burstSparkles();
-
-      document.getElementById("tarotStatus").textContent = tarotMessages[cardIdx];
+      document.getElementById("cookieBtn").textContent = "✨";
+      const strip = document.getElementById("fortuneStrip");
+      strip.textContent = cookieFortunes[Math.floor(Math.random() * cookieFortunes.length)];
+      strip.style.display = "block";
+      document.getElementById("cookieStatus").textContent = "🎉 Đã nhận thông điệp! Bấm 'Chặng tiếp →' nhé!";
       journeySteps[currentStepIndex].unlocked = true;
       updateNavButtons();
     }
 
-    function updateMascotMood(badgeIcon, isHappyEyes) {
-      const badgeEl = document.getElementById("mascotBadge");
-      badgeEl.textContent = badgeIcon;
-      badgeEl.style.animation = "none";
-      void badgeEl.offsetWidth;
-      badgeEl.style.animation = "popBadge 0.4s cubic-bezier(0.22, 1, 0.36, 1)";
-
-      document.getElementById("mascotEyesNormal").style.display = isHappyEyes ? "none" : "block";
-      document.getElementById("mascotEyesHappy").style.display = isHappyEyes ? "block" : "none";
+    function openMysteryGift() {
+      if (giftOpened) return;
+      giftOpened = true;
+      playUnlockChime();
+      burstSparkles();
+      document.getElementById("giftBoxBtn").textContent = "🎉";
+      document.getElementById("giftStatus").textContent = "✨ Danh hiệu: Cô gái rạng ngời nhất 11B7! Bấm 'Chặng tiếp →' nhé!";
+      journeySteps[currentStepIndex].unlocked = true;
+      updateNavButtons();
     }
 
-    function petMascot() {
-      burstSparkles();
+    function pickTarot(cardIdx) {
+      tarotPicked = cardIdx;
+      for (let i = 0; i < 3; i++) document.getElementById("tarot" + i).classList.toggle("picked", i === cardIdx);
       playUnlockChime();
-      const happyEl = document.getElementById("mascotEyesHappy");
-      const normalEl = document.getElementById("mascotEyesNormal");
-      normalEl.style.display = "none";
-      happyEl.style.display = "block";
-      setTimeout(() => {
-        if (journeySteps.length > 0) {
-          updateMascotMood(journeySteps[currentStepIndex].badge, journeySteps[currentStepIndex].happyEyes);
-        } else {
-          normalEl.style.display = "block";
-          happyEl.style.display = "none";
-        }
-      }, 900);
-    }
-
-    function petSuperMascot(e) {
-      e.stopPropagation();
       burstSparkles();
-      playUnlockChime();
-      for (let i = 0; i < 2; i++) {
-        setTimeout(() => burstSparkles(), i * 200);
-      }
+      document.getElementById("tarotStatus").textContent = tarotMessages[cardIdx];
+      journeySteps[currentStepIndex].unlocked = true;
+      updateNavButtons();
     }
 
     function openStoryBook() {
@@ -1351,9 +1091,9 @@
       document.getElementById("finaleReceiver").textContent = currentName;
       document.getElementById("heartCountNum").textContent = heartTapCount;
 
-      journeySteps = buildJourneyForUser(currentName);
+      journeySteps = selectMascotAndBuild(currentName);
       currentStepIndex = 0;
-      resetMiniGames();
+      resetAllMiniGames();
 
       document.getElementById("welcomeScreen").style.display = "none";
       document.getElementById("finaleScreen").style.display = "none";
@@ -1376,9 +1116,7 @@
       const lastStep = journeySteps[6];
       document.getElementById("finaleWishText").textContent = lastStep.body;
 
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => burstSparkles(), i * 300);
-      }
+      for (let i = 0; i < 4; i++) setTimeout(() => burstSparkles(), i * 300);
       playUnlockChime();
     }
 
@@ -1395,9 +1133,7 @@
       updateNavButtons();
 
       if (currentStepIndex === 6) {
-        setTimeout(() => {
-          triggerFullscreenFinale();
-        }, 1200);
+        setTimeout(() => triggerFullscreenFinale(), 1200);
       }
     }
 
@@ -1419,36 +1155,31 @@
       prevBtn.disabled = currentStepIndex === 0;
       nextBtn.disabled = !step.unlocked;
 
-      if (currentStepIndex === journeySteps.length - 1) {
-        nextBtn.textContent = "Phóng To Kết Thúc 🌟";
-      } else if (!step.unlocked) {
-        nextBtn.textContent = "Hoàn thành để mở khóa 🔒";
-      } else {
-        nextBtn.textContent = "Chặng tiếp →";
-      }
+      if (currentStepIndex === journeySteps.length - 1) nextBtn.textContent = "Phóng To Kết Thúc 🌟";
+      else if (!step.unlocked) nextBtn.textContent = "Hoàn thành để mở khóa 🔒";
+      else nextBtn.textContent = "Chặng tiếp →";
     }
 
     function updatePageView() {
       const step = journeySteps[currentStepIndex];
       const sealOverlay = document.getElementById("sealOverlay");
       const wishStage = document.getElementById("wishStage");
-      const flowerStage = document.getElementById("gameFlowerStage");
-      const starStage = document.getElementById("gameStarStage");
-      const tarotStage = document.getElementById("gameTarotStage");
 
       document.getElementById("pageIndicator").textContent = `Chặng ${currentStepIndex + 1} / ${journeySteps.length}`;
 
+      // Ẩn tất cả các trạm
       wishStage.style.display = "none";
-      flowerStage.style.display = "none";
-      starStage.style.display = "none";
-      tarotStage.style.display = "none";
+      document.getElementById("gameFlowerStage").style.display = "none";
+      document.getElementById("gameStarStage").style.display = "none";
+      document.getElementById("gameCookieStage").style.display = "none";
+      document.getElementById("gameGiftStage").style.display = "none";
+      document.getElementById("gameTarotStage").style.display = "none";
 
       if (step.type === "wish") {
         wishStage.style.display = "flex";
         document.getElementById("chapterTitle").textContent = step.chapter;
         document.getElementById("chapterBody").textContent = step.body;
         document.getElementById("chapterQuote").textContent = step.quote;
-
         document.getElementById("sealIcon").textContent = step.sealIcon;
         document.getElementById("sealTitle").textContent = step.sealName;
 
@@ -1461,12 +1192,12 @@
         }
       } else {
         sealOverlay.classList.add("unlocked");
-        if (step.type === "game_flower") flowerStage.style.display = "flex";
-        if (step.type === "game_star") starStage.style.display = "flex";
-        if (step.type === "game_tarot") tarotStage.style.display = "flex";
+        if (step.type === "game_flower") document.getElementById("gameFlowerStage").style.display = "flex";
+        if (step.type === "game_star") document.getElementById("gameStarStage").style.display = "flex";
+        if (step.type === "game_cookie") document.getElementById("gameCookieStage").style.display = "flex";
+        if (step.type === "game_gift") document.getElementById("gameGiftStage").style.display = "flex";
+        if (step.type === "game_tarot") document.getElementById("gameTarotStage").style.display = "flex";
       }
-
-      updateMascotMood(step.badge, step.happyEyes);
 
       const dots = document.querySelectorAll(".dot");
       dots.forEach((d, idx) => d.classList.toggle("active", idx === currentStepIndex));
@@ -1487,6 +1218,18 @@
       updatePageView();
     }
 
+    function petCurrentMascot() {
+      burstSparkles();
+      playUnlockChime();
+    }
+
+    function petSuperMascot(e) {
+      if (e) e.stopPropagation();
+      burstSparkles();
+      playUnlockChime();
+      for (let i = 0; i < 2; i++) setTimeout(() => burstSparkles(), i * 200);
+    }
+
     function restartJourney(e) {
       if (e) e.stopPropagation();
       isFinaleMode = false;
@@ -1499,9 +1242,9 @@
 
     function regenerateBook() {
       regenSeed++;
-      journeySteps = buildJourneyForUser(currentName);
+      journeySteps = selectMascotAndBuild(currentName);
       currentStepIndex = 0;
-      resetMiniGames();
+      resetAllMiniGames();
       updatePageView();
       burstSparkles();
     }
@@ -1514,7 +1257,6 @@
       document.getElementById("storyScreen").style.display = "none";
       document.getElementById("mainBookCard").style.display = "block";
       document.getElementById("welcomeScreen").style.display = "block";
-      updateMascotMood("👑", false);
     }
 
     document.getElementById("userName").addEventListener("keypress", (e) => {
@@ -1522,59 +1264,42 @@
     });
 
     // =====================================================
-    // SỬA LỖI THẢ TIM: BẬT HIỆU ỨNG TRỰC TIẾP TẠI TỌA ĐỘ CHẠM
+    // TƯƠNG TÁC THẢ TIM MÀN HÌNH KẾT
     // =====================================================
     function createFlyingHeart(x, y) {
       const container = document.getElementById("heartFxLayer");
       const heart = document.createElement("div");
       heart.className = "flying-heart-dom";
-      
       const emojis = ["💖", "💗", "🌸", "✨", "❤️", "💕"];
       heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-
       heart.style.left = `${x}px`;
       heart.style.top = `${y}px`;
-
-      const randX = (Math.random() - 0.5) * 80 + "px";
-      const randRot = (Math.random() - 0.5) * 60 + "deg";
-      heart.style.setProperty("--rand-x", randX);
-      heart.style.setProperty("--rand-rot", randRot);
-
+      heart.style.setProperty("--rand-x", (Math.random() - 0.5) * 80 + "px");
+      heart.style.setProperty("--rand-rot", (Math.random() - 0.5) * 60 + "deg");
       container.appendChild(heart);
-
-      setTimeout(() => {
-        if (heart.parentNode) heart.parentNode.removeChild(heart);
-      }, 1400);
+      setTimeout(() => { if (heart.parentNode) heart.parentNode.removeChild(heart); }, 1400);
     }
 
     function triggerHeartBurst(e) {
       if (e) e.stopPropagation();
       heartTapCount++;
       document.getElementById("heartCountNum").textContent = heartTapCount;
-
       const rect = e.target.getBoundingClientRect();
       const x = rect.left + rect.width / 2;
       const y = rect.top + rect.height / 2;
-
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => createFlyingHeart(x + (Math.random()-0.5)*40, y), i * 60);
-      }
+      for (let i = 0; i < 4; i++) setTimeout(() => createFlyingHeart(x + (Math.random()-0.5)*40, y), i * 60);
       burstCustomSparkles(x, y);
       playSingleNote(1046.50 + Math.random() * 200, 0.4, 0.04);
     }
 
-    // Lắng nghe thao tác chạm bất kỳ trên màn hình kết thúc
     const finaleScreenEl = document.getElementById("finaleScreen");
     function handleFinaleInteraction(e) {
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
-      
       const touch = e.touches ? e.touches[0] : e;
       const clientX = touch.clientX || window.innerWidth / 2;
       const clientY = touch.clientY || window.innerHeight / 2;
-
       heartTapCount++;
       document.getElementById("heartCountNum").textContent = heartTapCount;
-
       createFlyingHeart(clientX, clientY);
       burstCustomSparkles(clientX, clientY);
       playSingleNote(987.77 + Math.random() * 250, 0.35, 0.035);
@@ -1587,7 +1312,7 @@
     }, { passive: true });
 
     // =====================================================
-    // THẢ ĐÈN TRỜI 3D CHỈN CHU BAY LÊN BẦU TRỜI
+    // THẢ ĐÈN TRỜI 3D BAY LÊN
     // =====================================================
     function releaseLantern(e) {
       if (e) e.stopPropagation();
@@ -1599,30 +1324,19 @@
         return;
       }
 
-      // Tạo lồng đèn DOM bay lên đỉnh màn hình
       const lantern = document.createElement("div");
       lantern.className = "sky-lantern-flight";
-
-      // Vị trí ngang ngẫu nhiên quanh tâm màn hình
       const randLeft = window.innerWidth / 2 + (Math.random() - 0.5) * (window.innerWidth * 0.5);
       lantern.style.left = `${randLeft - 70}px`;
-
-      lantern.innerHTML = `
-        <div class="lantern-balloon"></div>
-        <div class="lantern-streamer">${wishText}</div>
-      `;
-
+      lantern.innerHTML = `<div class="lantern-balloon"></div><div class="lantern-streamer">${wishText}</div>`;
       document.body.appendChild(lantern);
 
       input.value = "";
-      input.placeholder = "Đèn trời đang mang ước nguyện bay lên rồi ✨";
-      
+      input.placeholder = "Đèn trời đang mang điều ước bay lên rồi ✨";
       burstSparkles();
       playUnlockChime();
 
-      setTimeout(() => {
-        if (lantern.parentNode) lantern.parentNode.removeChild(lantern);
-      }, 9500);
+      setTimeout(() => { if (lantern.parentNode) lantern.parentNode.removeChild(lantern); }, 9500);
     }
 
     // =====================================================
@@ -1653,9 +1367,7 @@
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === "suspended") audioCtx.resume();
       const chime = [783.99, 987.77, 1174.66, 1567.98];
-      chime.forEach((f, idx) => {
-        setTimeout(() => playSingleNote(f, 0.65, 0.055), idx * 70);
-      });
+      chime.forEach((f, idx) => setTimeout(() => playSingleNote(f, 0.65, 0.055), idx * 70));
     }
 
     function startMusicBox() {
@@ -1675,25 +1387,17 @@
         isMusicPlaying = false;
         clearInterval(melodyInterval);
         document.getElementById("musicBtn").classList.remove("playing");
-      } else {
-        startMusicBox();
-      }
+      } else startMusicBox();
     }
 
-    // =====================================================
-    // CANVAS NỀN: MƯA HOA & PHÁO SÁNG
-    // =====================================================
+    // CANVAS NỀN HOA RƠI & PHÁO SÁNG
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
+    function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    const petals = Array.from({ length: 38 }, () => ({
+    const petals = Array.from({ length: 36 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 4 + 2,
@@ -1706,14 +1410,9 @@
 
     let sparkles = [];
 
-    function burstSparkles() {
-      const cx = canvas.width / 2;
-      const cy = canvas.height / 2;
-      burstCustomSparkles(cx, cy);
-    }
-
+    function burstSparkles() { burstCustomSparkles(canvas.width / 2, canvas.height / 2); }
     function burstCustomSparkles(x, y) {
-      for (let i = 0; i < 28; i++) {
+      for (let i = 0; i < 26; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 4.5 + 1.2;
         sparkles.push({
@@ -1729,35 +1428,21 @@
 
     function renderCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
       petals.forEach(p => {
-        p.y += p.speedY;
-        p.x += p.speedX + Math.sin(p.angle) * 0.3;
-        p.angle += p.spin;
+        p.y += p.speedY; p.x += p.speedX + Math.sin(p.angle) * 0.3; p.angle += p.spin;
         if (p.y > canvas.height + 10) { p.y = -10; p.x = Math.random() * canvas.width; }
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.angle);
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.angle);
+        ctx.fillStyle = p.color; ctx.beginPath(); ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2);
+        ctx.fill(); ctx.restore();
       });
 
       for (let i = sparkles.length - 1; i >= 0; i--) {
         const s = sparkles[i];
         s.x += s.vx; s.y += s.vy; s.alpha -= 0.02;
         if (s.alpha <= 0) { sparkles.splice(i, 1); continue; }
-        ctx.save();
-        ctx.globalAlpha = s.alpha;
-        ctx.fillStyle = s.color;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+        ctx.save(); ctx.globalAlpha = s.alpha; ctx.fillStyle = s.color;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill(); ctx.restore();
       }
-
       requestAnimationFrame(renderCanvas);
     }
     renderCanvas();
