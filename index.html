@@ -479,7 +479,7 @@
     .link-action:hover { color: var(--gold); }
 
     /* ====================================================
-       MÀN HÌNH KẾT THÚC TOÀN CẢNH (FULLSCREEN FINALE)
+       MÀN HÌNH KẾT THÚC TOÀN CẢNH & KEYFRAME ANIMATION
        ==================================================== */
     #finaleScreen {
       display: none;
@@ -614,6 +614,36 @@
       animation: pulseGlow 2.8s ease-in-out infinite;
       filter: blur(10px);
     }
+
+    /* KEYFRAMES ANIMATION NÂNG CAO CHO LINH VẬT TỐI THƯỢNG */
+    /* Cáo */
+    .anim-fox-tail-L { transform-origin: 50px 140px; animation: tailWiggleL 3.2s ease-in-out infinite; }
+    .anim-fox-tail-R { transform-origin: 130px 140px; animation: tailWiggleR 3.2s ease-in-out infinite; }
+    @keyframes tailWiggleL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-7deg); } }
+    @keyframes tailWiggleR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(7deg); } }
+
+    .anim-fox-wing-L { transform-origin: 48px 100px; animation: flapWingL 2.2s ease-in-out infinite; }
+    .anim-fox-wing-R { transform-origin: 132px 100px; animation: flapWingR 2.2s ease-in-out infinite; }
+    @keyframes flapWingL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-9deg) scaleX(1.05); } }
+    @keyframes flapWingR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(9deg) scaleX(1.05); } }
+
+    .anim-fox-ruby { transform-origin: 90px 120px; animation: pulseRuby 1.8s ease-in-out infinite; }
+    @keyframes pulseRuby { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 2px #ff4d6d); } 50% { transform: scale(1.1); filter: drop-shadow(0 0 10px #ff758f); } }
+
+    /* Mèo */
+    .anim-cat-sunray { transform-origin: 90px 90px; animation: spinHalo 20s linear infinite; }
+    .anim-cat-cloud { animation: bobCloud 3s ease-in-out infinite; }
+    @keyframes bobCloud { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+    .anim-cat-paw { transform-origin: 132px 95px; animation: wavePaw 1.4s ease-in-out infinite; }
+    @keyframes wavePaw { 0%, 100% { transform: rotate(-30deg); } 50% { transform: rotate(-10deg); } }
+
+    /* Thỏ */
+    .anim-bunny-moon { transform-origin: 115px 90px; animation: pulseMoon 3.5s ease-in-out infinite; }
+    @keyframes pulseMoon { 0%, 100% { transform: scale(1); opacity: 0.95; } 50% { transform: scale(1.04); opacity: 1; filter: drop-shadow(0 0 12px #f3d29c); } }
+
+    .anim-bunny-silk { animation: waveSilk 3s ease-in-out infinite; }
+    @keyframes waveSilk { 0%, 100% { transform: translateY(0) scaleY(1); } 50% { transform: translateY(-5px) scaleY(1.08); } }
 
     .tap-heart-hint {
       display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #ffb3c6;
@@ -816,79 +846,69 @@
 
   <script>
     // =====================================================
-    // 1. KHO LINH VẬT VẼ LẠI 100% CỰC KỲ SẮC NÉT & ĐẲNG CẤP
+    // 1. KHO LINH VẬT NÂNG CẤP KÈM CLASS ANIMATION RIÊNG
     // =====================================================
     const mascotTemplates = [
-      // 0: CÁO TUYẾT ÁNH SAO (KITSUNE ĐÃ SỬA TAI VÀ TỐI THƯỢNG CỬU VĨ)
+      // 0: CÁO TUYẾT ÁNH SAO (KITSUNE CỬU VĨ ĐẬP CÁNH & LẮC ĐUÔI)
       {
         id: "fox",
         name: "Cáo Tuyết Ánh Sao",
         badge: "🦊",
         titlePill: "✦ HỘ MỆNH: CÁO TUYẾT ÁNH SAO · 11B7 ✦",
-        // Bản thường (Khung vẽ rộng 160x160 không bao giờ bị cắt tai)
         normalSvg: `
           <svg viewBox="0 0 160 160" fill="none" style="width:100%; height:100%;">
-            <!-- Đuôi xù phát sáng -->
             <path d="M110 115 C138 110, 148 78, 126 68 C114 62, 108 82, 102 98 Z" fill="#ffb3c6"/>
             <path d="M126 68 C138 72, 142 85, 130 92 C122 84, 122 75, 126 68 Z" fill="#fff5f7"/>
-            <!-- Tai trái dựng đứng cao ráo -->
             <path d="M38 72 L26 22 L72 48 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="2.2" stroke-linejoin="round"/>
             <path d="M42 64 L34 32 L64 48 Z" fill="#ff758f"/>
-            <!-- Tai phải dựng đứng cao ráo -->
             <path d="M122 72 L134 22 L88 48 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="2.2" stroke-linejoin="round"/>
             <path d="M118 64 L126 32 L96 48 Z" fill="#ff758f"/>
-            <!-- Vương miện nhỏ -->
             <path d="M68 44 L72 26 L80 34 L88 26 L92 44 Z" fill="#f3d29c" stroke="#fff" stroke-width="1.2"/>
             <circle cx="80" cy="22" r="3" fill="#ff4d6d"/>
-            <!-- Thân cáo -->
             <path d="M58 105 C58 90, 102 90, 102 105 L106 135 C106 142, 54 142, 54 135 Z" fill="#ffe5ec"/>
-            <!-- Đầu cáo bầu bĩnh -->
             <ellipse cx="80" cy="80" rx="38" ry="30" fill="#fff0f3" stroke="#f3d29c" stroke-width="2"/>
             <path d="M42 80 C42 62, 60 52, 80 52 C100 52, 118 62, 118 80 C108 70, 92 68, 80 80 C68 68, 52 70, 42 80 Z" fill="#ffb3c6"/>
-            <!-- Má hồng -->
             <ellipse cx="54" cy="88" rx="7" ry="4" fill="#ff758f" opacity="0.7"/>
             <ellipse cx="106" cy="88" rx="7" ry="4" fill="#ff758f" opacity="0.7"/>
-            <!-- Đôi mắt sao -->
             <circle cx="62" cy="78" r="5" fill="#2b102f"/><circle cx="60" cy="76" r="1.8" fill="#fff"/>
-            <circle cx="98" cy="78" r="5" fill="#2b102f"/><circle cx="96" cy="76" r="1.8" fill="#fff"/>
+            <circle cx="98" cy="78" r="5" fill="#2b102f"/><circle cx="96" cy="74" r="1.8" fill="#fff"/>
             <polygon points="78,84 82,84 80,87" fill="#c9184a"/>
             <path d="M75 90 Q80 94 80 89 Q80 94 85 90" stroke="#2b102f" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
         `,
-        // Bản Tối Thượng (Cửu Vĩ 5 dải đuôi thần thoại phát quang + Cặp cánh thiên thần vỗ nhẹ + Tim Ruby)
         ultimateSvg: `
           <svg viewBox="0 0 180 180" fill="none" style="width:100%; height:100%; filter: drop-shadow(0 14px 28px rgba(255, 117, 143, 0.65));">
-            <!-- 5 Dải đuôi Cửu Vĩ bung xòe mềm mại -->
-            <g opacity="0.85"><path d="M50 135 C15 115, 6 75, 26 55 C40 40, 52 65, 54 115 Z" fill="#ff758f"/><path d="M26 55 C18 62, 20 76, 32 80 C36 68, 34 60, 26 55 Z" fill="#fff5f7"/></g>
-            <g opacity="0.95"><path d="M60 138 C30 115, 28 68, 48 50 C62 36, 70 66, 68 120 Z" fill="#ff4d6d"/><path d="M48 50 C40 58, 42 70, 52 74 C58 62, 54 54, 48 50 Z" fill="#fff5f7"/></g>
+            <!-- 5 Đuôi có Animation vẫy nhịp nhàng -->
+            <g class="anim-fox-tail-L" opacity="0.85"><path d="M50 135 C15 115, 6 75, 26 55 C40 40, 52 65, 54 115 Z" fill="#ff758f"/><path d="M26 55 C18 62, 20 76, 32 80 C36 68, 34 60, 26 55 Z" fill="#fff5f7"/></g>
+            <g class="anim-fox-tail-L" opacity="0.95"><path d="M60 138 C30 115, 28 68, 48 50 C62 36, 70 66, 68 120 Z" fill="#ff4d6d"/><path d="M48 50 C40 58, 42 70, 52 74 C58 62, 54 54, 48 50 Z" fill="#fff5f7"/></g>
             <g><path d="M90 142 C72 105, 75 48, 90 30 C105 48, 108 105, 90 142 Z" fill="#c9184a"/><path d="M90 30 C84 38, 86 50, 90 54 C94 50, 96 38, 90 30 Z" fill="#fff5f7"/></g>
-            <g opacity="0.95"><path d="M120 138 C150 115, 152 68, 132 50 C118 36, 110 66, 112 120 Z" fill="#ff4d6d"/><path d="M132 50 C140 58, 138 70, 128 74 C122 62, 126 54, 132 50 Z" fill="#fff5f7"/></g>
-            <g opacity="0.85"><path d="M130 135 C165 115, 174 75, 154 55 C140 40, 128 65, 126 115 Z" fill="#ff758f"/><path d="M154 55 C162 62, 160 76, 148 80 C144 68, 146 60, 154 55 Z" fill="#fff5f7"/></g>
-            <!-- Cánh thiên thần vàng hoàng gia vỗ nhẹ -->
-            <path d="M48 100 C22 90, 16 64, 32 58 C44 52, 54 78, 54 100 Z" fill="rgba(243, 210, 156, 0.6)" stroke="#f3d29c" stroke-width="1.8"/>
-            <path d="M132 100 C158 90, 164 64, 148 58 C136 52, 126 78, 126 100 Z" fill="rgba(243, 210, 156, 0.6)" stroke="#f3d29c" stroke-width="1.8"/>
-            <!-- Tai dựng vững chắc -->
+            <g class="anim-fox-tail-R" opacity="0.95"><path d="M120 138 C150 115, 152 68, 132 50 C118 36, 110 66, 112 120 Z" fill="#ff4d6d"/><path d="M132 50 C140 58, 138 70, 128 74 C122 62, 126 54, 132 50 Z" fill="#fff5f7"/></g>
+            <g class="anim-fox-tail-R" opacity="0.85"><path d="M130 135 C165 115, 174 75, 154 55 C140 40, 128 65, 126 115 Z" fill="#ff758f"/><path d="M154 55 C162 62, 160 76, 148 80 C144 68, 146 60, 154 55 Z" fill="#fff5f7"/></g>
+            <!-- Cánh thiên thần vàng hoàng gia vỗ nhịp -->
+            <path class="anim-fox-wing-L" d="M48 100 C22 90, 16 64, 32 58 C44 52, 54 78, 54 100 Z" fill="rgba(243, 210, 156, 0.6)" stroke="#f3d29c" stroke-width="1.8"/>
+            <path class="anim-fox-wing-R" d="M132 100 C158 90, 164 64, 148 58 C136 52, 126 78, 126 100 Z" fill="rgba(243, 210, 156, 0.6)" stroke="#f3d29c" stroke-width="1.8"/>
+            <!-- Tai cao ráo -->
             <path d="M52 68 L36 14 L80 44 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="2.5"/><path d="M55 58 L44 26 L72 44 Z" fill="#ff4d6d"/>
             <path d="M128 68 L144 14 L100 44 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="2.5"/><path d="M125 58 L136 26 L108 44 Z" fill="#ff4d6d"/>
-            <!-- Thân và đầu -->
             <path d="M64 105 C64 90, 116 90, 116 105 L120 142 C120 150, 60 150, 60 142 Z" fill="#ffe5ec"/>
             <ellipse cx="90" cy="78" rx="42" ry="32" fill="#fff0f3" stroke="#f3d29c" stroke-width="2.2"/>
             <path d="M48 78 C48 58, 68 48, 90 48 C112 48, 132 58, 132 78 C122 68, 104 65, 90 78 C76 65, 58 68, 48 78 Z" fill="#ffb3c6"/>
-            <!-- Mắt cười híp mí tối thượng -->
+            <!-- Mắt cười híp mí -->
             <path d="M64 78 Q70 68 76 78" stroke="#2b102f" stroke-width="3.5" stroke-linecap="round" fill="none"/>
             <path d="M104 78 Q110 68 116 78" stroke="#2b102f" stroke-width="3.5" stroke-linecap="round" fill="none"/>
             <ellipse cx="60" cy="86" rx="8" ry="4.5" fill="#ff758f" opacity="0.85"/>
             <ellipse cx="120" cy="86" rx="8" ry="4.5" fill="#ff758f" opacity="0.85"/>
-            <!-- Ôm trái tim Ruby phát sáng viền vàng -->
-            <path d="M90 108 C80 96, 64 100, 68 118 C72 130, 90 140, 90 140 C90 140, 108 130, 112 118 C116 100, 100 96, 90 108 Z" fill="#c9184a" stroke="#f3d29c" stroke-width="2.2"/>
-            <path d="M75 106 C72 110, 74 116, 80 118" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            <!-- Vương miện nạm ngọc Ruby -->
+            <!-- Ngọc Ruby phát xung ánh sáng bập bùng -->
+            <g class="anim-fox-ruby">
+              <path d="M90 108 C80 96, 64 100, 68 118 C72 130, 90 140, 90 140 C90 140, 108 130, 112 118 C116 100, 100 96, 90 108 Z" fill="#c9184a" stroke="#f3d29c" stroke-width="2.2"/>
+              <path d="M75 106 C72 110, 74 116, 80 118" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            </g>
             <path d="M72 44 L78 22 L90 34 L102 22 L108 44 Z" fill="#f3d29c" stroke="#fff" stroke-width="1.8"/>
             <circle cx="90" cy="18" r="4.5" fill="#ff4d6d"/>
           </svg>
         `
       },
-      // 1: MÈO THẦN TÀI HOÀNG KIM (GALAXY LUCKY NEKO - THIẾT KẾ MỚI SIÊU XỊN)
+      // 1: MÈO THẦN TÀI HOÀNG KIM (GALAXY LUCKY NEKO - HÀO QUANG QUAY & VẪY TAY)
       {
         id: "cat",
         name: "Mèo Thần Tài Hoàng Kim",
@@ -896,15 +916,11 @@
         titlePill: "✦ HỘ MỆNH: MÈO MAY MẮN · 11B7 ✦",
         normalSvg: `
           <svg viewBox="0 0 160 160" fill="none" style="width:100%; height:100%;">
-            <!-- Tai mèo chuẩn viền vàng -->
             <path d="M42 66 L34 26 L70 46 Z" fill="#fff" stroke="#f3d29c" stroke-width="2.2"/><path d="M44 58 L40 34 L62 46 Z" fill="#ff8fa3"/>
             <path d="M118 66 L126 26 L90 46 Z" fill="#fff" stroke="#f3d29c" stroke-width="2.2"/><path d="M116 58 L120 34 L98 46 Z" fill="#ff8fa3"/>
-            <!-- Thân mèo tròn -->
             <ellipse cx="80" cy="112" rx="36" ry="30" fill="#fff" stroke="#f3d29c" stroke-width="2"/>
-            <!-- Vòng chuông đỏ thắm -->
             <rect x="55" y="100" width="50" height="8" rx="4" fill="#c9184a"/>
             <circle cx="80" cy="106" r="6.5" fill="#f3d29c" stroke="#fff" stroke-width="1.5"/>
-            <!-- Đầu mèo -->
             <ellipse cx="80" cy="76" rx="42" ry="34" fill="#fff" stroke="#f3d29c" stroke-width="2.2"/>
             <ellipse cx="54" cy="85" rx="7.5" ry="4.5" fill="#ff758f" opacity="0.7"/>
             <ellipse cx="106" cy="85" rx="7.5" ry="4.5" fill="#ff758f" opacity="0.7"/>
@@ -912,30 +928,25 @@
             <circle cx="98" cy="76" r="5.5" fill="#2b102f"/><circle cx="96" cy="74" r="2" fill="#fff"/>
             <polygon points="78,82 82,82 80,85" fill="#ff758f"/>
             <path d="M74 88 Q80 92 80 87 Q80 92 86 88" stroke="#2b102f" stroke-width="2" stroke-linecap="round" fill="none"/>
-            <!-- Tay mèo vẫy tài lộc -->
             <ellipse cx="114" cy="95" rx="9" ry="15" fill="#fff" stroke="#f3d29c" stroke-width="2" transform="rotate(-25 114 95)"/>
           </svg>
         `,
-        // Bản Tối Thượng (Cưỡi mây ngũ sắc + Mặt trời bát giác phát quang + Thẻ bài vàng 11B7)
         ultimateSvg: `
           <svg viewBox="0 0 180 180" fill="none" style="width:100%; height:100%; filter: drop-shadow(0 14px 28px rgba(243, 210, 156, 0.7));">
-            <!-- Hào quang Mặt Trời Thần Tài xoay phía sau -->
-            <g stroke="#f3d29c" stroke-width="2" opacity="0.6">
-              <line x1="90" y1="10" x2="90" y2="30"/>
-              <line x1="90" y1="150" x2="90" y2="170"/>
-              <line x1="10" y1="90" x2="30" y2="90"/>
-              <line x1="150" y1="90" x2="170" y2="90"/>
-              <line x1="33" y1="33" x2="47" y2="47"/>
-              <line x1="133" y1="133" x2="147" y2="147"/>
-              <line x1="147" y1="33" x2="133" y2="47"/>
-              <line x1="47" y1="133" x2="33" y2="147"/>
+            <!-- Hào quang Mặt Trời Thần Tài quay tít vô tận -->
+            <g class="anim-cat-sunray" stroke="#f3d29c" stroke-width="2.2" opacity="0.7">
+              <line x1="90" y1="10" x2="90" y2="28"/><line x1="90" y1="152" x2="90" y2="170"/>
+              <line x1="10" y1="90" x2="28" y2="90"/><line x1="152" y1="90" x2="170" y2="90"/>
+              <line x1="33" y1="33" x2="46" y2="46"/><line x1="134" y1="134" x2="147" y2="147"/>
+              <line x1="147" y1="33" x2="134" y2="46"/><line x1="46" y1="134" x2="33" y2="147"/>
             </g>
-            <!-- Mây ngũ sắc nâng đỡ -->
-            <path d="M40 145 C40 132, 65 125, 90 130 C115 125, 140 132, 140 145 C140 155, 40 155, 40 145 Z" fill="#f3d29c" opacity="0.6"/>
-            <circle cx="60" cy="140" r="15" fill="#fff"/><circle cx="90" cy="135" r="18" fill="#fff"/><circle cx="120" cy="140" r="15" fill="#fff"/>
+            <!-- Mây ngũ sắc nhấp nhô bồng bềnh -->
+            <g class="anim-cat-cloud">
+              <path d="M40 145 C40 132, 65 125, 90 130 C115 125, 140 132, 140 145 C140 155, 40 155, 40 145 Z" fill="#f3d29c" opacity="0.6"/>
+              <circle cx="60" cy="140" r="15" fill="#fff"/><circle cx="90" cy="135" r="18" fill="#fff"/><circle cx="120" cy="140" r="15" fill="#fff"/>
+            </g>
             <!-- Thân mèo hoàng kim -->
             <ellipse cx="90" cy="108" rx="42" ry="34" fill="#fff" stroke="#f3d29c" stroke-width="2.5"/>
-            <!-- Chuông vàng lớn -->
             <rect x="62" y="96" width="56" height="10" rx="5" fill="#c9184a"/>
             <circle cx="90" cy="104" r="8" fill="#f3d29c" stroke="#fff" stroke-width="2"/>
             <!-- Tay trái ôm thỏi Kim Bảo khổng lồ -->
@@ -950,17 +961,18 @@
             <path d="M102 70 Q110 60 118 70" stroke="#2b102f" stroke-width="3.8" stroke-linecap="round" fill="none"/>
             <ellipse cx="56" cy="78" rx="8" ry="5" fill="#ff758f" opacity="0.85"/>
             <ellipse cx="124" cy="78" rx="8" ry="5" fill="#ff758f" opacity="0.85"/>
-            <!-- Mũi miệng -->
             <polygon points="88,76 92,76 90,79" fill="#c9184a"/>
             <path d="M84 82 Q90 86 90 82 Q90 86 96 82" stroke="#2b102f" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-            <!-- Tay phải vẫy thẻ bài TÀI LỘC 11B7 -->
-            <ellipse cx="132" cy="85" rx="10" ry="18" fill="#fff" stroke="#f3d29c" stroke-width="2.2" transform="rotate(-30 132 85)"/>
-            <rect x="122" y="62" width="18" height="26" rx="4" fill="#c9184a" stroke="#f3d29c" stroke-width="1.5" transform="rotate(-15 122 62)"/>
-            <text x="125" y="79" font-size="9" font-weight="700" fill="#f3d29c" font-family="'Be Vietnam Pro', sans-serif">11B7</text>
+            <!-- Cánh tay vẫy lộc vàng kim liên tục (Animation) -->
+            <g class="anim-cat-paw">
+              <ellipse cx="132" cy="85" rx="10" ry="18" fill="#fff" stroke="#f3d29c" stroke-width="2.2"/>
+              <rect x="122" y="62" width="18" height="26" rx="4" fill="#c9184a" stroke="#f3d29c" stroke-width="1.5" transform="rotate(-15 122 62)"/>
+              <text x="125" y="79" font-size="9" font-weight="700" fill="#f3d29c" font-family="'Be Vietnam Pro', sans-serif">11B7</text>
+            </g>
           </svg>
         `
       },
-      // 2: THỎ NGỌC CUNG ĐÌNH (MOON BUNNY - THIẾT KẾ MỚI CỰC THƠ MỘNG)
+      // 2: THỎ NGỌC CUNG ĐÌNH (MOON BUNNY - TRĂNG KHUYẾT PHÁT QUANG & LỤA TIÊN UỐN LƯỢN)
       {
         id: "bunny",
         name: "Thỏ Ngọc Cung Trăng",
@@ -983,14 +995,13 @@
             <path d="M80 91 L80 94 M76 96 Q80 94 80 94 Q80 94 84 96" stroke="#2b102f" stroke-width="2" stroke-linecap="round" fill="none"/>
           </svg>
         `,
-        // Bản Tối Thượng (Cưỡi Vầng Trăng Khuyết khổng lồ + Dải lụa bay + Hoa sen ngọc phát sáng)
         ultimateSvg: `
           <svg viewBox="0 0 180 180" fill="none" style="width:100%; height:100%; filter: drop-shadow(0 14px 28px rgba(255, 182, 193, 0.7));">
-            <!-- Vầng Trăng Khuyết khổng lồ phát sáng dát vàng -->
-            <path d="M115 15 C165 50, 165 125, 115 160 C140 125, 140 50, 115 15 Z" fill="#f3d29c" stroke="#fff" stroke-width="2"/>
+            <!-- Vầng Trăng Khuyết khổng lồ phát sáng nhấp nháy dạ quang -->
+            <path class="anim-bunny-moon" d="M115 15 C165 50, 165 125, 115 160 C140 125, 140 50, 115 15 Z" fill="#f3d29c" stroke="#fff" stroke-width="2"/>
             <circle cx="125" cy="40" r="3" fill="#fff"/><circle cx="140" cy="85" r="4" fill="#fff"/>
-            <!-- Dải lụa tiên nữ bồng bềnh -->
-            <path d="M30 105 Q90 155 150 105" stroke="rgba(255, 182, 193, 0.7)" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <!-- Dải lụa tiên nữ uốn lượn nhịp nhàng -->
+            <path class="anim-bunny-silk" d="M30 105 Q90 155 150 105" stroke="rgba(255, 182, 193, 0.75)" stroke-width="10" stroke-linecap="round" fill="none"/>
             <!-- Đôi tai thỏ tiên tha thướt -->
             <ellipse cx="66" cy="30" rx="12" ry="38" fill="#fff" stroke="#f3d29c" stroke-width="2.5" transform="rotate(-10 66 30)"/>
             <ellipse cx="66" cy="30" rx="7" ry="28" fill="#ffccd5" transform="rotate(-10 66 30)"/>
@@ -1008,7 +1019,7 @@
             <!-- Mũi miệng -->
             <polygon points="88,90 92,90 90,93" fill="#c9184a"/>
             <path d="M90 93 L90 97 M86 99 Q90 97 90 97 Q90 97 94 99" stroke="#2b102f" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-            <!-- Ôm Đóa Hoa Sen Dạ Quang ngọc bích -->
+            <!-- Ôm Đóa Hoa Sen Dạ Quang ngọc bích tỏa sáng -->
             <circle cx="90" cy="122" r="14" fill="#ff8fa3" stroke="#f3d29c" stroke-width="2"/>
             <circle cx="90" cy="122" r="7" fill="#fff"/>
           </svg>
@@ -1085,7 +1096,7 @@
     }
 
     // =====================================================
-    // 3. KHỞI TẠO HỘP MÙ (BLIND BOX) KẾT HỢP LINH VẬT TỐI THƯỢNG
+    // 3. KHỞI TẠO HỘP MÙ (BLIND BOX)
     // =====================================================
     function selectMascotAndBuild(name) {
       const hashVal = hashString(name.trim().toLowerCase() + "_" + regenSeed);
@@ -1097,7 +1108,6 @@
       document.getElementById("headerTagPill").textContent = mascot.titlePill;
       document.getElementById("mascotBadge").textContent = mascot.badge;
 
-      // Danh sách mini-games (Đã đổi hộp quà thành VÒNG QUAY MAY MẮN)
       const allMiniGameTypes = ["game_flower", "game_star", "game_cookie", "game_wheel", "game_tarot"];
       const shuffledGames = [...allMiniGameTypes].sort(() => 0.5 - Math.random()).slice(0, 3);
 
@@ -1623,12 +1633,9 @@
         const s = sparkles[i];
         s.x += s.vx; s.y += s.vy; s.alpha -= 0.02;
         if (s.alpha <= 0) { sparkles.splice(i, 1); continue; }
-        ctx.save(); ctx.globalAlpha = s.alpha;
-        ctx.fillStyle = s.color;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.restore();
+        ctx.save(); ctx.globalAlpha = s.alpha; ctx.fillStyle = s.color;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill(); ctx.restore();
       }
       requestAnimationFrame(renderCanvas);
     }
