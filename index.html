@@ -65,12 +65,7 @@
       transition: all 0.3s ease;
     }
 
-    .music-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
+    .music-btn svg { width: 18px; height: 18px; fill: currentColor; }
     .music-btn.playing {
       animation: spinSlow 6s linear infinite;
       border-color: var(--rose);
@@ -113,7 +108,6 @@
       margin-bottom: 8px;
     }
 
-    /* LINH VẬT GIAO DIỆN CHÍNH */
     .mascot-stage {
       position: relative;
       width: 108px;
@@ -148,42 +142,20 @@
       transition: transform 0.25s ease;
     }
 
-    .mascot-stage:active .mascot-svg {
-      transform: scale(0.92) rotate(-5deg);
-    }
+    .mascot-stage:active .mascot-svg { transform: scale(0.92) rotate(-5deg); }
 
     @keyframes floatMascot {
       0%, 100% { transform: translateY(0px) rotate(0deg); }
       50% { transform: translateY(-7px) rotate(2deg); }
     }
 
-    .ear-left {
-      transform-origin: 35px 45px;
-      animation: earWiggleL 4s ease-in-out infinite;
-    }
-    .ear-right {
-      transform-origin: 85px 45px;
-      animation: earWiggleR 4s ease-in-out infinite;
-    }
-    @keyframes earWiggleL {
-      0%, 85%, 100% { transform: rotate(0deg); }
-      90% { transform: rotate(-8deg); }
-      95% { transform: rotate(4deg); }
-    }
-    @keyframes earWiggleR {
-      0%, 85%, 100% { transform: rotate(0deg); }
-      90% { transform: rotate(8deg); }
-      95% { transform: rotate(-4deg); }
-    }
+    .ear-left { transform-origin: 35px 45px; animation: earWiggleL 4s ease-in-out infinite; }
+    .ear-right { transform-origin: 85px 45px; animation: earWiggleR 4s ease-in-out infinite; }
+    @keyframes earWiggleL { 0%, 85%, 100% { transform: rotate(0deg); } 90% { transform: rotate(-8deg); } 95% { transform: rotate(4deg); } }
+    @keyframes earWiggleR { 0%, 85%, 100% { transform: rotate(0deg); } 90% { transform: rotate(8deg); } 95% { transform: rotate(-4deg); } }
 
-    .eyes-open {
-      transform-origin: 60px 66px;
-      animation: blinkEyes 4.5s infinite;
-    }
-    @keyframes blinkEyes {
-      0%, 94%, 100% { transform: scaleY(1); }
-      97% { transform: scaleY(0.08); }
-    }
+    .eyes-open { transform-origin: 60px 66px; animation: blinkEyes 4.5s infinite; }
+    @keyframes blinkEyes { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(0.08); } }
 
     .mascot-badge {
       position: absolute;
@@ -203,10 +175,7 @@
       animation: popBadge 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    @keyframes popBadge {
-      from { transform: scale(0); }
-      to { transform: scale(1); }
-    }
+    @keyframes popBadge { from { transform: scale(0); } to { transform: scale(1); } }
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
@@ -218,19 +187,8 @@
       font-variant-numeric: lining-nums;
     }
 
-    h1 i {
-      color: var(--rose);
-      font-weight: 600;
-      display: block;
-      margin-top: 4px;
-    }
-
-    .subtitle {
-      font-size: 13.5px;
-      color: rgba(255, 255, 255, 0.72);
-      line-height: 1.65;
-      margin-bottom: 20px;
-    }
+    h1 i { color: var(--rose); font-weight: 600; display: block; margin-top: 4px; }
+    .subtitle { font-size: 13.5px; color: rgba(255, 255, 255, 0.72); line-height: 1.65; margin-bottom: 20px; }
 
     input {
       width: 100%;
@@ -267,15 +225,10 @@
       transition: all 0.25s ease;
     }
 
-    .btn-primary:active {
-      transform: scale(0.98);
-    }
+    .btn-primary:active { transform: scale(0.98); }
 
     /* MÀN HÌNH LẬT TRANG */
-    #storyScreen {
-      display: none;
-    }
-
+    #storyScreen { display: none; }
     .story-top {
       display: flex;
       justify-content: space-between;
@@ -336,11 +289,7 @@
       transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .seal-overlay.unlocked {
-      opacity: 0;
-      transform: scale(1.18);
-      pointer-events: none;
-    }
+    .seal-overlay.unlocked { opacity: 0; transform: scale(1.18); pointer-events: none; }
 
     .seal-orb-wrap {
       position: relative;
@@ -361,10 +310,7 @@
       animation: rippleRing 2s infinite ease-out;
     }
 
-    .seal-ring:nth-child(2) {
-      animation-delay: 0.7s;
-      border-color: var(--rose);
-    }
+    .seal-ring:nth-child(2) { animation-delay: 0.7s; border-color: var(--rose); }
 
     @keyframes rippleRing {
       0% { transform: scale(0.85); opacity: 0.8; }
@@ -387,23 +333,9 @@
       animation: beatSeal 1.5s infinite ease-in-out;
     }
 
-    @keyframes beatSeal {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.09); }
-    }
-
-    .seal-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .seal-hint {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.72);
-    }
+    @keyframes beatSeal { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.09); } }
+    .seal-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--gold); margin-bottom: 4px; }
+    .seal-hint { font-size: 12px; color: rgba(255, 255, 255, 0.72); }
 
     .page-inner-content {
       display: flex;
@@ -414,41 +346,10 @@
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .page-inner-content.blurred {
-      opacity: 0.15;
-      filter: blur(6px);
-      transform: scale(0.96);
-    }
-
-    .page-chapter {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 11.5px;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-
-    .page-content {
-      font-size: 14.5px;
-      font-weight: 400;
-      line-height: 1.75;
-      color: #fff5f7;
-      margin-bottom: 14px;
-    }
-
-    .page-quote {
-      font-family: 'Be Vietnam Pro', sans-serif;
-      font-style: italic;
-      font-size: 12px;
-      color: rgba(243, 210, 156, 0.9);
-      border-top: 1px dashed rgba(255, 255, 255, 0.14);
-      padding-top: 10px;
-      text-align: right;
-    }
+    .page-inner-content.blurred { opacity: 0.15; filter: blur(6px); transform: scale(0.96); }
+    .page-chapter { display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.6px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .page-content { font-size: 14.5px; font-weight: 400; line-height: 1.75; color: #fff5f7; margin-bottom: 14px; }
+    .page-quote { font-family: 'Be Vietnam Pro', sans-serif; font-style: italic; font-size: 12px; color: rgba(243, 210, 156, 0.9); border-top: 1px dashed rgba(255, 255, 255, 0.14); padding-top: 10px; text-align: right; }
 
     /* MINI-GAMES */
     .interactive-stage {
@@ -462,207 +363,78 @@
       animation: fadeIn 0.4s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .game-title {
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .game-desc {
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.78);
-      margin-bottom: 10px;
-      line-height: 1.45;
-    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    .game-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--gold); margin-bottom: 4px; }
+    .game-desc { font-size: 12.5px; color: rgba(255, 255, 255, 0.78); margin-bottom: 10px; line-height: 1.45; }
 
     .flower-pot {
-      width: 78px;
-      height: 78px;
-      border-radius: 50%;
+      width: 78px; height: 78px; border-radius: 50%;
       background: radial-gradient(circle, rgba(255, 143, 163, 0.25) 0%, rgba(255, 255, 255, 0.05) 75%);
       border: 1.5px dashed rgba(243, 210, 156, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 38px;
-      cursor: pointer;
-      margin: 4px auto 10px;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 38px; cursor: pointer; margin: 4px auto 10px;
       transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
       user-select: none;
     }
-
     .flower-pot:active { transform: scale(0.86); }
-    .flower-pot.bloomed {
-      border-style: solid;
-      border-color: var(--gold);
-      box-shadow: 0 0 25px rgba(255, 143, 163, 0.6);
-      animation: beatSeal 1.8s infinite;
-    }
+    .flower-pot.bloomed { border-style: solid; border-color: var(--gold); box-shadow: 0 0 25px rgba(255, 143, 163, 0.6); animation: beatSeal 1.8s infinite; }
 
-    .progress-track {
-      width: 85%;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 99px;
-      overflow: hidden;
-      margin: 4px auto 8px;
-    }
+    .progress-track { width: 85%; height: 8px; background: rgba(255, 255, 255, 0.12); border-radius: 99px; overflow: hidden; margin: 4px auto 8px; }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #ff8fa3, #f3d29c); border-radius: 99px; transition: width 0.35s ease; }
 
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #ff8fa3, #f3d29c);
-      border-radius: 99px;
-      transition: width 0.35s ease;
-    }
-
-    .star-sky {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 6px 0 10px;
-    }
-
+    .star-sky { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 6px 0 10px; }
     .star-pill {
-      padding: 8px 13px;
-      border-radius: 99px;
-      background: rgba(243, 210, 156, 0.12);
-      border: 1px solid rgba(243, 210, 156, 0.4);
-      color: #fff;
-      font-size: 12.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      animation: floatMascot 2.6s ease-in-out infinite;
+      padding: 8px 13px; border-radius: 99px;
+      background: rgba(243, 210, 156, 0.12); border: 1px solid rgba(243, 210, 156, 0.4);
+      color: #fff; font-size: 12.5px; font-weight: 600; cursor: pointer;
+      transition: all 0.25s ease; animation: floatMascot 2.6s ease-in-out infinite;
     }
+    .star-pill.collected { background: linear-gradient(135deg, #ff758f, #c9184a); border-color: var(--gold); transform: scale(0.92); opacity: 0.45; pointer-events: none; }
 
-    .star-pill.collected {
-      background: linear-gradient(135deg, #ff758f, #c9184a);
-      border-color: var(--gold);
-      transform: scale(0.92);
-      opacity: 0.45;
-      pointer-events: none;
-    }
-
-    .tarot-deck {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      margin: 6px 0 8px;
-    }
-
+    .tarot-deck { display: flex; justify-content: center; gap: 10px; width: 100%; margin: 6px 0 8px; }
     .tarot-card {
-      flex: 1;
-      max-width: 92px;
-      height: 105px;
-      border-radius: 14px;
+      flex: 1; max-width: 92px; height: 105px; border-radius: 14px;
       background: linear-gradient(150deg, #3a1535 0%, #19091c 100%);
       border: 1.5px solid rgba(243, 210, 156, 0.45);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      padding: 8px;
-      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      cursor: pointer; padding: 8px; transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
       box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
     }
-
     .tarot-card:hover { transform: translateY(-4px); border-color: var(--gold); }
     .tarot-card.picked {
       background: linear-gradient(145deg, #ff758f 0%, #9e143b 100%);
-      border-color: #fff;
-      transform: translateY(-5px) scale(1.05);
+      border-color: #fff; transform: translateY(-5px) scale(1.05);
       box-shadow: 0 0 20px rgba(255, 143, 163, 0.6);
     }
-
     .tarot-icon { font-size: 24px; margin-bottom: 6px; }
     .tarot-label { font-size: 11px; font-weight: 600; color: var(--gold); }
     .game-status { font-size: 12.5px; font-weight: 600; color: #ffe5ec; min-height: 20px; }
 
-    .dots-bar {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin: 15px 0;
-    }
+    .dots-bar { display: flex; justify-content: center; gap: 6px; margin: 15px 0; }
+    .dot { width: 7px; height: 7px; border-radius: 99px; background: rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+    .dot.active { width: 22px; background: var(--rose); box-shadow: 0 0 10px rgba(255, 143, 163, 0.6); }
 
-    .dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 99px;
-      background: rgba(255, 255, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .dot.active {
-      width: 22px;
-      background: var(--rose);
-      box-shadow: 0 0 10px rgba(255, 143, 163, 0.6);
-    }
-
-    .nav-controls {
-      display: flex;
-      gap: 10px;
-    }
-
+    .nav-controls { display: flex; gap: 10px; }
     .btn-nav {
-      flex: 1;
-      padding: 13px 14px;
-      border-radius: 14px;
+      flex: 1; padding: 13px 14px; border-radius: 14px;
       border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-      font-family: inherit;
-      font-size: 13.5px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.07); color: #fff;
+      font-family: inherit; font-size: 13.5px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s ease;
     }
-
-    .btn-nav:disabled {
-      opacity: 0.32;
-      cursor: not-allowed;
-      filter: grayscale(0.5);
-    }
-
+    .btn-nav:disabled { opacity: 0.32; cursor: not-allowed; filter: grayscale(0.5); }
     .btn-nav.next-highlight {
       background: linear-gradient(135deg, #ff758f 0%, #c9184a 100%);
-      border: none;
-      box-shadow: 0 6px 18px rgba(201, 24, 74, 0.35);
+      border: none; box-shadow: 0 6px 18px rgba(201, 24, 74, 0.35);
     }
 
-    .bottom-links {
-      margin-top: 14px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-    }
-
-    .link-action {
-      color: rgba(255, 255, 255, 0.65);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      text-decoration: underline;
-      padding: 4px;
-    }
-
+    .bottom-links { margin-top: 14px; display: flex; justify-content: space-between; font-size: 12px; }
+    .link-action { color: rgba(255, 255, 255, 0.65); background: none; border: none; cursor: pointer; font-family: inherit; text-decoration: underline; padding: 4px; }
     .link-action:hover { color: var(--gold); }
 
     /* ====================================================
-       MÀN HÌNH TOÀN CẢNH KẾT THÚC & BÉ CÁO THẦN THOẠI NÂNG CẤP
+       MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE)
+       TÍCH HỢP Ý TƯỞNG 3, 5, 7
        ==================================================== */
     #finaleScreen {
       display: none;
@@ -673,9 +445,9 @@
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-      padding: 24px 18px;
+      padding: 30px 18px 40px;
       text-align: center;
       overflow-y: auto;
       animation: zoomInFinale 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -699,7 +471,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
@@ -713,7 +485,7 @@
 
     .finale-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
+      font-size: 34px;
       font-weight: 700;
       line-height: 1.2;
       color: #fff;
@@ -726,12 +498,12 @@
       -webkit-text-fill-color: transparent;
     }
 
-    /* KHUNG BÉ CÁO THẦN THOẠI CỬU VĨ (SUPER MASCOT) */
+    /* BÉ CÁO CỬU VĨ */
     .super-mascot-container {
       position: relative;
-      width: 180px;
-      height: 180px;
-      margin: 6px auto 10px;
+      width: 160px;
+      height: 160px;
+      margin: 4px auto 8px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -740,23 +512,20 @@
 
     .super-halo-ring {
       position: absolute;
-      width: 170px;
-      height: 170px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       border: 1.5px dashed rgba(243, 210, 156, 0.45);
       animation: spinHalo 14s linear infinite;
       pointer-events: none;
     }
 
-    @keyframes spinHalo {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
+    @keyframes spinHalo { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .super-glow-back {
       position: absolute;
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       background: radial-gradient(circle, rgba(255, 117, 143, 0.45) 0%, rgba(201, 24, 74, 0.2) 55%, transparent 75%);
       border-radius: 50%;
       animation: pulseGlow 2.8s ease-in-out infinite;
@@ -774,10 +543,9 @@
 
     @keyframes floatSuperMascot {
       0%, 100% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-9px) scale(1.02); }
+      50% { transform: translateY(-8px) scale(1.02); }
     }
 
-    /* Chuyển động vẫy của các dải đuôi thần thoại */
     .tail-left-outer { transform-origin: 50px 105px; animation: tailWaveL1 3.5s ease-in-out infinite; }
     .tail-left-inner { transform-origin: 55px 108px; animation: tailWaveL2 3s ease-in-out infinite; }
     .tail-center     { transform-origin: 75px 110px; animation: tailWaveC 2.8s ease-in-out infinite; }
@@ -790,30 +558,86 @@
     @keyframes tailWaveR2 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(5deg); } }
     @keyframes tailWaveR1 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
 
-    /* Chuyển động đập cánh thiên thần */
     .wing-left { transform-origin: 45px 85px; animation: flapWingL 2.4s ease-in-out infinite; }
     .wing-right { transform-origin: 105px 85px; animation: flapWingR 2.4s ease-in-out infinite; }
-
     @keyframes flapWingL { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-10deg) scaleX(1.08); } }
     @keyframes flapWingR { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg) scaleX(1.08); } }
 
-    /* Trái tim phát sáng nhịp nhàng */
-    .heart-gem {
-      animation: pulseGem 1.6s ease-in-out infinite;
-      transform-origin: 75px 98px;
-    }
+    .heart-gem { animation: pulseGem 1.6s ease-in-out infinite; transform-origin: 75px 98px; }
     @keyframes pulseGem {
       0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #ff758f); }
       50% { transform: scale(1.15); filter: drop-shadow(0 0 12px #ff4d6d); }
+    }
+
+    /* Ý TƯỞNG 3: BỘ ĐẾM THẢ TIM */
+    .tap-heart-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #ffb3c6;
+      background: rgba(255, 117, 143, 0.14);
+      border: 1px solid rgba(255, 117, 143, 0.3);
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+      animation: pulseGlow 2.5s infinite;
+    }
+
+    /* Ý TƯỞNG 5: THANH CHỌN TÂM TRẠNG ÂM NHẠC (MOOD MUSIC BOX) */
+    .mood-music-panel {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(243, 210, 156, 0.25);
+      border-radius: 18px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mood-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .mood-btn-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mood-btn {
+      flex: 1;
+      padding: 8px 6px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-family: inherit;
+      font-size: 11.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .mood-btn.active {
+      background: linear-gradient(135deg, #ff758f, #c9184a);
+      border-color: var(--gold);
+      box-shadow: 0 4px 12px rgba(201, 24, 74, 0.4);
     }
 
     .finale-wish-card {
       width: 100%;
       background: rgba(255, 255, 255, 0.07);
       border: 1px solid rgba(243, 210, 156, 0.35);
-      border-radius: 24px;
-      padding: 22px 18px;
-      margin: 8px 0 18px;
+      border-radius: 22px;
+      padding: 20px 16px;
+      margin-bottom: 14px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
       text-align: center;
     }
@@ -833,6 +657,65 @@
       color: var(--gold);
       border-top: 1px dashed rgba(255, 255, 255, 0.2);
       padding-top: 11px;
+    }
+
+    /* Ý TƯỞNG 7: KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN */
+    .sky-lantern-card {
+      width: 100%;
+      background: linear-gradient(145deg, rgba(255, 182, 193, 0.1) 0%, rgba(243, 210, 156, 0.08) 100%);
+      border: 1px solid rgba(243, 210, 156, 0.35);
+      border-radius: 20px;
+      padding: 16px 14px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .lantern-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .lantern-desc {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.72);
+      margin-bottom: 10px;
+    }
+
+    .lantern-input-wrap {
+      display: flex;
+      gap: 6px;
+    }
+
+    .lantern-input {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 0;
+      text-align: left;
+    }
+
+    .lantern-btn {
+      padding: 0 16px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #f3d29c, #d4af37);
+      color: #2b102f;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(243, 210, 156, 0.35);
     }
 
     .finale-btn-group {
@@ -856,7 +739,6 @@
   <div class="book-card" id="mainBookCard">
     <div class="tag-pill">✦ SPECIAL EDITION · LỚP 11B7 ✦</div>
 
-    <!-- LINH VẬT BÉ CÁO TUYẾT Ở CÁC TRANG TRƯỚC -->
     <div class="mascot-stage" onclick="petMascot()" title="Chạm vào Linh Vật 11B7 nhé!">
       <div class="mascot-glow"></div>
       <svg class="mascot-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -907,7 +789,6 @@
       <div class="mascot-badge" id="mascotBadge">👑</div>
     </div>
 
-    <!-- MÀN HÌNH 1: NHẬP TÊN -->
     <div id="welcomeScreen">
       <h1>Cuốn sổ nhỏ<br><i>dành riêng cho các bạn nữ lớp 11B7</i></h1>
       <p class="subtitle">Nhập tên của cậu để cùng Linh vật Cáo Tuyết đi qua 7 chặng hành trình tương tác và lời chúc bí mật ngày 20/10 nhé!</p>
@@ -916,7 +797,6 @@
       <button class="btn-primary" onclick="openStoryBook()">Bắt đầu hành trình 11B7 📖</button>
     </div>
 
-    <!-- MÀN HÌNH 2: HÀNH TRÌNH 7 CHẶNG -->
     <div id="storyScreen">
       <div class="story-top">
         <div class="recipient-label">Gửi <span id="displayReceiver"></span> · 11B7,</div>
@@ -1003,18 +883,17 @@
   </div>
 
   <!-- MÀN HÌNH TOÀN CẢNH KẾT THÚC (FULLSCREEN FINALE) -->
-  <div id="finaleScreen">
+  <div id="finaleScreen" onclick="handleFinaleScreenTap(event)">
     <div class="finale-box">
       <div class="finale-badge">👑 FOREVER 11B7 · 20.10.2026 👑</div>
       <h2 class="finale-title">Gửi <span><span id="finaleReceiver"></span>!</span></h2>
       
-      <!-- BÉ CÁO THẦN THOẠI CỬU VĨ ĐƯỢC THIẾT KẾ ĐỘT PHÁ -->
-      <div class="super-mascot-container" onclick="petSuperMascot()" title="Chạm vào Bé Cáo Cửu Vĩ nhé!">
+      <!-- BÉ CÁO CỬU VĨ NÂNG CẤP -->
+      <div class="super-mascot-container" onclick="petSuperMascot(event)" title="Chạm vào Bé Cáo Cửu Vĩ nhé!">
         <div class="super-halo-ring"></div>
         <div class="super-glow-back"></div>
 
         <svg class="super-mascot-svg" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- 1. HỆ THỐNG 5 ĐUÔI CỬU VĨ HỒNG BUNG XÒE PHÁT QUANG -->
           <g class="tail-left-outer">
             <path d="M45 110 C15 95, 8 60, 24 45 C35 34, 45 55, 48 95 Z" fill="url(#tailGrad)" opacity="0.85"/>
             <path d="M24 45 C18 50, 20 62, 28 65 C32 55, 30 48, 24 45 Z" fill="#fff5f7"/>
@@ -1036,7 +915,6 @@
             <path d="M126 45 C132 50, 130 62, 122 65 C118 55, 120 48, 126 45 Z" fill="#fff5f7"/>
           </g>
 
-          <!-- 2. ĐÔI CÁNH THIÊN THẦN ÁNH KIM -->
           <g class="wing-left">
             <path d="M42 85 C22 75, 18 55, 30 50 C40 45, 48 65, 48 85 Z" fill="rgba(243, 210, 156, 0.45)" stroke="#f3d29c" stroke-width="1.2"/>
             <path d="M38 80 C26 72, 24 58, 32 54 C38 50, 44 65, 44 80 Z" fill="#fff" opacity="0.7"/>
@@ -1046,7 +924,6 @@
             <path d="M112 80 C124 72, 126 58, 118 54 C112 50, 106 65, 106 80 Z" fill="#fff" opacity="0.7"/>
           </g>
 
-          <!-- 3. TAI CÁO LINH HOẠT -->
           <g class="ear-left">
             <path d="M44 58 L32 20 L68 40 Z" fill="#ffb3c6" stroke="#f3d29c" stroke-width="1.8" stroke-linejoin="round"/>
             <path d="M46 50 L38 28 L60 40 Z" fill="#ff758f"/>
@@ -1056,42 +933,33 @@
             <path d="M104 50 L112 28 L90 40 Z" fill="#ff758f"/>
           </g>
 
-          <!-- 4. THÂN & ÁO CHOÀNG BÉ CÁO -->
           <path d="M52 90 C52 78, 98 78, 98 90 L102 118 C102 124, 48 124, 48 118 Z" fill="#ffe5ec"/>
           <path d="M50 115 C60 120, 90 120, 100 115" stroke="#f3d29c" stroke-width="2" stroke-linecap="round"/>
 
-          <!-- 5. ĐẦU VÀ KHUÔN MẶT CÁO BẦU BĨNH -->
           <ellipse cx="75" cy="68" rx="36" ry="28" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.8"/>
           <path d="M39 68 C39 52, 58 44, 75 44 C92 44, 111 52, 111 68 C102 59, 87 56, 75 68 C63 56, 48 59, 39 68 Z" fill="#ffb3c6"/>
           
           <ellipse cx="50" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
           <ellipse cx="100" cy="76" rx="6.5" ry="3.8" fill="#ff758f" opacity="0.8"/>
 
-          <!-- Mắt cười híp mí siêu đáng yêu của chặng kết -->
           <path d="M52 69 Q58 60 64 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
           <path d="M86 69 Q92 60 98 69" stroke="#2b102f" stroke-width="3" stroke-linecap="round" fill="none"/>
 
           <polygon points="73,74 77,74 75,77" fill="#c9184a"/>
           <path d="M70 79 Q75 83 75 78 Q75 83 80 79" stroke="#2b102f" stroke-width="2.2" stroke-linecap="round" fill="none"/>
 
-          <!-- 6. HAI TAY ÔM VIÊN NGỌC TRÁI TIM RUBY PHÁT QUANG -->
           <g class="heart-gem">
-            <!-- Viên ngọc Ruby -->
             <path d="M75 92 C68 82, 54 86, 58 100 C62 110, 75 118, 75 118 C75 118, 88 110, 92 100 C96 86, 82 82, 75 92 Z" fill="url(#rubyGrad)" stroke="#f3d29c" stroke-width="1.5"/>
-            <!-- Ánh sáng phản chiếu -->
             <path d="M63 90 C60 94, 62 100, 66 102" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
           </g>
-          <!-- Hai tay mũm mĩm ôm trái tim -->
           <ellipse cx="56" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
           <ellipse cx="94" cy="100" rx="6" ry="5" fill="#fff0f3" stroke="#f3d29c" stroke-width="1.2"/>
 
-          <!-- 7. VƯƠNG MIỆN NẠM NGỌC LỚN 11B7 -->
           <path d="M60 38 L65 20 L75 30 L85 20 L90 38 Z" fill="url(#goldGrad)" stroke="#fff" stroke-width="1.2"/>
           <circle cx="75" cy="18" r="3.2" fill="#ff4d6d"/>
           <circle cx="65" cy="19" r="2.2" fill="#f3d29c"/>
           <circle cx="85" cy="19" r="2.2" fill="#f3d29c"/>
 
-          <!-- GRADIENT DEFINITIONS -->
           <defs>
             <linearGradient id="tailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#ffccd5"/>
@@ -1112,6 +980,21 @@
         </svg>
       </div>
 
+      <!-- Ý TƯỞNG 3: BỘ ĐẾM THẢ TIM KHI CHẠM MÀN HÌNH -->
+      <div class="tap-heart-hint" id="heartCountBadge">
+        ✨ Chạm bất kỳ đâu để thả tim: <b id="heartCountNum">0</b> ❤️
+      </div>
+
+      <!-- Ý TƯỞNG 5: THANH CHỌN TÂM TRẠNG ÂM NHẠC -->
+      <div class="mood-music-panel">
+        <div class="mood-label">🎵 Hộp Nhạc 11B7 · Chọn Giai Điệu:</div>
+        <div class="mood-btn-group">
+          <button class="mood-btn active" id="moodBtn0" onclick="switchMood(0, event)">🌸 Nhẹ nhàng</button>
+          <button class="mood-btn" id="moodBtn1" onclick="switchMood(1, event)">✨ Vui tươi</button>
+          <button class="mood-btn" id="moodBtn2" onclick="switchMood(2, event)">☕ Thơ mộng</button>
+        </div>
+      </div>
+
       <div class="finale-wish-card">
         <div class="finale-wish-body" id="finaleWishText">
           Cảm ơn cậu vì đã luôn là một mảnh ghép thanh xuân tuyệt vời của đại gia đình 11B7! Chúc cậu không chỉ riêng ngày 20/10 mà suốt 365 ngày trong năm luôn rạng rỡ, bình yên, nụ cười luôn tỏa nắng trên môi và được cả thế giới này yêu thương! 💖
@@ -1119,9 +1002,19 @@
         <div class="finale-quote">“Thanh xuân rực rỡ nhất là khi có các bông hoa 11B7!”</div>
       </div>
 
+      <!-- Ý TƯỞNG 7: KHUNG THẢ ĐÈN TRỜI ƯỚC NGUYỆN -->
+      <div class="sky-lantern-card">
+        <div class="lantern-title">🏮 Thả Đèn Trời Ước Nguyện 11B7</div>
+        <div class="lantern-desc">Gửi gắm một điều ước cho tuổi 16, 17 để chiếc đèn mang lên bầu trời sao nhé:</div>
+        <div class="lantern-input-wrap">
+          <input type="text" class="lantern-input" id="wishInput" placeholder="Nhập điều ước của cậu tại đây..." autocomplete="off" />
+          <button class="lantern-btn" onclick="releaseLantern(event)">Thả Đèn ✨</button>
+        </div>
+      </div>
+
       <div class="finale-btn-group">
-        <button class="btn-primary" onclick="restartJourney()">Xem lại hành trình từ đầu ↺</button>
-        <button class="btn-nav" onclick="resetToHome()">Nhập tên bạn khác</button>
+        <button class="btn-primary" onclick="restartJourney(event)">Xem lại hành trình từ đầu ↺</button>
+        <button class="btn-nav" onclick="resetToHome(event)">Nhập tên bạn khác</button>
       </div>
     </div>
   </div>
@@ -1204,6 +1097,7 @@
     let starsCollected = 0;
     let tarotPicked = -1;
     let isFinaleMode = false;
+    let heartTapCount = 0;
 
     function getIndexByNameAndPage(name, pageSalt, maxLen) {
       let hash = 0;
@@ -1232,12 +1126,7 @@
           body: poolTrang1[idx1].text.replace(/{name}/g, name),
           quote: poolTrang1[idx1].quote
         },
-        {
-          type: "game_flower",
-          unlocked: false,
-          badge: "🌱",
-          happyEyes: true
-        },
+        { type: "game_flower", unlocked: false, badge: "🌱", happyEyes: true },
         {
           type: "wish",
           unlocked: false,
@@ -1249,12 +1138,7 @@
           body: poolTrang2[idx2].text.replace(/{name}/g, name),
           quote: poolTrang2[idx2].quote
         },
-        {
-          type: "game_star",
-          unlocked: false,
-          badge: "🌟",
-          happyEyes: false
-        },
+        { type: "game_star", unlocked: false, badge: "🌟", happyEyes: false },
         {
           type: "wish",
           unlocked: false,
@@ -1266,12 +1150,7 @@
           body: poolTrang3[idx3].text.replace(/{name}/g, name),
           quote: poolTrang3[idx3].quote
         },
-        {
-          type: "game_tarot",
-          unlocked: false,
-          badge: "🔮",
-          happyEyes: true
-        },
+        { type: "game_tarot", unlocked: false, badge: "🔮", happyEyes: true },
         {
           type: "wish",
           unlocked: false,
@@ -1399,8 +1278,8 @@
       }, 900);
     }
 
-    // Tương tác chạm vào Bé Cáo Cửu Vĩ ở màn hình kết thúc
-    function petSuperMascot() {
+    function petSuperMascot(e) {
+      e.stopPropagation();
       burstSparkles();
       playUnlockChime();
       for (let i = 0; i < 2; i++) {
@@ -1420,8 +1299,10 @@
       currentName = val;
       regenSeed = 0;
       isFinaleMode = false;
+      heartTapCount = 0;
       document.getElementById("displayReceiver").textContent = currentName;
       document.getElementById("finaleReceiver").textContent = currentName;
+      document.getElementById("heartCountNum").textContent = heartTapCount;
 
       journeySteps = buildJourneyForUser(currentName);
       currentStepIndex = 0;
@@ -1559,7 +1440,8 @@
       updatePageView();
     }
 
-    function restartJourney() {
+    function restartJourney(e) {
+      if (e) e.stopPropagation();
       isFinaleMode = false;
       document.getElementById("finaleScreen").style.display = "none";
       document.getElementById("mainBookCard").style.display = "block";
@@ -1577,7 +1459,8 @@
       burstSparkles();
     }
 
-    function resetToHome() {
+    function resetToHome(e) {
+      if (e) e.stopPropagation();
       isFinaleMode = false;
       document.getElementById("userName").value = "";
       document.getElementById("finaleScreen").style.display = "none";
@@ -1592,13 +1475,74 @@
     });
 
     // =====================================================
-    // HỘP NHẠC PIANO & ÂM THANH
+    // XỬ LÝ Ý TƯỞNG 3: CHẠM MÀN HÌNH BẮN PHÁO & TĂNG TIM
+    // =====================================================
+    function handleFinaleScreenTap(e) {
+      // Bỏ qua nếu chạm vào ô input hoặc button
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON') return;
+      
+      heartTapCount++;
+      document.getElementById("heartCountNum").textContent = heartTapCount;
+      burstCustomSparkles(e.clientX, e.clientY);
+      spawnFlyingHeart(e.clientX, e.clientY);
+      playSingleNote(1046.50 + Math.random() * 300, 0.4, 0.03);
+    }
+
+    // =====================================================
+    // XỬ LÝ Ý TƯỞNG 7: THẢ ĐÈN TRỜI ƯỚC NGUYỆN (SKY LANTERN)
+    // =====================================================
+    function releaseLantern(e) {
+      e.stopPropagation();
+      const input = document.getElementById("wishInput");
+      const wishText = input.value.trim();
+      if (!wishText) {
+        input.focus();
+        input.style.borderColor = "#ff4d6d";
+        return;
+      }
+
+      spawnLantern(wishText);
+      input.value = "";
+      input.placeholder = "Đèn trời đang mang điều ước bay lên rồi ✨";
+      playUnlockChime();
+      burstSparkles();
+    }
+
+    // =====================================================
+    // HỘP NHẠC PIANO - XỬ LÝ Ý TƯỞNG 5: ĐỔI THEO TÂM TRẠNG
     // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
     let melodyInterval = null;
-    const melodyNotes = [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99];
     let noteCursor = 0;
+
+    // 3 Giai điệu theo tâm trạng
+    const moodMelodies = [
+      // 0: Nhẹ nhàng (Tone ấm C major)
+      { notes: [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99], speed: 650 },
+      // 1: Vui tươi (Tiết tấu nhanh, nốt cao F major / A)
+      { notes: [659.25, 783.99, 880.00, 1046.50, 1174.66, 1046.50, 880.00, 783.99, 659.25, 880.00, 1046.50, 1318.51], speed: 420 },
+      // 2: Thơ mộng (Giai điệu lãng đãng Pentatonic)
+      { notes: [587.33, 659.25, 880.00, 987.77, 1174.66, 987.77, 880.00, 659.25, 587.33, 440.00, 523.25, 659.25], speed: 750 }
+    ];
+
+    let currentMoodIdx = 0;
+
+    function switchMood(idx, e) {
+      if (e) e.stopPropagation();
+      currentMoodIdx = idx;
+      for (let i = 0; i < 3; i++) {
+        document.getElementById("moodBtn" + i).classList.toggle("active", i === idx);
+      }
+
+      if (isMusicPlaying) {
+        clearInterval(melodyInterval);
+        noteCursor = 0;
+        startMoodLoop();
+      }
+      playUnlockChime();
+      burstSparkles();
+    }
 
     function playSingleNote(freq, duration = 1.4, maxGain = 0.08) {
       if (!audioCtx) return;
@@ -1624,16 +1568,21 @@
       });
     }
 
+    function startMoodLoop() {
+      const mood = moodMelodies[currentMoodIdx];
+      playSingleNote(mood.notes[noteCursor]);
+      melodyInterval = setInterval(() => {
+        noteCursor = (noteCursor + 1) % mood.notes.length;
+        playSingleNote(mood.notes[noteCursor]);
+      }, mood.speed);
+    }
+
     function startMusicBox() {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === "suspended") audioCtx.resume();
       isMusicPlaying = true;
       document.getElementById("musicBtn").classList.add("playing");
-      playSingleNote(melodyNotes[noteCursor]);
-      melodyInterval = setInterval(() => {
-        noteCursor = (noteCursor + 1) % melodyNotes.length;
-        playSingleNote(melodyNotes[noteCursor]);
-      }, 650);
+      startMoodLoop();
     }
 
     function toggleMusic() {
@@ -1647,7 +1596,7 @@
     }
 
     // =====================================================
-    // CANVAS PHÁO HOA & MƯA CÁNH HOA
+    // CANVAS: CÁNH HOA + PHÁO KIM TUYẾN + TIM BAY + ĐÈN TRỜI
     // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
@@ -1659,7 +1608,7 @@
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    const petals = Array.from({ length: 40 }, () => ({
+    const petals = Array.from({ length: 38 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       size: Math.random() * 4 + 2,
@@ -1671,26 +1620,57 @@
     }));
 
     let sparkles = [];
+    let lanterns = [];
+    let flyingHearts = [];
 
     function burstSparkles() {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      for (let i = 0; i < 35; i++) {
+      burstCustomSparkles(cx, cy);
+    }
+
+    function burstCustomSparkles(x, y) {
+      for (let i = 0; i < 28; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4.8 + 1.2;
+        const speed = Math.random() * 4.5 + 1.2;
         sparkles.push({
-          x: cx, y: cy,
+          x: x, y: y,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          r: Math.random() * 2.8 + 1,
+          r: Math.random() * 2.6 + 1,
           alpha: 1,
           color: i % 2 === 0 ? "#f3d29c" : "#ff8fa3"
         });
       }
     }
 
+    function spawnFlyingHeart(x, y) {
+      flyingHearts.push({
+        x: x, y: y,
+        vy: -(Math.random() * 2.5 + 2),
+        vx: (Math.random() - 0.5) * 1.5,
+        alpha: 1,
+        size: Math.random() * 8 + 14
+      });
+    }
+
+    function spawnLantern(text) {
+      lanterns.push({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 60,
+        y: canvas.height + 40,
+        speedY: -(Math.random() * 0.8 + 0.9),
+        speedX: (Math.random() - 0.5) * 0.4,
+        alpha: 1,
+        text: text,
+        w: 48,
+        h: 62
+      });
+    }
+
     function renderCanvas() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Cánh hoa rơi
       petals.forEach(p => {
         p.y += p.speedY;
         p.x += p.speedX + Math.sin(p.angle) * 0.3;
@@ -1706,6 +1686,54 @@
         ctx.restore();
       });
 
+      // Tim bay lên khi chạm (Ý tưởng 3)
+      for (let i = flyingHearts.length - 1; i >= 0; i--) {
+        const h = flyingHearts[i];
+        h.y += h.vy;
+        h.x += h.vx;
+        h.alpha -= 0.02;
+        if (h.alpha <= 0) { flyingHearts.splice(i, 1); continue; }
+
+        ctx.save();
+        ctx.globalAlpha = h.alpha;
+        ctx.font = `${h.size}px sans-serif`;
+        ctx.textAlign = "center";
+        ctx.fillText("💖", h.x, h.y);
+        ctx.restore();
+      }
+
+      // Đèn trời ước nguyện bay lên (Ý tưởng 7)
+      for (let i = lanterns.length - 1; i >= 0; i--) {
+        const lt = lanterns[i];
+        lt.y += lt.speedY;
+        lt.x += lt.speedX;
+        if (lt.y < -100) { lanterns.splice(i, 1); continue; }
+
+        ctx.save();
+        ctx.shadowColor = "rgba(243, 210, 156, 0.8)";
+        ctx.shadowBlur = 18;
+        // Thân đèn trời phát sáng
+        ctx.fillStyle = "rgba(255, 183, 77, 0.85)";
+        ctx.beginPath();
+        ctx.roundRect(lt.x - lt.w / 2, lt.y - lt.h / 2, lt.w, lt.h, 12);
+        ctx.fill();
+
+        // Ngọn lửa bên trong
+        ctx.fillStyle = "#fff";
+        ctx.beginPath();
+        ctx.arc(lt.x, lt.y + 12, 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Dòng chữ điều ước treo lơ lửng dưới đèn
+        ctx.shadowBlur = 0;
+        ctx.font = "11px 'Be Vietnam Pro', sans-serif";
+        ctx.fillStyle = "#fff";
+        ctx.textAlign = "center";
+        ctx.fillText(lt.text.length > 15 ? lt.text.substring(0, 15) + "..." : lt.text, lt.x, lt.y + lt.h / 2 + 16);
+        ctx.restore();
+      }
+
+      // Pháo sáng kim tuyến
       for (let i = sparkles.length - 1; i >= 0; i--) {
         const s = sparkles[i];
         s.x += s.vx; s.y += s.vy; s.alpha -= 0.02;
@@ -1718,6 +1746,7 @@
         ctx.fill();
         ctx.restore();
       }
+
       requestAnimationFrame(renderCanvas);
     }
     renderCanvas();
