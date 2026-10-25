@@ -113,10 +113,11 @@
       margin-bottom: 10px;
     }
 
+    /* LINH VẬT */
     .mascot-stage {
       position: relative;
-      width: 118px;
-      height: 118px;
+      width: 114px;
+      height: 114px;
       margin: 0 auto 8px;
       cursor: pointer;
       user-select: none;
@@ -125,7 +126,7 @@
     .mascot-glow {
       position: absolute;
       top: 50%; left: 50%;
-      width: 88px; height: 88px;
+      width: 86px; height: 86px;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle, rgba(255, 143, 163, 0.38) 0%, transparent 70%);
       border-radius: 50%;
@@ -270,6 +271,7 @@
       transform: scale(0.98);
     }
 
+    /* MÀN HÌNH LẬT TRANG */
     #storyScreen {
       display: none;
     }
@@ -301,7 +303,7 @@
     }
 
     .page-box {
-      min-height: 215px;
+      min-height: 225px;
       background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 143, 163, 0.04) 100%);
       border: 1px solid rgba(243, 210, 156, 0.28);
       border-radius: 22px;
@@ -315,13 +317,110 @@
       box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
     }
 
-    .page-FlipAnim {
-      animation: pageFlip 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* ====================================================
+       MÀN CHẠM MỞ PHONG ẤN TRƯỚC KHI ĐỌC TRANG MỚI
+       ==================================================== */
+    .seal-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      background: radial-gradient(circle at center, rgba(44, 18, 39, 0.96) 0%, rgba(15, 7, 22, 0.98) 100%);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    @keyframes pageFlip {
-      0% { opacity: 0; transform: translateX(22px) scale(0.97); }
-      100% { opacity: 1; transform: translateX(0) scale(1); }
+    .seal-overlay.unlocked {
+      opacity: 0;
+      transform: scale(1.18);
+      pointer-events: none;
+    }
+
+    .seal-orb-wrap {
+      position: relative;
+      width: 74px;
+      height: 74px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .seal-ring {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      opacity: 0.6;
+      animation: rippleRing 2s infinite ease-out;
+    }
+
+    .seal-ring:nth-child(2) {
+      animation-delay: 0.7s;
+      border-color: var(--rose);
+    }
+
+    @keyframes rippleRing {
+      0% { transform: scale(0.85); opacity: 0.8; }
+      100% { transform: scale(1.55); opacity: 0; }
+    }
+
+    .seal-core {
+      position: relative;
+      z-index: 2;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff758f 0%, #c9184a 60%, #800f2f 100%);
+      border: 1.5px solid var(--gold);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      box-shadow: 0 0 25px rgba(255, 117, 143, 0.55);
+      animation: beatSeal 1.5s infinite ease-in-out;
+    }
+
+    @keyframes beatSeal {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.09); }
+    }
+
+    .seal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .seal-hint {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.72);
+      letter-spacing: 0.3px;
+    }
+
+    .page-inner-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      flex: 1;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .page-inner-content.blurred {
+      opacity: 0.15;
+      filter: blur(6px);
+      transform: scale(0.96);
     }
 
     .page-chapter {
@@ -491,6 +590,7 @@
       <div class="mascot-badge" id="mascotBadge">👑</div>
     </div>
 
+    <!-- MÀN HÌNH 1: NHẬP TÊN -->
     <div id="welcomeScreen">
       <h1>Cuốn sổ nhỏ<br><i>dành riêng cho các bạn nữ lớp 11B7</i></h1>
       <p class="subtitle">Nhập tên của cậu để Linh vật Cáo Tuyết mở ra 4 trang thông điệp 20/10 được cất giữ riêng cho các bông hoa 11B7 nhé!</p>
@@ -499,6 +599,7 @@
       <button class="btn-primary" onclick="openStoryBook()">Mở sổ lưu niệm 11B7 📖</button>
     </div>
 
+    <!-- MÀN HÌNH 2: ĐỌC TỪNG TRANG + MỞ PHONG ẤN -->
     <div id="storyScreen">
       <div class="story-top">
         <div class="recipient-label">Gửi <span id="displayReceiver"></span> · 11B7,</div>
@@ -506,11 +607,25 @@
       </div>
 
       <div class="page-box" id="pageBox">
-        <div>
-          <div class="page-chapter" id="chapterTitle"></div>
-          <div class="page-content" id="chapterBody"></div>
+        <!-- Lớp Phong Ấn (Hiện ra trước mỗi trang mới) -->
+        <div class="seal-overlay" id="sealOverlay" onclick="unlockCurrentPage()">
+          <div class="seal-orb-wrap">
+            <div class="seal-ring"></div>
+            <div class="seal-ring"></div>
+            <div class="seal-core" id="sealIcon">💌</div>
+          </div>
+          <div class="seal-title" id="sealTitle">Phong Ấn Trang 1</div>
+          <div class="seal-hint">✨ Chạm vào biểu tượng để mở lời chúc ✨</div>
         </div>
-        <div class="page-quote" id="chapterQuote"></div>
+
+        <!-- Nội dung lời chúc bên dưới -->
+        <div class="page-inner-content blurred" id="pageInner">
+          <div>
+            <div class="page-chapter" id="chapterTitle"></div>
+            <div class="page-content" id="chapterBody"></div>
+          </div>
+          <div class="page-quote" id="chapterQuote"></div>
+        </div>
       </div>
 
       <div class="dots-bar" id="dotsContainer"></div>
@@ -521,14 +636,18 @@
       </div>
 
       <div class="bottom-links">
-        <button class="link-action" onclick="regenerateBook()">🎲 Đổi 4 thông điệp khác</button>
+        <button class="link-action" onclick="regenerateBook()">🎲 Đổi bộ 4 thông điệp khác</button>
         <button class="link-action" onclick="resetToHome()">Nhập tên bạn khác</button>
       </div>
     </div>
   </div>
 
   <script>
-    // 4 KHO DỮ LIỆU ĐỘC LẬP TUYỆT ĐỐI CHO 4 TRANG KHÁC NHAU
+    // =====================================================
+    // NGÂN HÀNG 48 LỜI CHÚC ĐỘC LẬP (12 CÂU x 4 TRANG = 48 CÂU)
+    // =====================================================
+
+    // TRANG 1: 12 CÂU CHÀO THÁNG 10 & KỶ NIỆM 11B7
     const poolTrang1 = [
       { text: "Chào {name} – bông hoa xinh xắn của 11B7! Chúc cậu ngày 20/10 ngập tràn hoa tươi, quà ngọt và luôn giữ nụ cười tỏa nắng trên môi nhé!", quote: "“Thanh xuân đẹp nhất là vì có các cậu.”" },
       { text: "Tháng Mười gõ cửa mang theo bao điều dịu dàng gửi đến {name}. Chúc một nửa 11B7 của chúng ta luôn rạng rỡ và hạnh phúc trong mọi khoảnh khắc!", quote: "“Hôm nay thế giới dịu lại để tôn vinh bạn.”" },
@@ -536,10 +655,15 @@
       { text: "Chúc {name} ngày Phụ nữ Việt Nam tràn ngập tiếng cười. Mong rằng thanh xuân cấp 3 của cậu sẽ luôn có những kỷ niệm đẹp nhất bên tập thể 11B7!", quote: "“Tươi trẻ, tự tin và tỏa sáng.”" },
       { text: "Món quà nhỏ từ cuốn sổ 11B7 gửi tặng {name}. Chúc cậu luôn an nhiên, đáng yêu và mãi là niềm tự hào của gia đình và bạn bè nhé!", quote: "“Hạnh phúc bắt nguồn từ những điều giản dị.”" },
       { text: "Chào {name}, chúc cậu ngày 20/10 nhận được nhiều quà đến mức mỏi tay và những lời chúc ngọt ngào nhất từ những người trân quý!", quote: "“Tháng Mười ngọt ngào dành cho cô gái ngọt ngào.”" },
-      { text: "Chúc {name} bước sang ngày lễ với tâm trạng nhẹ nhõm nhất, gác lại mọi lo âu bài vở để tận hưởng một ngày trọn vẹn niềm vui!", quote: "“Cứ rạng rỡ thôi, cả thế giới cứ để 11B7 lo.”" },
-      { text: "Gửi đến {name} chiếc ôm ấm áp nhất từ tập thể 11B7. Chúc cậu ngày nào cũng là ngày lễ và luôn được đối xử dịu dàng như một nàng công chúa!", quote: "“Xinh đẹp, rạng ngời và luôn may mắn.”" }
+      { text: "Chúc {name} bước sang ngày lễ 20/10 với tâm trạng nhẹ nhõm nhất, tạm gác lại mọi bài vở để tận hưởng một ngày trọn vẹn niềm vui!", quote: "“Cứ rạng rỡ thôi, cả thế giới cứ để 11B7 lo.”" },
+      { text: "Gửi đến {name} lời chúc ấm áp nhất từ tập thể 11B7. Chúc cậu ngày nào cũng là ngày lễ và luôn được đối xử dịu dàng như một nàng công chúa!", quote: "“Xinh đẹp, rạng ngời và luôn may mắn.”" },
+      { text: "Giữa hàng ngàn điều tình cờ, thật tuyệt vì {name} là một thành viên của 11B7. Chúc cậu có một mùa 20/10 rực rỡ, ấm áp và đáng nhớ nhất!", quote: "“11B7 mãi là ngôi nhà thanh xuân của cậu.”" },
+      { text: "Mở trang đầu tiên, Linh vật Cáo Tuyết gửi tới {name} một giỏ nắng ấm tháng Mười. Chúc cậu hôm nay đi đến đâu cũng gặp niềm vui và sự bất ngờ!", quote: "“Mỗi ngày đến lớp là một ngày vui.”" },
+      { text: "Chúc {name} của lớp 11B7 một ngày 20/10 thật lung linh! Cảm ơn cậu vì đã luôn góp tiếng cười làm nên một tập thể 11B7 đoàn kết và đầy ắp kỷ niệm.", quote: "“Những năm tháng rực rỡ nhất của tuổi học trò.”" },
+      { text: "Hôm nay là ngày tôn vinh những điều đẹp đẽ nhất, và {name} chính là một trong số đó! Chúc cô gái 11B7 một ngày lễ ngập tràn kẹo ngọt và hoa thơm.", quote: "“Bạn xứng đáng với mọi điều tuyệt vời nhất.”" }
     ];
 
+    // TRANG 2: 12 CÂU CHÚC NHAN SẮC, NỤ CƯỜI & PHONG THÁI
     const poolTrang2 = [
       { text: "Mong {name} luôn giữ được ánh mắt trong veo và nguồn năng lượng tươi trẻ. Dù áp lực học tập thế nào, hãy luôn yêu chiều bản thân thật tốt nhé!", quote: "“Nụ cười của bạn là trang sức đẹp nhất.”" },
       { text: "Chúc {name} ngày càng xinh đẹp, sắc sảo và cuốn hút theo cách riêng. Không cần phải giống bất kỳ ai, vì chính cậu đã là bản thể tuyệt vời nhất rồi!", quote: "“Tự tin tỏa sáng theo cách của bạn.”" },
@@ -548,9 +672,14 @@
       { text: "Mong {name} luôn giữ được sự hồn nhiên, tinh tế và trái tim ấm áp. Cảm ơn cậu vì đã luôn là một mảnh ghép dịu dàng của 11B7!", quote: "“Vẻ đẹp của sự tự tin và tri thức.”" },
       { text: "Chúc {name} lúc nào cũng trẻ trung, yêu đời và tràn đầy sức sống. Hãy cứ bước đi hiên ngang vì phía sau luôn có tập thể 11B7 cổ vũ!", quote: "“Tỏa sáng rực rỡ như những vì sao.”" },
       { text: "Gửi {name}: Chúc cậu sở hữu một phong thái tự tin, một nụ cười không bao giờ tắt và một trái tim luôn đong đầy nhiệt huyết thanh xuân!", quote: "“Sống rực rỡ như ánh dương rọi chiếu.”" },
-      { text: "Chúc {name} luôn giữ được nét đẹp trong trẻo, nụ cười duyên dáng và một thần thái luôn tràn đầy năng lượng tích cực mỗi ngày!", quote: "“Dịu dàng nhưng không kém phần kiên cường.”" }
+      { text: "Chúc {name} luôn giữ được nét đẹp trong trẻo, nụ cười duyên dáng và một thần thái luôn tràn đầy năng lượng tích cực mỗi ngày!", quote: "“Dịu dàng nhưng không kém phần kiên cường.”" },
+      { text: "Chúc {name} mỗi lần soi gương đều thấy yêu thêm chính mình. Hãy luôn ăn ngon, mặc đẹp, giữ tâm trạng phơi phới và rạng ngời ở tuổi 16, 17 nhé!", quote: "“Đẹp từ tâm hồn đến ánh mắt, nụ cười.”" },
+      { text: "Như đóa hoa hướng dương luôn hướng về phía mặt trời, chúc {name} luôn giữ được vẻ ngoài rạng rỡ, lạc quan và thu hút mọi điều tốt lành về phía mình!", quote: "“Hãy là đóa hoa kiêu hãnh nhất.”" },
+      { text: "Chúc {name} luôn mang trong mình sự duyên dáng, thông minh và nét đáng yêu khó lẫn. Sự hiện diện của cậu chính là điểm nhấn tươi sáng của 11B7!", quote: "“Nét duyên thầm làm dịu mát ngày thu.”" },
+      { text: "Mong rằng thời gian chỉ làm {name} thêm phần xinh đẹp, trưởng thành và bản lĩnh hơn, còn những muộn phiền sẽ tự khắc tan biến sau nụ cười của cậu!", quote: "“Nụ cười mở ra vạn điều may.”" }
     ];
 
+    // TRANG 3: 12 CÂU CHÚC HỌC TẬP, ĐIỂM SỐ & ƯỚC MƠ
     const poolTrang3 = [
       { text: "Bước sang trang thứ 3, chúc {name} trong năm học lớp 11 này luôn bứt phá mạnh mẽ, bài kiểm tra hay kỳ thi nào cũng điểm cao chót vót và vượt mọi mốc son!", quote: "“Bản lĩnh vững vàng, tương lai rộng mở.”" },
       { text: "Mong {name} vừa giữ được trái tim ấm áp, vừa có đủ sự kiên cường để chinh phục mọi mục tiêu học tập. Cả lớp 11B7 sẽ luôn đồng hành cùng cậu!", quote: "“Mọi nỗ lực hôm nay đều sẽ nở hoa.”" },
@@ -559,9 +688,14 @@
       { text: "Mong rằng trên con đường chinh phục ghế nhà trường và tương lai, {name} sẽ luôn gặp gỡ những điều may mắn và gặt hái trái ngọt xứng đáng.", quote: "“Hành trình vạn dặm bắt đầu từ sự kiên trì.”" },
       { text: "Chúc {name} luôn giữ vững phong độ học tập đỉnh cao, tự tin phát biểu xây dựng bài và luôn là tấm gương sáng cho cả lớp noi theo!", quote: "“Tự tin, quyết đoán và thành công.”" },
       { text: "Chúc {name} có một năm học lớp 11 thật đáng nhớ với vô số điểm giỏi, những giải thưởng danh giá và những trải nghiệm tuổi trẻ tuyệt vời!", quote: "“Tương lai thuộc về những ai dám ước mơ.”" },
-      { text: "Chúc {name} luôn tìm thấy niềm vui trong sách vở, sự hào hứng trong bài giảng và sự bứt phá ngoạn mục trong mọi bảng điểm thi đua!", quote: "“Học hết sức, chơi hết mình.”" }
+      { text: "Chúc {name} luôn tìm thấy niềm vui trong sách vở, sự hào hứng trong bài giảng và sự bứt phá ngoạn mục trong mọi bảng điểm thi đua!", quote: "“Học hết sức, chơi hết mình.”" },
+      { text: "Mọi công thức Toán, Lý, Hóa hay những trang Văn dài sẽ chẳng làm khó được {name}. Chúc cậu học một hiểu mười và luôn đạt kết quả vượt mong đợi!", quote: "“Bình tĩnh, tự tin, ẵm trọn điểm mười.”" },
+      { text: "Chúc cho những ước mơ đại học và dự định tương lai mà {name} đang ấp ủ sẽ từng bước trở thành hiện thực. Cứ kiên trì nhé, cậu làm được mà!", quote: "“Ước mơ lớn bắt đầu từ những trang vở nhỏ.”" },
+      { text: "Mong {name} luôn có những người bạn cùng tiến tuyệt vời trong lớp 11B7, cùng nhau giải bài khó, cùng nhau ôn thi và cùng nhau bước tới thành công!", quote: "“Đi cùng nhau, chúng ta sẽ tiến thật xa.”" },
+      { text: "Chúc {name} luôn giữ được sự tập trung cao độ, trí nhớ siêu phàm và tinh thần minh mẫn để biến mọi kỳ thi trong năm nay thành sân chơi tỏa sáng của riêng mình!", quote: "“Ngôi sao may mắn luôn chiếu rọi bước đường cậu đi.”" }
     ];
 
+    // TRANG 4: 12 CÂU KẾT 365 NGÀY BÌNH YÊN & HẠNH PHÚC
     const poolTrang4 = [
       { text: "Khép lại trang sổ lưu niệm 11B7, chúc {name} suốt 365 ngày trong năm đều ngập tràn hạnh phúc, bình yên và luôn được mọi người yêu thương vô điều kiện!", quote: "“Happy Women's Day 20.10 · Forever 11B7”" },
       { text: "Món quà tinh thần nhỏ này xin gửi trọn vẹn may mắn đến {name}. Chúc cậu tối nay ngủ thật ngon, ngày mai đến lớp với thật nhiều năng lượng tươi mới!", quote: "“Bình yên ở trong tâm, hạnh phúc ở tay mình.”" },
@@ -570,47 +704,71 @@
       { text: "Mong rằng bất cứ khi nào mở trang web này lên, {name} đều mỉm cười vì biết rằng mình luôn là một cô gái vô cùng đặc biệt và đáng trân trọng.", quote: "“Yêu thương bản thân là khởi đầu của mọi vẻ đẹp.”" },
       { text: "Chúc {name} có một buổi tối 20/10 ngập tràn kỷ niệm đẹp bên gia đình và những người thân yêu. Luôn hạnh phúc và mỉm cười thật nhiều nhé cậu!", quote: "“Được yêu thương là điều hạnh phúc nhất.”" },
       { text: "Gửi ngàn lời chúc tốt đẹp nhất khép lại cuốn sổ nhỏ. Chúc {name} mãi giữ được trái tim nhiệt huyết và một thanh xuân không có chỗ cho tiếc nuối!", quote: "“Thanh xuân rực rỡ của những đóa hoa 11B7.”" },
-      { text: "Chúc {name} luôn có một bầu trời sức khỏe, một biển cả yêu thương và những tháng ngày học sinh cấp 3 đẹp đẽ nhất bên mái trường này!", quote: "“Mãi là cô gái rạng ngời và kiêu hãnh.”" }
+      { text: "Chúc {name} luôn có một bầu trời sức khỏe, một biển cả yêu thương và những tháng ngày học sinh cấp 3 đẹp đẽ nhất bên mái trường này!", quote: "“Mãi là cô gái rạng ngời và kiêu hãnh.”" },
+      { text: "Trang sách khép lại nhưng những điều may mắn dành cho {name} bây giờ mới thực sự bắt đầu. Chúc cậu một tháng Mười ngọt ngào và cả năm suôn sẻ!", quote: "“May mắn luôn mỉm cười với người tử tế.”" },
+      { text: "Dù sau này chúng mình có trưởng thành và đi xa đến đâu, mong {name} sẽ luôn nhớ về mùa 20/10 năm lớp 11B7 thật ấm áp này nhé!", quote: "“Kỷ niệm đẹp sẽ theo ta suốt cuộc đời.”" },
+      { text: "Chúc {name} luôn bước đi dưới ánh nắng rực rỡ, gặp được những người chân thành và đón nhận vạn điều tốt lành trong cả 4 mùa Xuân - Hạ - Thu - Đông!", quote: "“Bốn mùa bình yên, tám hướng thuận lợi.”" },
+      { text: "Lời chúc cuối cùng trong 48 thông điệp của 11B7: Chúc {name} luôn tự do bay nhảy với đam mê, luôn được chở che và mãi là cô gái hạnh phúc nhất!", quote: "“Trọn vẹn yêu thương · 20/10 Tuyệt Vời!”" }
     ];
-
-    const vipWishes = {};
 
     let currentName = "";
     let currentBookPages = [];
     let currentPageIndex = 0;
+    let unlockedPages = [false, false, false, false];
+    let regenSeed = 0; // Giúp đổi sang câu mới trong kho 48 câu khi bấm nút đổi
 
-    function getIndexByNameAndPage(name, pageIndex, maxLen) {
+    function getIndexByNameAndPage(name, pageSalt, maxLen) {
       let hash = 0;
-      const cleanStr = name.trim().toLowerCase() + "_page_" + pageIndex;
+      const cleanStr = name.trim().toLowerCase() + "_salt_" + pageSalt;
       for (let i = 0; i < cleanStr.length; i++) {
         hash = cleanStr.charCodeAt(i) + ((hash << 5) - hash);
       }
-      return Math.abs(hash) % maxLen;
+      return (Math.abs(hash) + regenSeed) % maxLen;
     }
 
     function buildBookForUser(name) {
-      const cleanKey = name.trim().toLowerCase();
-      if (vipWishes[cleanKey]) {
-        const v = vipWishes[cleanKey];
-        return [
-          { badge: v.badge, happyEyes: v.happyEyes, chapter: "🌸 Đặc Biệt", body: v.body.replace(/{name}/g, name), quote: v.quote },
-          { badge: "🌹", happyEyes: true, chapter: "✨ Nụ Cười 11B7", body: poolTrang2[getIndexByNameAndPage(name, 1, poolTrang2.length)].text.replace(/{name}/g, name), quote: poolTrang2[0].quote },
-          { badge: "🪄", happyEyes: false, chapter: "💎 Điểm Số & Ước Mơ", body: poolTrang3[getIndexByNameAndPage(name, 2, poolTrang3.length)].text.replace(/{name}/g, name), quote: poolTrang3[0].quote },
-          { badge: "💖", happyEyes: true, chapter: "👑 Lời Kết 365 Ngày", body: poolTrang4[getIndexByNameAndPage(name, 3, poolTrang4.length)].text.replace(/{name}/g, name), quote: poolTrang4[0].quote }
-        ];
-      }
-
-      // Mỗi trang lấy từ 1 kho riêng biệt, không bao giờ trùng nhau
       const idx1 = getIndexByNameAndPage(name, 101, poolTrang1.length);
       const idx2 = getIndexByNameAndPage(name, 202, poolTrang2.length);
       const idx3 = getIndexByNameAndPage(name, 303, poolTrang3.length);
       const idx4 = getIndexByNameAndPage(name, 404, poolTrang4.length);
 
       return [
-        { badge: "💌", happyEyes: false, chapter: "🌸 Trang 1 · Thanh Xuân 11B7", body: poolTrang1[idx1].text.replace(/{name}/g, name), quote: poolTrang1[idx1].quote },
-        { badge: "🌹", happyEyes: true, chapter: "✨ Trang 2 · Nụ Cười & Sự Rạng Rỡ", body: poolTrang2[idx2].text.replace(/{name}/g, name), quote: poolTrang2[idx2].quote },
-        { badge: "🪄", happyEyes: false, chapter: "💎 Trang 3 · Điểm Số & Ước Mơ", body: poolTrang3[idx3].text.replace(/{name}/g, name), quote: poolTrang3[idx3].quote },
-        { badge: "💖", happyEyes: true, chapter: "👑 Trang Cuối · Lời Chúc 365 Ngày", body: poolTrang4[idx4].text.replace(/{name}/g, name), quote: poolTrang4[idx4].quote }
+        {
+          badge: "💌",
+          sealIcon: "💌",
+          sealName: "Phong Ấn Thanh Xuân · Trang 1",
+          happyEyes: false,
+          chapter: "🌸 Trang 1 · Thanh Xuân 11B7",
+          body: poolTrang1[idx1].text.replace(/{name}/g, name),
+          quote: poolTrang1[idx1].quote
+        },
+        {
+          badge: "🌹",
+          sealIcon: "🎁",
+          sealName: "Hộp Quà Nhan Sắc · Trang 2",
+          happyEyes: true,
+          chapter: "✨ Trang 2 · Nụ Cười & Sự Rạng Rỡ",
+          body: poolTrang2[idx2].text.replace(/{name}/g, name),
+          quote: poolTrang2[idx2].quote
+        },
+        {
+          badge: "🪄",
+          sealIcon: "🌟",
+          sealName: "Ngôi Sao Ước Mơ · Trang 3",
+          happyEyes: false,
+          chapter: "💎 Trang 3 · Điểm Số & Ước Mơ",
+          body: poolTrang3[idx3].text.replace(/{name}/g, name),
+          quote: poolTrang3[idx3].quote
+        },
+        {
+          badge: "💖",
+          sealIcon: "💝",
+          sealName: "Trái Tim 365 Ngày · Trang Cuối",
+          happyEyes: true,
+          chapter: "👑 Trang Cuối · Lời Chúc 365 Ngày",
+          body: poolTrang4[idx4].text.replace(/{name}/g, name),
+          quote: poolTrang4[idx4].quote
+        }
       ];
     }
 
@@ -627,6 +785,7 @@
 
     function petMascot() {
       burstSparkles();
+      playUnlockChime();
       const happyEl = document.getElementById("mascotEyesHappy");
       const normalEl = document.getElementById("mascotEyesNormal");
       normalEl.style.display = "none";
@@ -651,10 +810,13 @@
       }
 
       currentName = val;
+      regenSeed = 0;
       document.getElementById("displayReceiver").textContent = currentName;
 
       currentBookPages = buildBookForUser(currentName);
       currentPageIndex = 0;
+      // Khóa cả 4 trang để người dùng tự tay chạm mở từng trang
+      unlockedPages = [false, false, false, false];
 
       document.getElementById("welcomeScreen").style.display = "none";
       document.getElementById("storyScreen").style.display = "block";
@@ -664,6 +826,18 @@
       burstSparkles();
 
       if (!isMusicPlaying) startMusicBox();
+    }
+
+    // Hàm khi người dùng chạm vào Phong Ấn để mở khóa trang hiện tại
+    function unlockCurrentPage() {
+      if (unlockedPages[currentPageIndex]) return;
+      unlockedPages[currentPageIndex] = true;
+
+      document.getElementById("sealOverlay").classList.add("unlocked");
+      document.getElementById("pageInner").classList.remove("blurred");
+
+      playUnlockChime();
+      burstSparkles();
     }
 
     function renderDots() {
@@ -679,16 +853,26 @@
 
     function updatePageView() {
       const pageData = currentBookPages[currentPageIndex];
-      const box = document.getElementById("pageBox");
-
-      box.classList.remove("page-FlipAnim");
-      void box.offsetWidth;
-      box.classList.add("page-FlipAnim");
+      const sealOverlay = document.getElementById("sealOverlay");
+      const pageInner = document.getElementById("pageInner");
 
       document.getElementById("pageIndicator").textContent = `Trang ${currentPageIndex + 1} / ${currentBookPages.length}`;
       document.getElementById("chapterTitle").textContent = pageData.chapter;
       document.getElementById("chapterBody").textContent = pageData.body;
       document.getElementById("chapterQuote").textContent = pageData.quote;
+
+      // Cập nhật thông tin Phong Ấn của trang đó
+      document.getElementById("sealIcon").textContent = pageData.sealIcon;
+      document.getElementById("sealTitle").textContent = pageData.sealName;
+
+      // Kiểm tra nếu trang này chưa mở khóa thì hiện Phong Ấn
+      if (unlockedPages[currentPageIndex]) {
+        sealOverlay.classList.add("unlocked");
+        pageInner.classList.remove("blurred");
+      } else {
+        sealOverlay.classList.remove("unlocked");
+        pageInner.classList.add("blurred");
+      }
 
       updateMascotMood(pageData.badge, pageData.happyEyes);
 
@@ -709,7 +893,6 @@
         currentPageIndex = Math.max(0, Math.min(currentBookPages.length - 1, currentPageIndex + step));
       }
       updatePageView();
-      burstSparkles();
     }
 
     function goToPage(index) {
@@ -718,8 +901,10 @@
     }
 
     function regenerateBook() {
+      regenSeed++;
       currentBookPages = buildBookForUser(currentName);
       currentPageIndex = 0;
+      unlockedPages = [false, false, false, false];
       updatePageView();
       burstSparkles();
     }
@@ -752,25 +937,38 @@
       }
     }, { passive: true });
 
+    // =====================================================
+    // HỘP NHẠC PIANO & HIỆU ỨNG ÂM THANH MỞ PHONG ẤN
+    // =====================================================
     let audioCtx = null;
     let isMusicPlaying = false;
     let melodyInterval = null;
     const melodyNotes = [523.25, 659.25, 783.99, 1046.50, 783.99, 659.25, 587.33, 698.46, 880.00, 698.46, 587.33, 493.88, 659.25, 783.99];
     let noteCursor = 0;
 
-    function playSingleNote(freq) {
+    function playSingleNote(freq, duration = 1.4, maxGain = 0.08) {
       if (!audioCtx) return;
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = "sine";
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
       gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.4);
+      gain.gain.exponentialRampToValueAtTime(maxGain, audioCtx.currentTime + 0.04);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start();
-      osc.stop(audioCtx.currentTime + 1.4);
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    // Âm thanh chuông gió lấp lánh khi chạm mở Phong Ấn
+    function playUnlockChime() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const chime = [783.99, 987.77, 1174.66, 1567.98];
+      chime.forEach((f, idx) => {
+        setTimeout(() => playSingleNote(f, 0.7, 0.06), idx * 75);
+      });
     }
 
     function startMusicBox() {
@@ -795,6 +993,9 @@
       }
     }
 
+    // =====================================================
+    // HIỆU ỨNG CÁNH HOA & PHÁO SÁNG CANVAS
+    // =====================================================
     const canvas = document.getElementById("bgCanvas");
     const ctx = canvas.getContext("2d");
 
@@ -820,15 +1021,15 @@
 
     function burstSparkles() {
       const cx = canvas.width / 2;
-      const cy = canvas.height / 2.4;
-      for (let i = 0; i < 26; i++) {
+      const cy = canvas.height / 2;
+      for (let i = 0; i < 30; i++) {
         const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 3.8 + 1.2;
+        const speed = Math.random() * 4.2 + 1.2;
         sparkles.push({
           x: cx, y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          r: Math.random() * 2.5 + 1,
+          r: Math.random() * 2.6 + 1,
           alpha: 1,
           color: i % 2 === 0 ? "#f3d29c" : "#ff8fa3"
         });
